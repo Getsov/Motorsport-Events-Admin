@@ -1,21 +1,10 @@
 <div class="section-navigation">
-  <a
-    routerLink="{{ firstRoute }}"
-    routerLinkActive="activebutton"
-    ariaCurrentWhenActive="page"
-    >{{ firstOption }}</a
-  >
-  <a
-    routerLink="{{ secondRoute }}"
-    routerLinkActive="activebutton"
-    ariaCurrentWhenActive="page"
-    >{{ secondOption }}</a
-  >
-  <a
-    *ngIf="thirdOption"
-    routerLink="{{ thirdRoute }}"
-    routerLinkActive="activebutton"
-    ariaCurrentWhenActive="page"
-    >{{ thirdOption }}</a
-  >
+  <ng-container *ngFor="let option of options">
+    <a
+      [routerLink]="option.route"
+      routerLinkActive="activebutton"
+      ariaCurrentWhenActive="page"
+      >{{ option.label }}</a
+    >
+  </ng-container>
 </div>

@@ -10,10 +10,13 @@ import { SectionNavComponent } from '../../../shared/components/section-nav/sect
   styleUrl: './awaiting-approval.component.scss',
 })
 export class AwaitingApprovalComponent {
-  firstOption: string = 'Чакащи събития';
-  secondOption: string = 'Чакащи организатори';
-
   constructor(private router: Router) {}
+
+  options = [
+    { label: 'Чакащи събития', route: 'awaiting-events' },
+    { label: 'Чакащи организатори', route: 'awaiting-organizers' },
+  ];
+
   ngOnInit() {
     this.router.navigate(['/awaiting-approval/awaiting-events']);
   }

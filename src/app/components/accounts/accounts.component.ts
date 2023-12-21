@@ -10,9 +10,11 @@ import { SectionNavComponent } from '../../../shared/components/section-nav/sect
   styleUrl: './accounts.component.scss',
 })
 export class AccountsComponent {
-  firstOption: string = 'Администраторски акаунти';
-  secondOption: string = 'Организаторски акаунти';
-  thirdOption: string = 'Потребителски акаунти';
+  options = [
+    { label: 'Администраторски акаунти', route: 'admin-accounts' },
+    { label: 'Организаторски акаунти', route: 'organizer-accounts' },
+    { label: 'Потребителски акаунти', route: 'user-accounts' },
+  ];
 
   constructor(private router: Router) {}
   ngOnInit() {

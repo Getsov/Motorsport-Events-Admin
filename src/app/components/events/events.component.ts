@@ -10,9 +10,13 @@ import { SectionNavComponent } from '../../../shared/components/section-nav/sect
   styleUrl: './events.component.scss',
 })
 export class EventsComponent implements OnInit {
-  firstOption: string = 'Предстоящи събития';
-  secondOption: string = 'Отминали Събития';
   constructor(private router: Router) {}
+
+  options = [
+    { label: 'Предстоящи събития', route: 'upcoming-events' },
+    { label: 'Отминали Събития', route: 'past-events' },
+  ];
+
   ngOnInit() {
     this.router.navigate(['/events/upcoming-events']);
   }
