@@ -21,6 +21,12 @@ export class SectionNavComponent implements OnInit {
     ) {
       this.firstRoute = 'awaiting-events';
       this.secondRoute = 'awaiting-organizers';
+    } else if (
+      this.firstOption === 'Предстоящи събития' &&
+      this.secondOption === 'Отминали Събития'
+    ) {
+      this.firstRoute = 'upcoming-events';
+      this.secondRoute = 'past-events';
     }
   }
 }
