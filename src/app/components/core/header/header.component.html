@@ -4,26 +4,54 @@
     <nav>
       <ul role="list" class="navbar">
         <li>
-          <a routerLink="/awaiting-events" routerLinkActive="activebutton"
+          <a
+            routerLink="/awaiting-events"
+            routerLinkActive="activebutton"
+            ariaCurrentWhenActive="page"
             >Чакащи за одобрение</a
           >
         </li>
         <li>
-          <a routerLink="/events" routerLinkActive="activebutton">Събития</a>
+          <a
+            routerLink="/events"
+            routerLinkActive="activebutton"
+            ariaCurrentWhenActive="page"
+            >Събития</a
+          >
         </li>
         <li>
-          <a routerLink="/create-event" routerLinkActive="activebutton"
+          <a
+            routerLink="/create-event"
+            routerLinkActive="activebutton"
+            ariaCurrentWhenActive="page"
             >Създай събитие</a
           >
         </li>
         <li>
-          <a routerLink="/accounts" routerLinkActive="activebutton">Акаунти</a>
+          <a
+            routerLink="/accounts"
+            routerLinkActive="activebutton"
+            ariaCurrentWhenActive="page"
+            >Акаунти</a
+          >
         </li>
         <li>
-          <a routerLink="/profile" routerLinkActive="activebutton">Профил</a>
+          <a
+            routerLink="/profile"
+            routerLinkActive="activebutton"
+            ariaCurrentWhenActive="page"
+            >Профил</a
+          >
         </li>
         <!-- TODO: LOGOUT -->
-        <li><a href="/">Изход</a></li>
+        <li>
+          <a
+            href="/"
+            routerLinkActive="activebutton"
+            ariaCurrentWhenActive="page"
+            >Изход</a
+          >
+        </li>
       </ul>
     </nav>
   </div>
