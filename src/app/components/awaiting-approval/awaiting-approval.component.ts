@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { RouterOutlet } from '@angular/router';
+import { Router, RouterOutlet } from '@angular/router';
 import { SectionNavComponent } from '../../../shared/components/section-nav/section-nav.component';
 
 @Component({
@@ -12,4 +12,12 @@ import { SectionNavComponent } from '../../../shared/components/section-nav/sect
 export class AwaitingApprovalComponent {
   firstOption: string = 'Чакащи събития';
   secondOption: string = 'Чакащи организатори';
+
+  constructor(private router: Router) {}
+  ngOnInit() {
+    // Redirect to the desired URL on page load
+    console.log(' redirect');
+
+    this.router.navigate(['/awaiting-approval/awaiting-events']);
+  }
 }
