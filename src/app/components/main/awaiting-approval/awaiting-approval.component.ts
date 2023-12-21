@@ -9,4 +9,7 @@ import { RouterOutlet } from '@angular/router';
   templateUrl: './awaiting-approval.component.html',
   styleUrl: './awaiting-approval.component.scss',
 })
-export class AwaitingApprovalComponent {}
+export class AwaitingApprovalComponent {
+  firstOption: string = 'Чакащи събития';
+  secondOption: string = 'Чакащи организатори';
+}

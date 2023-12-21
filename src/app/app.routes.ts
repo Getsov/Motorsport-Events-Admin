@@ -8,6 +8,9 @@ import { AwaitingEventsComponent } from './components/events/awaiting-events/awa
 import { AwaitingOrganizersComponent } from './components/accounts/awaiting-organizers/awaiting-organizers.component';
 import { UpcomingEventsComponent } from './components/events/upcoming-events/upcoming-events.component';
 import { PastEventsComponent } from './components/events/past-events/past-events.component';
+import { AdminAccountsComponent } from './components/accounts/admin-accounts/admin-accounts.component';
+import { OrganizerAccountsComponent } from './components/accounts/organizer-accounts/organizer-accounts.component';
+import { UserAccountsComponent } from './components/accounts/user-accounts/user-accounts.component';
 
 export const routes: Routes = [
   {
@@ -27,6 +30,14 @@ export const routes: Routes = [
     ],
   },
   { path: 'create-event', component: CreateEventComponent },
-  { path: 'accounts', component: AccountsComponent },
+  {
+    path: 'accounts',
+    component: AccountsComponent,
+    children: [
+      { path: 'admin-accounts', component: AdminAccountsComponent },
+      { path: 'organizer-accounts', component: OrganizerAccountsComponent },
+      { path: 'user-accounts', component: UserAccountsComponent },
+    ],
+  },
   { path: 'profile', component: ProfileComponent },
 ];

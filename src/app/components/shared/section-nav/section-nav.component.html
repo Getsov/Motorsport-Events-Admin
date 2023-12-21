@@ -11,4 +11,11 @@
     ariaCurrentWhenActive="page"
     >{{ secondOption }}</a
   >
+  <a
+    *ngIf="thirdOption"
+    routerLink="{{ thirdRoute }}"
+    routerLinkActive="activebutton"
+    ariaCurrentWhenActive="page"
+    >{{ thirdOption }}</a
+  >
 </div>
