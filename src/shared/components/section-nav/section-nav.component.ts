@@ -1,10 +1,11 @@
 import { Component, Input, OnInit } from '@angular/core';
 import { RouterLink, RouterLinkActive } from '@angular/router';
+
+import { CommonModule } from '@angular/common';
 import {
   setDualRoutes,
   setTripleRoutes,
 } from '../../utils/nestedRoutesConfigurator';
-import { CommonModule } from '@angular/common';
 
 @Component({
   selector: 'app-section-nav',
