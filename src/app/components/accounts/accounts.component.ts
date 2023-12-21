@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { SectionNavComponent } from '../../shared/section-nav/section-nav.component';
+import { SectionNavComponent } from '../shared/components/section-nav/section-nav.component';
 import { RouterOutlet } from '@angular/router';
 
 @Component({

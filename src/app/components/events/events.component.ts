@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 import { RouterOutlet } from '@angular/router';
-import { SectionNavComponent } from '../../shared/section-nav/section-nav.component';
+import { SectionNavComponent } from '../shared/components/section-nav/section-nav.component';
 
 @Component({
   selector: 'app-events',

@@ -3,7 +3,7 @@ import { RouterLink, RouterLinkActive } from '@angular/router';
 import {
   setDualRoutes,
   setTripleRoutes,
-} from '../../../../utils/nestedRoutesConfigurator';
+} from '../../utils/nestedRoutesConfigurator';
 import { CommonModule } from '@angular/common';
 
 @Component({
