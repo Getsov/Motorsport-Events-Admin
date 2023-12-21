@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { RouterOutlet } from '@angular/router';
+import { RouterLink, RouterOutlet } from '@angular/router';
 import { HeaderComponent } from './components/core/header/header.component';
 import { HeroComponent } from './components/core/hero/hero.component';
 

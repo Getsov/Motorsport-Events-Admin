@@ -22,7 +22,8 @@ header {
       flex-wrap: nowrap;
       align-items: flex-end;
       gap: 16px;
-      li {
+      li a {
+        text-decoration: none;
         flex-grow: 1;
         flex-shrink: 1;
         color: rgba(255, 116, 24, 1);
