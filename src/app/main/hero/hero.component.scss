@@ -1,0 +1,25 @@
+.hero {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  position: relative;
+  min-height: 351px;
+
+  img {
+    flex-shrink: 0;
+    flex-grow: 0;
+    position: absolute;
+    bottom: 0;
+  }
+
+  h1 {
+    font-size: 56px;
+    font-style: normal;
+    font-weight: 600;
+    line-height: 120%;
+    color: rgba(255, 116, 24, 1);
+    position: absolute;
+    top: 0;
+  }
+}
