@@ -22,6 +22,7 @@ header {
       flex-wrap: nowrap;
       align-items: flex-end;
       gap: 16px;
+
       li a {
         text-decoration: none;
         flex-grow: 1;
@@ -33,6 +34,13 @@ header {
         font-weight: 500;
         line-height: 150%;
         padding: 8px 18px;
+        border-radius: 4px;
+      }
+
+      li a.activebutton {
+        background-color: rgba(255, 116, 24, 1);
+        color: rgba(13, 13, 13, 1);
+        font-weight: 600;
       }
     }
   }
