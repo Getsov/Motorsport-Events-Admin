@@ -15,9 +15,6 @@ export class AwaitingApprovalComponent {
 
   constructor(private router: Router) {}
   ngOnInit() {
-    // Redirect to the desired URL on page load
-    console.log(' redirect');
-
     this.router.navigate(['/awaiting-approval/awaiting-events']);
   }
 }

@@ -14,9 +14,6 @@ export class EventsComponent implements OnInit {
   secondOption: string = 'Отминали Събития';
   constructor(private router: Router) {}
   ngOnInit() {
-    // Redirect to the desired URL on page load
-    console.log(' redirect');
-
     this.router.navigate(['/events/upcoming-events']);
   }
 }

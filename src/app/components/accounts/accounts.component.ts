@@ -16,9 +16,6 @@ export class AccountsComponent {
 
   constructor(private router: Router) {}
   ngOnInit() {
-    // Redirect to the desired URL on page load
-    console.log(' redirect');
-
     this.router.navigate(['/accounts/admin-accounts']);
   }
 }
