@@ -40,4 +40,6 @@ export const routes: Routes = [
     ],
   },
   { path: 'profile', component: ProfileComponent },
+  { path: '', redirectTo: 'awaiting-approval', pathMatch: 'full' }, // Redirect to 'awaiting-approval' for the root path
+  { path: '**', redirectTo: 'awaiting-approval', pathMatch: 'full' }, // Redirect to 'awaiting-approval' for any other unmatched paths
 ];
