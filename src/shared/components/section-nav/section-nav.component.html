@@ -1,0 +1,10 @@
+<div class="section-navigation">
+  <ng-container *ngFor="let option of options">
+    <a
+      [routerLink]="option.route"
+      routerLinkActive="activebutton"
+      ariaCurrentWhenActive="page"
+      >{{ option.label }}</a
+    >
+  </ng-container>
+</div>

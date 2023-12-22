@@ -1,0 +1,27 @@
+.section-navigation {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: rgba(255, 255, 255, 1);
+  min-height: 60px;
+  width: fit-content;
+  padding: 2px 4px;
+  margin: auto;
+  margin-bottom: 24px;
+  border-radius: 4px;
+
+  a {
+    color: rgba(13, 13, 13, 1);
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 600;
+    line-height: 150%;
+    text-decoration: none;
+    padding: 13px 62px;
+    border-radius: 4px;
+  }
+
+  .activebutton {
+    background-color: rgba(255, 116, 24, 1);
+  }
+}
