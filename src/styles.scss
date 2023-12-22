@@ -8,26 +8,6 @@
   src: url("assets/fonts/OpenSans-Regular.ttf") format("truetype");
 }
 
-@font-face {
-  font-family: "Inter";
-  src: url("assets/fonts/Inter-Regular.ttf") format("truetype");
-}
-
-@font-face {
-  font-family: "Roboto";
-  src: url("assets/fonts/Roboto-Regular.ttf") format("truetype");
-}
-
-@font-face {
-  font-family: "Lato";
-  src: url("assets/fonts/Lato-Regular.ttf") format("truetype");
-}
-
-@font-face {
-  font-family: "Montserrat";
-  src: url("assets/fonts/Montserrat-Regular.ttf") format("truetype");
-}
-
 /* CSS RESET
   /* Box sizing rules */
 *,
@@ -81,7 +61,7 @@ div,
 input {
   text-rendering: optimizeSpeed;
   line-height: 1.5;
-  font-family: "Open Sans", "Inter", "Roboto";
+  font-family: "Open Sans";
 }
 
 h1,
@@ -91,7 +71,7 @@ h4,
 h5,
 h6 {
   text-rendering: optimizeSpeed;
-  font-family: "Exo 2", "Montserrat", "Lato";
+  font-family: "Exo 2";
   line-height: 1.2;
 }
 
