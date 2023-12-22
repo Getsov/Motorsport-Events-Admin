@@ -17,7 +17,5 @@ export class AccountsComponent {
   ];
 
   constructor(private router: Router) {}
-  ngOnInit() {
-    this.router.navigate(['/accounts/admin-accounts']);
-  }
+  ngOnInit() {}
 }

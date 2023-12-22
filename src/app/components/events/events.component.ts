@@ -17,7 +17,5 @@ export class EventsComponent implements OnInit {
     { label: 'Отминали Събития', route: 'past-events' },
   ];
 
-  ngOnInit() {
-    this.router.navigate(['/events/upcoming-events']);
-  }
+  ngOnInit() {}
 }

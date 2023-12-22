@@ -17,6 +17,7 @@ export const routes: Routes = [
     path: 'awaiting-approval',
     component: AwaitingApprovalComponent,
     children: [
+      { path: '', redirectTo: 'awaiting-events', pathMatch: 'full' },
       { path: 'awaiting-events', component: AwaitingEventsComponent },
       { path: 'awaiting-organizers', component: AwaitingOrganizersComponent },
     ],
@@ -25,6 +26,7 @@ export const routes: Routes = [
     path: 'events',
     component: EventsComponent,
     children: [
+      { path: '', redirectTo: 'upcoming-events', pathMatch: 'full' },
       { path: 'upcoming-events', component: UpcomingEventsComponent },
       { path: 'past-events', component: PastEventsComponent },
     ],
@@ -34,14 +36,13 @@ export const routes: Routes = [
     path: 'accounts',
     component: AccountsComponent,
     children: [
+      { path: '', redirectTo: 'admin-accounts', pathMatch: 'full' },
       { path: 'admin-accounts', component: AdminAccountsComponent },
       { path: 'organizer-accounts', component: OrganizerAccountsComponent },
       { path: 'user-accounts', component: UserAccountsComponent },
     ],
   },
   { path: 'profile', component: ProfileComponent },
-  // Redirect to 'awaiting-approval' for the root path
-  { path: '', redirectTo: 'awaiting-approval', pathMatch: 'full' },
-  // Redirect to 'awaiting-approval' for any other unmatched paths
-  { path: '**', redirectTo: 'awaiting-approval', pathMatch: 'full' },
+  { path: '', redirectTo: 'awaiting-approval', pathMatch: 'full' }, // Redirect to 'awaiting-approval' for the root path
+  { path: '**', redirectTo: 'awaiting-approval', pathMatch: 'full' }, // Redirect to 'awaiting-approval' for any other unmatched paths
 ];

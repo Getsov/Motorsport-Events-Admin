@@ -28,8 +28,6 @@ export class AwaitingApprovalComponent {
   eventsForApprove: Event[] = [];
 
   ngOnInit() {
-    this.router.navigate(['/awaiting-approval/awaiting-events']);
-
     this.eventService.getEventsForApproval().subscribe({
       next: (response) => {
         console.log(response);
