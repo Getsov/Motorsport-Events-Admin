@@ -1,17 +1,18 @@
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { environment } from '../../enviroments/enviroment';
 import { Observable } from 'rxjs';
+import { environment } from '../../enviroments/enviroment';
+import { User } from '../interfaces/User';
 
 const { baseUrl, accessToken } = environment;
 
 @Injectable({
   providedIn: 'root',
 })
-export class EventService {
+export class UserService {
   constructor(private http: HttpClient) {}
 
-  getEventsForApproval(): Observable<Event[]> {
+  getUsersForApproval(): Observable<User[]> {
     // Login from postman and set your access token from enviroment. We dont have login yet.
     const headers = new HttpHeaders({
       'Content-Type': 'application/json',
@@ -20,8 +21,8 @@ export class EventService {
 
     const options = { headers: headers };
 
-    return this.http.get<Event[]>(
-      `${baseUrl}/events/eventsForApproval`,
+    return this.http.get<User[]>(
+      `${baseUrl}/user/organizersForApproval`,
       options
     );
   }

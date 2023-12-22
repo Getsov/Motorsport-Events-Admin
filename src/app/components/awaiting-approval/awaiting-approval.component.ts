@@ -3,6 +3,7 @@ import { Router, RouterOutlet } from '@angular/router';
 import { SectionNavComponent } from '../../../shared/components/section-nav/section-nav.component';
 import { User } from '../../../shared/interfaces/User';
 import { EventService } from '../../../shared/services/event.service';
+import { UserService } from '../../../shared/services/user.service';
 
 @Component({
   selector: 'app-awaiting-approval',
@@ -12,7 +13,11 @@ import { EventService } from '../../../shared/services/event.service';
   styleUrl: './awaiting-approval.component.scss',
 })
 export class AwaitingApprovalComponent {
-  constructor(private router: Router, private eventService: EventService) {}
+  constructor(
+    private router: Router,
+    private eventService: EventService,
+    private userService: UserService
+  ) {}
 
   options = [
     { label: 'Чакащи събития', route: 'awaiting-events' },
@@ -24,7 +29,17 @@ export class AwaitingApprovalComponent {
 
   ngOnInit() {
     this.router.navigate(['/awaiting-approval/awaiting-events']);
+
     this.eventService.getEventsForApproval().subscribe({
+      next: (response) => {
+        console.log(response);
+      },
+      error: (error) => {
+        console.log(error);
+      },
+    });
+
+    this.userService.getUsersForApproval().subscribe({
       next: (response) => {
         console.log(response);
       },
