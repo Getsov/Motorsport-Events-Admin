@@ -12,7 +12,7 @@ const { baseUrl, accessToken } = environment;
 export class UserService {
   constructor(private http: HttpClient) {}
 
-  getUsersForApproval(): Observable<User[]> {
+  getOrganizersForApproval(): Observable<User[]> {
     // Login from postman and set your access token from enviroment. We dont have login yet.
     const headers = new HttpHeaders({
       'Content-Type': 'application/json',

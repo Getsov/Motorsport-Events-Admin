@@ -39,7 +39,7 @@ export class AwaitingApprovalComponent {
       },
     });
 
-    this.userService.getUsersForApproval().subscribe({
+    this.userService.getOrganizersForApproval().subscribe({
       next: (response) => {
         console.log(response);
       },
