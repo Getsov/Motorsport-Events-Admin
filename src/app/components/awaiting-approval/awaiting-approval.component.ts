@@ -28,6 +28,11 @@ export class AwaitingApprovalComponent {
   eventsForApprove: Event[] = [];
 
   ngOnInit() {
+    this.loadEventsForApproval();
+    this.loadOrganizersForApproval();
+  }
+
+  private loadEventsForApproval() {
     this.eventService.getEventsForApproval().subscribe({
       next: (response) => {
         console.log(response);
@@ -36,7 +41,9 @@ export class AwaitingApprovalComponent {
         console.log(error);
       },
     });
+  }
 
+  private loadOrganizersForApproval() {
     this.userService.getOrganizersForApproval().subscribe({
       next: (response) => {
         console.log(response);
