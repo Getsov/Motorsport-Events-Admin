@@ -1,9 +1,10 @@
-import { Component } from '@angular/core';
-import { Router, RouterOutlet } from '@angular/router';
+import { Component, inject } from '@angular/core';
+import { RouterOutlet } from '@angular/router';
 import { SectionNavComponent } from '../../../shared/components/section-nav/section-nav.component';
 import { User } from '../../../shared/interfaces/User';
 import { EventService } from '../../../shared/services/event.service';
 import { UserService } from '../../../shared/services/user.service';
+import { DataTransferService } from '../../../shared/services/data-transfer.service';
 
 @Component({
   selector: 'app-awaiting-approval',
@@ -14,15 +15,10 @@ import { UserService } from '../../../shared/services/user.service';
 })
 export class AwaitingApprovalComponent {
   constructor(
-    private router: Router,
     private eventService: EventService,
-    private userService: UserService
+    private userService: UserService,
+    private transfer: DataTransferService
   ) {}
-
-  options = [
-    { label: 'Чакащи събития', route: 'awaiting-events' },
-    { label: 'Чакащи организатори', route: 'awaiting-organizers' },
-  ];
 
   organizersForApprove: User[] = [];
   eventsForApprove: Event[] = [];
@@ -32,10 +28,16 @@ export class AwaitingApprovalComponent {
     this.loadOrganizersForApproval();
   }
 
+  options = [
+    { label: 'Чакащи събития', route: 'awaiting-events' },
+    { label: 'Чакащи организатори', route: 'awaiting-organizers' },
+  ];
+
   private loadEventsForApproval() {
     this.eventService.getEventsForApproval().subscribe({
       next: (response) => {
-        console.log(response);
+        this.eventsForApprove = response;
+        this.transfer.setEventsForApprove(this.eventsForApprove);
       },
       error: (error) => {
         console.log(error);
@@ -46,7 +48,8 @@ export class AwaitingApprovalComponent {
   private loadOrganizersForApproval() {
     this.userService.getOrganizersForApproval().subscribe({
       next: (response) => {
-        console.log(response);
+        this.organizersForApprove = response;
+        this.transfer.setOrganizersForApprove(response);
       },
       error: (error) => {
         console.log(error);
