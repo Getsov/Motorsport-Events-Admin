@@ -1,10 +1,9 @@
-import { Component, inject } from '@angular/core';
+import { Component } from '@angular/core';
 import { RouterOutlet } from '@angular/router';
 import { SectionNavComponent } from '../../../shared/components/section-nav/section-nav.component';
 import { User } from '../../../shared/interfaces/User';
 import { EventService } from '../../../shared/services/event.service';
 import { UserService } from '../../../shared/services/user.service';
-import { DataTransferService } from '../../../shared/services/data-transfer.service';
 
 @Component({
   selector: 'app-awaiting-approval',
@@ -16,8 +15,7 @@ import { DataTransferService } from '../../../shared/services/data-transfer.serv
 export class AwaitingApprovalComponent {
   constructor(
     private eventService: EventService,
-    private userService: UserService,
-    private transfer: DataTransferService
+    private userService: UserService
   ) {}
 
   organizersForApprove: User[] = [];
@@ -37,7 +35,7 @@ export class AwaitingApprovalComponent {
     this.eventService.getEventsForApproval().subscribe({
       next: (response) => {
         this.eventsForApprove = response;
-        this.transfer.setEventsForApprove(this.eventsForApprove);
+        this.eventService.setEventsForApprove(this.eventsForApprove);
       },
       error: (error) => {
         console.log(error);
@@ -49,7 +47,7 @@ export class AwaitingApprovalComponent {
     this.userService.getOrganizersForApproval().subscribe({
       next: (response) => {
         this.organizersForApprove = response;
-        this.transfer.setOrganizersForApprove(response);
+        this.userService.setOrganizersForApprove(response);
       },
       error: (error) => {
         console.log(error);

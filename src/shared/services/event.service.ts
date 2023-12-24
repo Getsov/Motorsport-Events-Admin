@@ -1,5 +1,5 @@
 import { HttpClient, HttpHeaders } from '@angular/common/http';
-import { Injectable } from '@angular/core';
+import { Injectable, signal } from '@angular/core';
 import { environment } from '../../enviroments/enviroment';
 import { Observable } from 'rxjs';
 
@@ -10,6 +10,8 @@ const { baseUrl, accessToken } = environment;
 })
 export class EventService {
   constructor(private http: HttpClient) {}
+
+  // API CALLS------
 
   getEventsForApproval(): Observable<Event[]> {
     // Login from postman and set your access token from enviroment. We dont have login yet.
@@ -25,4 +27,13 @@ export class EventService {
       options
     );
   }
+  // API CALLS END--------
+
+  // SIGNALS-----
+  eventsForApproval = signal<Event[]>([]);
+
+  setEventsForApprove(EventsForApproveList: any) {
+    this.eventsForApproval.update((state) => EventsForApproveList);
+  }
+  // SIGNALS END--------
 }

@@ -1,5 +1,5 @@
 import { Component, effect } from '@angular/core';
-import { DataTransferService } from '../../../../shared/services/data-transfer.service';
+import { UserService } from '../../../../shared/services/user.service';
 
 @Component({
   selector: 'app-awaiting-organizers',
@@ -9,9 +9,9 @@ import { DataTransferService } from '../../../../shared/services/data-transfer.s
   styleUrl: './awaiting-organizers.component.scss',
 })
 export class AwaitingOrganizersComponent {
-  constructor(private dataTranfer: DataTransferService) {
+  constructor(private userService: UserService) {
     effect(() => {
-      console.log(this.dataTranfer.organizersForApproval());
+      console.log(this.userService.organizersForApproval());
     });
   }
 }

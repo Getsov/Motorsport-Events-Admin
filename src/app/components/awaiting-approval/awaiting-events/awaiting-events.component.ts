@@ -1,6 +1,6 @@
 import { Component, effect } from '@angular/core';
 import { EventsCardListComponent } from '../../../../shared/components/events-card-list/events-card-list.component';
-import { DataTransferService } from '../../../../shared/services/data-transfer.service';
+import { EventService } from '../../../../shared/services/event.service';
 
 @Component({
   selector: 'app-awaiting-events',
@@ -10,9 +10,9 @@ import { DataTransferService } from '../../../../shared/services/data-transfer.s
   styleUrl: './awaiting-events.component.scss',
 })
 export class AwaitingEventsComponent {
-  constructor(private dataTranfer: DataTransferService) {
+  constructor(private eventService: EventService) {
     effect(() => {
-      console.log(this.dataTranfer.eventsForApproval());
+      console.log(this.eventService.eventsForApproval());
     });
   }
 }

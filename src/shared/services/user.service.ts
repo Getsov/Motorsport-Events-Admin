@@ -1,5 +1,5 @@
 import { HttpClient, HttpHeaders } from '@angular/common/http';
-import { Injectable } from '@angular/core';
+import { Injectable, signal } from '@angular/core';
 import { Observable } from 'rxjs';
 import { environment } from '../../enviroments/enviroment';
 import { User } from '../interfaces/User';
@@ -12,6 +12,7 @@ const { baseUrl, accessToken } = environment;
 export class UserService {
   constructor(private http: HttpClient) {}
 
+  //  API CALLS ----------
   getOrganizersForApproval(): Observable<User[]> {
     // Login from postman and set your access token from enviroment. We dont have login yet.
     const headers = new HttpHeaders({
@@ -26,4 +27,15 @@ export class UserService {
       options
     );
   }
+
+  // API CALS END-----
+
+  // SIGNALS --------
+  organizersForApproval = signal<User[]>([]);
+
+  setOrganizersForApprove(OrganizersForApprovalList: User[]) {
+    this.organizersForApproval.update((state) => OrganizersForApprovalList);
+  }
+
+  // SIGNALS END-----
 }
