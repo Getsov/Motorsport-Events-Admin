@@ -31,11 +31,22 @@ export class UserService {
   // API CALS END-----
 
   // SIGNALS --------
+
+  // Organizers for approval
   organizersForApproval = signal<User[]>([]);
 
-  setOrganizersForApprove(OrganizersForApprovalList: User[]) {
-    this.organizersForApproval.update((state) => OrganizersForApprovalList);
+  setOrganizersForApprove() {
+    this.getOrganizersForApproval().subscribe({
+      next: (response) => {
+        this.organizersForApproval.update((state) => response);
+      },
+      error: (error) => {
+        console.log(error);
+      },
+    });
   }
+
+  hasOrganizersForapproval: boolean = this.organizersForApproval().length < 1;
 
   // SIGNALS END-----
 }

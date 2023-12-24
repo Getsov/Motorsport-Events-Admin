@@ -30,10 +30,23 @@ export class EventService {
   // API CALLS END--------
 
   // SIGNALS-----
+
+  // Events for approval signal
   eventsForApproval = signal<Event[]>([]);
 
-  setEventsForApprove(EventsForApproveList: any) {
-    this.eventsForApproval.update((state) => EventsForApproveList);
+  setEventsForApprove() {
+    this.getEventsForApproval().subscribe({
+      next: (response) => {
+        this.eventsForApproval.update((state) => response);
+      },
+      error: (error) => {
+        console.log(error);
+      },
+    });
   }
+
+  hasEventsForApproval: boolean = this.eventsForApproval().length < 1;
+  // Events for approval signal end.
+
   // SIGNALS END--------
 }

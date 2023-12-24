@@ -1,7 +1,6 @@
 import { Component } from '@angular/core';
 import { RouterOutlet } from '@angular/router';
 import { SectionNavComponent } from '../../../shared/components/section-nav/section-nav.component';
-import { User } from '../../../shared/interfaces/User';
 import { EventService } from '../../../shared/services/event.service';
 import { UserService } from '../../../shared/services/user.service';
 
@@ -18,40 +17,16 @@ export class AwaitingApprovalComponent {
     private userService: UserService
   ) {}
 
-  organizersForApprove: User[] = [];
-  eventsForApprove: Event[] = [];
-
   ngOnInit() {
-    this.loadEventsForApproval();
-    this.loadOrganizersForApproval();
+    this.eventService.setEventsForApprove();
+    this.userService.setOrganizersForApprove();
   }
+
+  hasEventsForApproval: boolean = this.eventService.hasEventsForApproval;
+  hasOrganizersForApprove: boolean = this.userService.hasOrganizersForapproval;
 
   options = [
     { label: 'Чакащи събития', route: 'awaiting-events' },
     { label: 'Чакащи организатори', route: 'awaiting-organizers' },
   ];
-
-  private loadEventsForApproval() {
-    this.eventService.getEventsForApproval().subscribe({
-      next: (response) => {
-        this.eventsForApprove = response;
-        this.eventService.setEventsForApprove(this.eventsForApprove);
-      },
-      error: (error) => {
-        console.log(error);
-      },
-    });
-  }
-
-  private loadOrganizersForApproval() {
-    this.userService.getOrganizersForApproval().subscribe({
-      next: (response) => {
-        this.organizersForApprove = response;
-        this.userService.setOrganizersForApprove(response);
-      },
-      error: (error) => {
-        console.log(error);
-      },
-    });
-  }
 }
