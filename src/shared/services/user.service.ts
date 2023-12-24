@@ -33,7 +33,10 @@ export class UserService {
   // SIGNALS --------
 
   // Organizers for approval
+
   organizersForApproval = signal<User[]>([]);
+
+  hasOrganizersForapproval: boolean = this.organizersForApproval().length < 1;
 
   setOrganizersForApprove() {
     this.getOrganizersForApproval().subscribe({
@@ -45,8 +48,6 @@ export class UserService {
       },
     });
   }
-
-  hasOrganizersForapproval: boolean = this.organizersForApproval().length < 1;
 
   // SIGNALS END-----
 }

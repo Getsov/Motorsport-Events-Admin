@@ -12,6 +12,14 @@ import { UserService } from '../../../shared/services/user.service';
   styleUrl: './awaiting-approval.component.scss',
 })
 export class AwaitingApprovalComponent {
+  hasEventsForApproval: boolean = this.eventService.hasEventsForApproval;
+  hasOrganizersForApprove: boolean = this.userService.hasOrganizersForapproval;
+
+  options = [
+    { label: 'Чакащи събития', route: 'awaiting-events' },
+    { label: 'Чакащи организатори', route: 'awaiting-organizers' },
+  ];
+
   constructor(
     private eventService: EventService,
     private userService: UserService
@@ -21,12 +29,4 @@ export class AwaitingApprovalComponent {
     this.eventService.setEventsForApprove();
     this.userService.setOrganizersForApprove();
   }
-
-  hasEventsForApproval: boolean = this.eventService.hasEventsForApproval;
-  hasOrganizersForApprove: boolean = this.userService.hasOrganizersForapproval;
-
-  options = [
-    { label: 'Чакащи събития', route: 'awaiting-events' },
-    { label: 'Чакащи организатори', route: 'awaiting-organizers' },
-  ];
 }

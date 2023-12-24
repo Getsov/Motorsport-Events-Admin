@@ -32,7 +32,10 @@ export class EventService {
   // SIGNALS-----
 
   // Events for approval signal
+
   eventsForApproval = signal<Event[]>([]);
+
+  hasEventsForApproval: boolean = this.eventsForApproval().length < 1;
 
   setEventsForApprove() {
     this.getEventsForApproval().subscribe({
@@ -45,7 +48,6 @@ export class EventService {
     });
   }
 
-  hasEventsForApproval: boolean = this.eventsForApproval().length < 1;
   // Events for approval signal end.
 
   // SIGNALS END--------
