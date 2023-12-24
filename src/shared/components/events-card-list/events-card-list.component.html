@@ -1,7 +1,9 @@
 <section class="card-list">
   <ul role="list">
-    <li>1</li>
-    <li>2</li>
-    <li>3</li>
+    @for (item of list; track item._id) {
+    {{
+      item._id
+    }}
+    }@empty { Empty list }
   </ul>
 </section>

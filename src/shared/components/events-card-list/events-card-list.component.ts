@@ -1,5 +1,5 @@
 import { CommonModule } from '@angular/common';
-import { Component } from '@angular/core';
+import { Component, Input } from '@angular/core';
 
 @Component({
   selector: 'app-events-card-list',
@@ -8,4 +8,6 @@ import { Component } from '@angular/core';
   templateUrl: './events-card-list.component.html',
   styleUrl: './events-card-list.component.scss',
 })
-export class EventsCardListComponent {}
+export class EventsCardListComponent {
+  @Input() list: any = [];
+}
