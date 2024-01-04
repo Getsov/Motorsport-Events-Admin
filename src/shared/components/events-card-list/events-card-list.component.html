@@ -1,9 +1,5 @@
-<section class="card-list">
-  <ul role="list">
-    @for (item of list; track item._id) {
-    {{
-      item._id
-    }}
-    }@empty { Empty list }
-  </ul>
+<section class="events-list">
+  @for (event of eventsList; track event._id) {
+  <app-event-card [event]="event" />
+  }@empty { Empty list }
 </section>
