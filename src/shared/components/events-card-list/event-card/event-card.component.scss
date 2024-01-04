@@ -3,7 +3,7 @@
   padding: 8px;
   border-radius: 4px;
 
-  img {
+  .event-img {
     width: 100%;
     border-radius: 4px;
     height: 131px;
@@ -12,10 +12,80 @@
   }
 
   h3 {
+    margin-top: 8px;
     font-family: "Open Sans";
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: 24px;
+  }
+
+  p {
+    margin-left: 4px;
     font-size: 12px;
     font-style: normal;
-    font-weight: 600;
-    line-height: 150%;
+    font-weight: 500;
+    line-height: 18px;
+  }
+
+  .contacts {
+    margin-top: 4px;
+
+    p,
+    img {
+      display: inline-block;
+    }
+  }
+
+  .dates {
+    margin-top: 4px;
+
+    p,
+    img {
+      display: inline-block;
+    }
+  }
+
+  .description {
+    margin-top: 4px;
+    color: #c2bfbe;
+  }
+
+  .buttons {
+    margin-top: 4px;
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 8px;
+
+    a {
+      text-decoration: none;
+      font-size: 14px;
+      font-style: normal;
+      font-weight: 600;
+      line-height: 21px;
+      text-align: center;
+      padding: 6px 10px 6px 10px;
+      border-radius: 4px;
+    }
+
+    .view {
+      background-color: rgba(255, 116, 24, 1);
+      color: rgba(13, 13, 13, 1);
+    }
+
+    .edit {
+      color: rgba(255, 116, 24, 1);
+      border: 2px solid rgba(255, 116, 24, 1);
+    }
+
+    .approve {
+      color: rgba(0, 128, 0, 1);
+      border: 2px solid rgba(0, 128, 0, 1);
+    }
+
+    .delete {
+      color: rgba(255, 0, 0, 1);
+      border: 2px solid rgba(255, 0, 0, 1);
+    }
   }
 }

@@ -1,15 +1,28 @@
 <div class="event-card">
   <div class="content">
-    <img src="{{ event.imageUrl }}" alt="{{ event.shortTitle }}" />
+    <img
+      class="event-img"
+      src="{{ event.imageUrl }}"
+      alt="{{ event.shortTitle }}"
+    />
     <h3>{{ event.shortTitle }}</h3>
-    <p>{{ event.contacts.region }}</p>
-    <p>dates here !!!</p>
-    <p>{{ event.shortDescription }}</p>
+
+    <div class="contacts">
+      <img src="../../../../assets/icons/location.png" alt="" />
+      <p>
+        {{ event.contacts.region }}
+      </p>
+    </div>
+    <div class="dates">
+      <img src="../../../../assets/icons/dates.png" alt="" />
+      <p>dates here !!!</p>
+    </div>
+    <p class="description">{{ event.shortDescription }}</p>
   </div>
   <div class="buttons">
-    <p>asdasdsa</p>
-    <p>asdasdsa</p>
-    <p>asdasdsa</p>
-    <p>asdasdsa</p>
+    <a href="" class="view">Прегледай</a>
+    <a href="" class="edit">Редактирай</a>
+    <a href="" class="approve">Одобри</a>
+    <a href="" class="delete">Изтрий</a>
   </div>
 </div>
