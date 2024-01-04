@@ -1,5 +1,7 @@
 <section class="events-list">
   @for (event of eventsList; track event._id) {
   <app-event-card [event]="event" />
-  }@empty { Empty list }
+  }@empty {
+  <p class="empty">Няма събития, чакащи одобрение!</p>
+  }
 </section>
