@@ -2,6 +2,11 @@
   box-shadow: 0px 0px 5px 0.5px rgba(255, 220, 35, 0.3);
   padding: 8px;
   border-radius: 4px;
+  height: 408px;
+  width: 288px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
 
   .event-img {
     width: 100%;
@@ -48,6 +53,7 @@
   .description {
     margin-top: 4px;
     color: #c2bfbe;
+    margin-bottom: auto;
   }
 
   .buttons {
