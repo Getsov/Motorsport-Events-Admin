@@ -1,11 +1,12 @@
 import { Component, Input } from '@angular/core';
 import { Event } from '../../../interfaces/Event';
 import { CommonModule, IMAGE_CONFIG } from '@angular/common';
+import { RouterLink } from '@angular/router';
 
 @Component({
   selector: 'app-event-card',
   standalone: true,
-  imports: [CommonModule],
+  imports: [CommonModule, RouterLink],
   templateUrl: './event-card.component.html',
   styleUrl: './event-card.component.scss',
 })
@@ -20,7 +21,7 @@ export class EventCardComponent {
     contacts: {
       coordinates: {
         lat: 0,
-        long: 0,
+        lng: 0,
       },
       region: '',
       address: '',
@@ -29,9 +30,8 @@ export class EventCardComponent {
     },
     category: '',
     likes: [],
-    creator: '',
+    creator: { email: '', role: '', isDeleted: false },
     isDeleted: false,
     _id: '',
-    isApproved: false,
   };
 }

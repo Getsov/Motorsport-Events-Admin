@@ -11,6 +11,7 @@ import { PastEventsComponent } from './components/events/past-events/past-events
 import { AdminAccountsComponent } from './components/accounts/admin-accounts/admin-accounts.component';
 import { OrganizerAccountsComponent } from './components/accounts/organizer-accounts/organizer-accounts.component';
 import { UserAccountsComponent } from './components/accounts/user-accounts/user-accounts.component';
+import { EventDetailsComponent } from './components/events/event-details/event-details.component';
 
 export const routes: Routes = [
   {
@@ -42,7 +43,10 @@ export const routes: Routes = [
       { path: 'user-accounts', component: UserAccountsComponent },
     ],
   },
+  { path: 'view/:eventId', component: EventDetailsComponent },
   { path: 'profile', component: ProfileComponent },
-  { path: '', redirectTo: 'awaiting-approval', pathMatch: 'full' }, // Redirect to 'awaiting-approval' for the root path
-  { path: '**', redirectTo: 'awaiting-approval', pathMatch: 'full' }, // Redirect to 'awaiting-approval' for any other unmatched paths
+  // Redirect to 'awaiting-approval' for the root path
+  { path: '', redirectTo: 'awaiting-approval', pathMatch: 'full' },
+  // Redirect to 'awaiting-approval' for any other unmatched paths
+  { path: '**', redirectTo: 'awaiting-approval', pathMatch: 'full' },
 ];

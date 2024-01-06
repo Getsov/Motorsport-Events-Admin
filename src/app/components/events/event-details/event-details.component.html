@@ -1,1 +1,88 @@
-<p>event-details works!</p>
+<section class="event-details">
+  <div class="ion-padding-horizontal">
+    <p class="long-title">{{ event.longTitle }}</p>
+
+    <div class="image-wrapper">
+      <img
+        alt="{{ event.shortTitle }}"
+        [src]="'data:image;base64,' + event.imageUrl"
+        class="event-image"
+      />
+      <!-- <app-like-icon [likedCount]="event.likes.length"></app-like-icon> -->
+    </div>
+
+    <div class="category-city-wrapper">
+      <span class="badge">{{ event.category }}</span>
+      <span class="badge">{{ event.contacts.region }}</span>
+    </div>
+
+    <p class="long-description">{{ event.longDescription }}</p>
+  </div>
+
+  <div class="ion-padding-horizontal">
+    <div>
+      <p class="info-title">Организатор на събитието:</p>
+      <p class="info-details">{{ event.creator.organizatorName }}</p>
+    </div>
+
+    <div>
+      <p class="info-title">Цени за зрители:</p>
+      <div class="prices-container">
+        <div
+          class="price-wrapper"
+          *ngFor="let visitorPrice of event.visitorPrices"
+        >
+          <div class="price-holder price-visitors">
+            {{ visitorPrice.price }} лв.
+          </div>
+          <span class="info-details">{{ visitorPrice.description }}</span>
+        </div>
+      </div>
+    </div>
+
+    <div *ngIf="event.participantPrices">
+      <p class="info-title">Цени за участници:</p>
+      <div class="prices-container">
+        <div
+          class="price-wrapper"
+          *ngFor="let participantPrice of event.participantPrices"
+        >
+          <div class="price-holder price-participants">
+            {{ participantPrice.price }} лв.
+          </div>
+          <span class="info-details">{{ participantPrice.description }}</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="location">
+      <p class="info-title">Локация:</p>
+      <p class="info-details">
+        {{ event.contacts.region }}, {{ event.contacts.address }}
+      </p>
+      <div class="google-maps-wrapper">
+        <!-- <capacitor-google-map #map></capacitor-google-map> -->
+      </div>
+    </div>
+
+    <div class="contacts">
+      <p class="info-title">Контакти</p>
+      <div class="contacts-wrapper">
+        <div>
+          <a href="tel:{{ event.contacts.phone }}" class="info-details">{{
+            event.contacts.phone
+          }}</a>
+        </div>
+        <div *ngIf="event.contacts.email">
+          <a href="mailto:{{ event.contacts.email }}" class="info-details">{{
+            event.contacts.email
+          }}</a>
+        </div>
+      </div>
+    </div>
+
+    <!-- <div class="main-button-wrapper" (click)="addEventToFavourites()">
+      <button class="main-button">Добави в любими</button>
+    </div> -->
+  </div>
+</section>
