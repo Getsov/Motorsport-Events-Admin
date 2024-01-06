@@ -5,8 +5,8 @@ export interface Event {
   longTitle?: string;
   shortDescription: string;
   longDescription?: string;
-  visitorPrices: { price: number; description: string }[];
-  participantPrices?: { price: number; description: string }[];
+  visitorPrices: { price: number; description: string; _id: string }[];
+  participantPrices?: { price: number; description: string; _id: string }[];
   dates: { date: string; startTime: string; endTime: string }[];
   imageUrl: string;
   contacts: {

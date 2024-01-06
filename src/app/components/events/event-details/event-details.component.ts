@@ -1,6 +1,8 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { Event } from '../../../../shared/interfaces/Event';
 import { CommonModule } from '@angular/common';
+import { ActivatedRoute } from '@angular/router';
+import { EventService } from '../../../../shared/services/event.service';
 
 @Component({
   selector: 'app-event-details',
@@ -9,7 +11,7 @@ import { CommonModule } from '@angular/common';
   templateUrl: './event-details.component.html',
   styleUrl: './event-details.component.scss',
 })
-export class EventDetailsComponent {
+export class EventDetailsComponent implements OnInit {
   event: Event = {
     shortTitle: '',
     shortDescription: '',
@@ -33,4 +35,27 @@ export class EventDetailsComponent {
     isDeleted: false,
     _id: '',
   };
+
+  constructor(
+    private route: ActivatedRoute,
+    private eventService: EventService
+  ) {}
+
+  ngOnInit(): void {
+    this.route.params.subscribe((params) => {
+      this.loadEventDetails(params['eventId']);
+    });
+  }
+
+  private loadEventDetails(eventId: string) {
+    this.eventService.getEventDetails(eventId).subscribe({
+      next: (eventDetails) => {
+        this.event = eventDetails;
+        console.log(this.event);
+      },
+      error: (error) => {
+        console.log(error.message);
+      },
+    });
+  }
 }

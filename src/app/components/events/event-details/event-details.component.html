@@ -1,88 +1,56 @@
 <section class="event-details">
-  <div class="ion-padding-horizontal">
-    <p class="long-title">{{ event.longTitle }}</p>
+  <h1>{{ event.shortTitle }}</h1>
+  <h2>{{ event.longTitle }}</h2>
 
-    <div class="image-wrapper">
-      <img
-        alt="{{ event.shortTitle }}"
-        [src]="'data:image;base64,' + event.imageUrl"
-        class="event-image"
-      />
-      <!-- <app-like-icon [likedCount]="event.likes.length"></app-like-icon> -->
+  <img src="{{ event.imageUrl }}" alt="{{ event.shortTitle }}" />
+  <div class="categories">
+    @for (category of event.category; track category) {
+    <span class="categroy grey-text">{{ category }}</span>
+    }@empty {
+    <p class="empty">Няма събития, чакащи одобрение!</p>
+    }
+  </div>
+  <p>{{ event.longDescription }}</p>
+  <h3>Информация за събитието</h3>
+  <div class="event-info">
+    <div class="organizer-info">
+      <p class="organizer">Организатор на събитието:</p>
+      <p class="grey-text">{{ event.creator.organizatorName }}</p>
     </div>
-
-    <div class="category-city-wrapper">
-      <span class="badge">{{ event.category }}</span>
-      <span class="badge">{{ event.contacts.region }}</span>
+    <div class="dates">
+      <p>Дати:</p>
+      <p class="grey-text">15.3.21 -</p>
     </div>
+    <div class="prices">
+      <div class="visitor-prices">
+        @for (visitorPrice of event.visitorPrices; track visitorPrice._id) {
+        <p class="visitor-price">{{ visitorPrice.price }} лв.</p>
+        <p class="grey-text">{{ visitorPrice.description }}</p>
+        }@empty {
+        <p class="empty">Няма събития, чакащи одобрение!</p>
+        }
+      </div>
 
-    <p class="long-description">{{ event.longDescription }}</p>
+      <div class="participant-prices">
+        @for (participantPrice of event.participantPrices; track
+        participantPrice._id) {
+        <p class="visitor-price">{{ participantPrice.price }} лв.</p>
+        <p class="grey-text">{{ participantPrice.description }}</p>
+        }@empty {
+        <p class="empty">Няма събития, чакащи одобрение!</p>
+        }
+      </div>
+    </div>
   </div>
 
-  <div class="ion-padding-horizontal">
-    <div>
-      <p class="info-title">Организатор на събитието:</p>
-      <p class="info-details">{{ event.creator.organizatorName }}</p>
-    </div>
+  <h5 class="adress-title">Адрес на събитието</h5>
+  <p class="adress">
+    {{ event.contacts.region }}, {{ event.contacts.address }}
+  </p>
+  <div class="map">MAP</div>
 
-    <div>
-      <p class="info-title">Цени за зрители:</p>
-      <div class="prices-container">
-        <div
-          class="price-wrapper"
-          *ngFor="let visitorPrice of event.visitorPrices"
-        >
-          <div class="price-holder price-visitors">
-            {{ visitorPrice.price }} лв.
-          </div>
-          <span class="info-details">{{ visitorPrice.description }}</span>
-        </div>
-      </div>
-    </div>
-
-    <div *ngIf="event.participantPrices">
-      <p class="info-title">Цени за участници:</p>
-      <div class="prices-container">
-        <div
-          class="price-wrapper"
-          *ngFor="let participantPrice of event.participantPrices"
-        >
-          <div class="price-holder price-participants">
-            {{ participantPrice.price }} лв.
-          </div>
-          <span class="info-details">{{ participantPrice.description }}</span>
-        </div>
-      </div>
-    </div>
-
-    <div class="location">
-      <p class="info-title">Локация:</p>
-      <p class="info-details">
-        {{ event.contacts.region }}, {{ event.contacts.address }}
-      </p>
-      <div class="google-maps-wrapper">
-        <!-- <capacitor-google-map #map></capacitor-google-map> -->
-      </div>
-    </div>
-
-    <div class="contacts">
-      <p class="info-title">Контакти</p>
-      <div class="contacts-wrapper">
-        <div>
-          <a href="tel:{{ event.contacts.phone }}" class="info-details">{{
-            event.contacts.phone
-          }}</a>
-        </div>
-        <div *ngIf="event.contacts.email">
-          <a href="mailto:{{ event.contacts.email }}" class="info-details">{{
-            event.contacts.email
-          }}</a>
-        </div>
-      </div>
-    </div>
-
-    <!-- <div class="main-button-wrapper" (click)="addEventToFavourites()">
-      <button class="main-button">Добави в любими</button>
-    </div> -->
-  </div>
+  <h6>Контакти:</h6>
+  <p class="grey-text">{{ event.creator.organizatorName }}</p>
+  <p class="grey-text">{{ event.creator.email }}</p>
+  <p class="grey-text">{{ event.creator.phone }}</p>
 </section>

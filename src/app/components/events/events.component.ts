@@ -10,7 +10,7 @@ import { SectionNavComponent } from '../../../shared/components/section-nav/sect
   styleUrl: './events.component.scss',
 })
 export class EventsComponent implements OnInit {
-  constructor(private router: Router) {}
+  constructor() {}
 
   options = [
     { label: 'Предстоящи събития', route: 'upcoming-events' },

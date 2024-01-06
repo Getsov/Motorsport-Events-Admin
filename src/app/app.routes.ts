@@ -43,7 +43,7 @@ export const routes: Routes = [
       { path: 'user-accounts', component: UserAccountsComponent },
     ],
   },
-  { path: 'view/:eventId', component: EventDetailsComponent },
+  { path: 'details/:eventId', component: EventDetailsComponent },
   { path: 'profile', component: ProfileComponent },
   // Redirect to 'awaiting-approval' for the root path
   { path: '', redirectTo: 'awaiting-approval', pathMatch: 'full' },
