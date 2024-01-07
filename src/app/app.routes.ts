@@ -1,6 +1,6 @@
 import { Routes } from '@angular/router';
 import { EventsComponent } from './components/events/events.component';
-import { CreateEventComponent } from './components/events/create-event/create-event.component';
+import { CreateEventComponent } from './components/event/create-event/create-event.component';
 import { AccountsComponent } from './components/accounts/accounts.component';
 import { ProfileComponent } from './components/user/profile/profile.component';
 import { AwaitingApprovalComponent } from './components/awaiting-approval/awaiting-approval.component';
@@ -11,11 +11,12 @@ import { PastEventsComponent } from './components/events/past-events/past-events
 import { AdminAccountsComponent } from './components/accounts/admin-accounts/admin-accounts.component';
 import { OrganizerAccountsComponent } from './components/accounts/organizer-accounts/organizer-accounts.component';
 import { UserAccountsComponent } from './components/accounts/user-accounts/user-accounts.component';
-import { EventDetailsComponent } from './components/events/event-details/event-details.component';
-import { EditEventComponent } from './components/events/edit-event/edit-event.component';
+import { EventDetailsComponent } from './components/event/event-details/event-details.component';
+import { EditEventComponent } from './components/event/edit-event/edit-event.component';
 import { UserDetailsComponent } from './components/user/user-details/user-details.component';
 import { EditProfileComponent } from './components/user/edit-profile/edit-profile.component';
 import { UserComponent } from './components/user/user.component';
+import { EventComponent } from './components/event/event.component';
 
 export const routes: Routes = [
   {
@@ -36,7 +37,6 @@ export const routes: Routes = [
       { path: 'past-events', component: PastEventsComponent },
     ],
   },
-  { path: 'create-event', component: CreateEventComponent },
   {
     path: 'accounts',
     component: AccountsComponent,
@@ -47,8 +47,6 @@ export const routes: Routes = [
       { path: 'user-accounts', component: UserAccountsComponent },
     ],
   },
-  { path: 'details/:eventId', component: EventDetailsComponent },
-  { path: 'edit/:eventId', component: EditEventComponent },
   {
     path: 'user/:userId',
     component: UserComponent,
@@ -57,6 +55,15 @@ export const routes: Routes = [
       { path: 'profile', component: ProfileComponent },
       { path: 'details', component: UserDetailsComponent },
       { path: 'edit', component: EditProfileComponent },
+    ],
+  },
+  {
+    path: 'event',
+    component: EventComponent,
+    children: [
+      { path: 'create', component: CreateEventComponent },
+      { path: ':eventId/edit', component: EditEventComponent },
+      { path: ':eventId/details', component: EventDetailsComponent },
     ],
   },
 
