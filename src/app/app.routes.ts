@@ -13,6 +13,9 @@ import { OrganizerAccountsComponent } from './components/accounts/organizer-acco
 import { UserAccountsComponent } from './components/accounts/user-accounts/user-accounts.component';
 import { EventDetailsComponent } from './components/events/event-details/event-details.component';
 import { EditEventComponent } from './components/events/edit-event/edit-event.component';
+import { UserDetailsComponent } from './components/user/user-details/user-details.component';
+import { EditProfileComponent } from './components/user/edit-profile/edit-profile.component';
+import { UserComponent } from './components/user/user.component';
 
 export const routes: Routes = [
   {
@@ -46,7 +49,17 @@ export const routes: Routes = [
   },
   { path: 'details/:eventId', component: EventDetailsComponent },
   { path: 'edit/:eventId', component: EditEventComponent },
-  { path: 'profile', component: ProfileComponent },
+  {
+    path: 'user/:userId',
+    component: UserComponent,
+    children: [
+      { path: '', redirectTo: 'profile', pathMatch: 'full' },
+      { path: 'profile', component: ProfileComponent },
+      { path: 'details', component: UserDetailsComponent },
+      { path: 'edit', component: EditProfileComponent },
+    ],
+  },
+
   // Redirect to 'awaiting-approval' for the root path
   { path: '', redirectTo: 'awaiting-approval', pathMatch: 'full' },
   // Redirect to 'awaiting-approval' for any other unmatched paths
