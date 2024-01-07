@@ -38,10 +38,10 @@
       <td>{{ user.phone }}</td>
       <td>{{ user.region }}</td>
       <td class="buttons">
-        <a routerLink="/profile/{{ user._id }}/details">
+        <a routerLink="/user/{{ user._id }}/details">
           <img src="../../../../assets/icons/table-view.png" alt="View" />
         </a>
-        <a>
+        <a routerLink="/user/{{ user._id }}/edit">
           <img src="../../../../assets/icons/table-edit.png" alt="Edit" />
         </a>
         <a>
