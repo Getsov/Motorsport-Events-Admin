@@ -17,6 +17,8 @@ import { UserDetailsComponent } from './components/user/user-details/user-detail
 import { EditProfileComponent } from './components/user/edit-profile/edit-profile.component';
 import { UserComponent } from './components/user/user.component';
 import { EventComponent } from './components/event/event.component';
+import { RegisterComponent } from './components/user/register/register.component';
+import { LoginComponent } from './components/user/login/login.component';
 
 export const routes: Routes = [
   {
@@ -48,19 +50,22 @@ export const routes: Routes = [
     ],
   },
   {
-    path: 'user/:userId',
+    path: 'user',
     component: UserComponent,
     children: [
-      { path: '', redirectTo: 'profile', pathMatch: 'full' },
-      { path: 'profile', component: ProfileComponent },
-      { path: 'details', component: UserDetailsComponent },
-      { path: 'edit', component: EditProfileComponent },
+      { path: '', redirectTo: 'register', pathMatch: 'full' },
+      { path: 'register', component: RegisterComponent },
+      { path: 'login', component: LoginComponent },
+      { path: ':userId/profile', component: ProfileComponent },
+      { path: ':userId/details', component: UserDetailsComponent },
+      { path: ':userId/edit', component: EditProfileComponent },
     ],
   },
   {
     path: 'event',
     component: EventComponent,
     children: [
+      { path: '', redirectTo: 'create', pathMatch: 'full' },
       { path: 'create', component: CreateEventComponent },
       { path: ':eventId/edit', component: EditEventComponent },
       { path: ':eventId/details', component: EventDetailsComponent },
