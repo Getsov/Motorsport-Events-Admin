@@ -1,7 +1,8 @@
 .events-list {
   padding: 0 40px 91px 40px;
-  display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(288px, 1fr));
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
   gap: 16px;
 
   .empty {

@@ -17,4 +17,5 @@ export class AccountsTableComponent {
   // 3. add functionality to approve and delete buttons.
   // 4. Add sorting where is needed
   // 5. Check if the page is same as the design.
+  // 6. Make the page responsive
 }

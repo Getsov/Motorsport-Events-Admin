@@ -19,6 +19,7 @@
     text-decoration: none;
     padding: 13px 62px;
     border-radius: 4px;
+    text-align: center;
   }
 
   .activebutton {
@@ -29,5 +30,9 @@
 @media (max-width: 600px) {
   .section-navigation {
     flex-direction: column;
+    font-size: 14px;
+    a {
+      width: 318px;
+    }
   }
 }
