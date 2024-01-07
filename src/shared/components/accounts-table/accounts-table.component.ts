@@ -1,11 +1,13 @@
-import { Component } from '@angular/core';
-import { AccountTableRowComponent } from './account-table-row/account-table-row.component';
+import { Component, Input } from '@angular/core';
+import { User } from '../../interfaces/User';
 
 @Component({
   selector: 'app-accounts-table',
   standalone: true,
-  imports: [AccountTableRowComponent],
+  imports: [],
   templateUrl: './accounts-table.component.html',
   styleUrl: './accounts-table.component.scss',
 })
-export class AccountsTableComponent {}
+export class AccountsTableComponent {
+  @Input() usersList: User[] = [];
+}

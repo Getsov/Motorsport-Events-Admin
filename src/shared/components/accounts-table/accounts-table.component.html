@@ -5,10 +5,6 @@
         <input type="checkbox" />
       </th>
       <th>
-        ID
-        <img src="../../../../assets/icons/table-arrows.png" alt="sort icon" />
-      </th>
-      <th>
         Имейл
         <img src="../../../../assets/icons/table-arrows.png" alt="sort icon" />
       </th>
@@ -24,16 +20,23 @@
           alt="sort icon"
         />
       </th>
+      <th>
+        Регион<img
+          src="../../../../assets/icons/table-arrows.png"
+          alt="sort icon"
+        />
+      </th>
       <th>Действия</th>
     </tr>
   </thead>
   <tbody>
+    @for (user of usersList; track user._id) {
     <tr>
       <td><input type="checkbox" /></td>
-      <td>1</td>
-      <td>exampleemail.com</td>
-      <td>John Doe</td>
-      <td>(123) 456-7890</td>
+      <td>{{ user.email }}</td>
+      <td>{{ user.firstName }} {{ user.lastName }}</td>
+      <td>{{ user.phone }}</td>
+      <td>{{ user.region }}</td>
       <td class="buttons">
         <a>
           <img src="../../../../assets/icons/table-view.png" alt="View" />
@@ -49,26 +52,8 @@
         </a>
       </td>
     </tr>
-    <tr>
-      <td><input type="checkbox" /></td>
-      <td>1</td>
-      <td>exampleemail.com</td>
-      <td>John Doe</td>
-      <td>(123) 456-7890</td>
-      <td class="buttons">
-        <a>
-          <img src="../../../../assets/icons/table-view.png" alt="View" />
-        </a>
-        <a>
-          <img src="../../../../assets/icons/table-edit.png" alt="Edit" />
-        </a>
-        <a>
-          <img src="../../../../assets/icons/table-approve.png" alt="Approve" />
-        </a>
-        <a>
-          <img src="../../../../assets/icons/table-delete.png" alt="Delete" />
-        </a>
-      </td>
-    </tr>
+    }@empty {
+    <p class="empty">Няма събития, чакащи одобрение!</p>
+    }
   </tbody>
 </table>
