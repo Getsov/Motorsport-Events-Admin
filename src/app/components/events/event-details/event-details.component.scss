@@ -2,9 +2,32 @@
   display: flex;
   flex-direction: column;
   align-items: center;
+  font-size: 16px;
+
+  h1 {
+    color: rgba(255, 116, 24, 1);
+    font-size: 32px;
+    font-style: normal;
+    font-weight: 600;
+    line-height: 38.4px;
+    margin-bottom: 24px;
+  }
+
+  .long-title {
+    margin-bottom: 24px;
+  }
 
   img {
     max-width: 558px;
     max-height: 294px;
+    margin-bottom: 24px;
+  }
+
+  .categories {
+    margin-bottom: 24px;
+  }
+
+  .event-description {
+    max-width: 794px;
   }
 }

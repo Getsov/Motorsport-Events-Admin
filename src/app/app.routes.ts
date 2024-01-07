@@ -12,6 +12,7 @@ import { AdminAccountsComponent } from './components/accounts/admin-accounts/adm
 import { OrganizerAccountsComponent } from './components/accounts/organizer-accounts/organizer-accounts.component';
 import { UserAccountsComponent } from './components/accounts/user-accounts/user-accounts.component';
 import { EventDetailsComponent } from './components/events/event-details/event-details.component';
+import { EditEventComponent } from './components/events/edit-event/edit-event.component';
 
 export const routes: Routes = [
   {
@@ -44,6 +45,7 @@ export const routes: Routes = [
     ],
   },
   { path: 'details/:eventId', component: EventDetailsComponent },
+  { path: 'edit/:eventId', component: EditEventComponent },
   { path: 'profile', component: ProfileComponent },
   // Redirect to 'awaiting-approval' for the root path
   { path: '', redirectTo: 'awaiting-approval', pathMatch: 'full' },

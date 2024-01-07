@@ -1,6 +1,6 @@
 <section class="event-details">
   <h1>{{ event.shortTitle }}</h1>
-  <h2>{{ event.longTitle }}</h2>
+  <p class="long-title">{{ event.longTitle }}</p>
 
   <img src="{{ event.imageUrl }}" alt="{{ event.shortTitle }}" />
   <div class="categories">
@@ -10,7 +10,7 @@
     <p class="empty">Няма събития, чакащи одобрение!</p>
     }
   </div>
-  <p>{{ event.longDescription }}</p>
+  <p class="event-description">{{ event.longDescription }}</p>
   <h3>Информация за събитието</h3>
   <div class="event-info">
     <div class="organizer-info">
