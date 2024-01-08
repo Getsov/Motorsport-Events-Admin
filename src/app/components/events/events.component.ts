@@ -11,10 +11,10 @@ import { SectionNavComponent } from '../../../shared/components/section-nav/sect
 })
 export class EventsComponent implements OnInit {
   constructor() {}
-
+  // TODO make the hasData property dynamic
   options = [
-    { label: 'Предстоящи събития', route: 'upcoming-events' },
-    { label: 'Отминали Събития', route: 'past-events' },
+    { label: 'Предстоящи събития', route: 'upcoming-events', hasData: true },
+    { label: 'Отминали Събития', route: 'past-events', hasData: true },
   ];
 
   ngOnInit() {}

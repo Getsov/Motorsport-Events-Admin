@@ -15,9 +15,14 @@ export class AwaitingApprovalComponent {
   hasEventsForApproval: boolean = this.eventService.hasEventsForApproval;
   hasOrganizersForApprove: boolean = this.userService.hasOrganizersForapproval;
 
+  // TODO: make the hasData property dynamic
   options = [
-    { label: 'Чакащи събития', route: 'awaiting-events' },
-    { label: 'Чакащи организатори', route: 'awaiting-organizers' },
+    { label: 'Чакащи събития', route: 'awaiting-events', hasData: true },
+    {
+      label: 'Чакащи организатори',
+      route: 'awaiting-organizers',
+      hasData: false,
+    },
   ];
 
   constructor(

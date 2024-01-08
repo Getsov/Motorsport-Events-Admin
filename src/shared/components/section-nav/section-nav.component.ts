@@ -10,6 +10,5 @@ import { CommonModule } from '@angular/common';
   styleUrl: './section-nav.component.scss',
 })
 export class SectionNavComponent {
-  @Input() options: { label: string; route: string }[] = [];
-  // TODO: add the red dot in the corner is there are awaiting for approve events or organizers.
+  @Input() options: { label: string; route: string; hasData: boolean }[] = [];
 }
