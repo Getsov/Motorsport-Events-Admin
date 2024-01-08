@@ -4,11 +4,7 @@
 
   <img src="{{ event.imageUrl }}" alt="{{ event.shortTitle }}" />
   <div class="categories">
-    @for (category of event.category; track category) {
-    <span class="categroy grey-text">{{ category }}</span>
-    }@empty {
-    <p class="empty">Няма събития, чакащи одобрение!</p>
-    }
+    <p class="grey-text">{{ event.category }}</p>
   </div>
   <p class="event-description">{{ event.longDescription }}</p>
   <h3>Информация за събитието</h3>
@@ -19,38 +15,50 @@
     </div>
     <div class="dates">
       <p>Дати:</p>
-      <p class="grey-text">15.3.21 -</p>
+      <p class="grey-text">15.3.21 - от: 15:30 до 17:70 ч.</p>
     </div>
-    <div class="prices">
+    <div class="price-list">
       <div class="visitor-prices">
+        <h4>Цени за зрители:</h4>
         @for (visitorPrice of event.visitorPrices; track visitorPrice._id) {
-        <p class="visitor-price">{{ visitorPrice.price }} лв.</p>
-        <p class="grey-text">{{ visitorPrice.description }}</p>
+        <div class="price-row">
+          <p class="visitor-price">{{ visitorPrice.price }} лв.</p>
+          <p class="grey-text">{{ visitorPrice.description }}</p>
+        </div>
         }@empty {
-        <p class="empty">Няма събития, чакащи одобрение!</p>
+        <p class="empty">Няма ценоразпис!</p>
         }
       </div>
 
       <div class="participant-prices">
+        <h4>Цени за участници:</h4>
         @for (participantPrice of event.participantPrices; track
         participantPrice._id) {
-        <p class="visitor-price">{{ participantPrice.price }} лв.</p>
-        <p class="grey-text">{{ participantPrice.description }}</p>
+        <div class="price-row">
+          <p class="visitor-price">{{ participantPrice.price }} лв.</p>
+          <p class="grey-text">{{ participantPrice.description }}</p>
+        </div>
+        <div class="price-row">
+          <p class="visitor-price">{{ participantPrice.price }} лв.</p>
+          <p class="grey-text">{{ participantPrice.description }}</p>
+        </div>
         }@empty {
-        <p class="empty">Няма събития, чакащи одобрение!</p>
+        <p class="empty">Няма ценоразпис!</p>
         }
       </div>
     </div>
   </div>
 
-  <h5 class="adress-title">Адрес на събитието</h5>
-  <p class="adress">
+  <h4 class="adress-title">Адрес на събитието</h4>
+  <p class="adress grey-text">
     {{ event.contacts.region }}, {{ event.contacts.address }}
   </p>
   <div class="map">MAP</div>
 
-  <h6>Контакти:</h6>
-  <p class="grey-text">{{ event.creator.organizatorName }}</p>
-  <p class="grey-text">{{ event.creator.email }}</p>
-  <p class="grey-text">{{ event.creator.phone }}</p>
+  <h6 class="contacts-title">Контакти:</h6>
+  <div class="contact-info">
+    <p class="grey-text">{{ event.creator.organizatorName }}</p>
+    <p class="grey-text">{{ event.creator.email }}</p>
+    <p class="grey-text">{{ event.creator.phone }}</p>
+  </div>
 </section>
