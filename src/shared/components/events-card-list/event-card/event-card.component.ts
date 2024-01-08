@@ -2,11 +2,12 @@ import { Component, Input } from '@angular/core';
 import { Event } from '../../../interfaces/Event';
 import { CommonModule, IMAGE_CONFIG } from '@angular/common';
 import { RouterLink } from '@angular/router';
+import { LikeIconComponent } from '../../like-icon/like-icon.component';
 
 @Component({
   selector: 'app-event-card',
   standalone: true,
-  imports: [CommonModule, RouterLink],
+  imports: [CommonModule, RouterLink, LikeIconComponent],
   templateUrl: './event-card.component.html',
   styleUrl: './event-card.component.scss',
 })
