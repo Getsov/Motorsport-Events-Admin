@@ -29,65 +29,46 @@ header {
         margin: 3px 0;
         display: block;
       }
+    }
 
-      .navbar {
-        display: flex;
-        flex-direction: row;
-        flex-wrap: nowrap;
-        align-items: flex-end;
-        gap: 16px;
+    .navbar {
+      display: flex;
+      flex-direction: row;
+      flex-wrap: nowrap;
+      align-items: flex-end;
+      gap: 16px;
 
-        li a {
-          text-decoration: none;
-          flex-grow: 1;
-          flex-shrink: 1;
-          color: rgba(255, 116, 24, 1);
-          font-family: Open Sans;
-          font-size: 18px;
-          font-style: normal;
-          font-weight: 500;
-          line-height: 150%;
-          padding: 16px 18px;
-          border-radius: 4px;
-        }
+      li a {
+        text-decoration: none;
+        flex-grow: 1;
+        flex-shrink: 1;
+        color: rgba(255, 116, 24, 1);
+        font-family: Open Sans;
+        font-size: 16px;
+        font-style: normal;
+        font-weight: 500;
+        line-height: 150%;
+        padding: 17px 18px;
+        border-radius: 4px;
+      }
 
-        li a.activebutton {
-          background-color: rgba(255, 116, 24, 1);
-          color: rgba(13, 13, 13, 1);
-          font-weight: 600;
-        }
+      li a.activebutton {
+        background-color: rgba(255, 116, 24, 1);
+        color: rgba(13, 13, 13, 1);
+        font-weight: 600;
       }
     }
   }
 }
 
-@media (max-width: 1070px) {
+@media (max-width: 990px) {
   header {
     .header-container {
       .hamburger-menu {
         display: flex;
       }
       .navbar {
-        display: none; /* Hide the navigation links by default */
-
-        &.active {
-          display: flex; /* Display the navigation links when the menu is active */
-          flex-direction: column;
-          position: absolute;
-          top: 100%;
-          left: 0;
-          width: 100%;
-          background-color: #fff; /* Adjust background color as needed */
-          box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); /* Add a subtle box shadow */
-        }
-      }
-
-      li {
-        margin-bottom: 10px; /* Adjust spacing between menu items */
-      }
-
-      li a {
-        padding: 12px 20px; /* Adjust padding for menu items */
+        display: none;
       }
     }
   }
