@@ -1,0 +1,74 @@
+<table class="accounts-table">
+  <thead>
+    <tr>
+      <th>
+        <input type="checkbox" />
+      </th>
+      <th>
+        Имейл
+        <img
+          src="../../../../assets/icons/table-icons/table-sort.svg"
+          alt="sort icon"
+        />
+      </th>
+      <th>
+        Име<img
+          src="../../../../assets/icons/table-icons/table-sort.svg"
+          alt="sort icon"
+        />
+      </th>
+      <th>
+        Телефон<img
+          src="../../../../assets/icons/table-icons/table-sort.svg"
+          alt="sort icon"
+        />
+      </th>
+      <th>
+        Регион<img
+          src="../../../../assets/icons/table-icons/table-sort.svg"
+          alt="sort icon"
+        />
+      </th>
+      <th>Действия</th>
+    </tr>
+  </thead>
+  <tbody>
+    @for (user of usersList; track user._id) {
+    <tr>
+      <td><input type="checkbox" /></td>
+      <td>{{ user.email }}</td>
+      <td>{{ user.firstName }} {{ user.lastName }}</td>
+      <td>{{ user.phone }}</td>
+      <td>{{ user.region }}</td>
+      <td class="buttons">
+        <a routerLink="/user/{{ user._id }}/details">
+          <img
+            src="../../../../assets/icons/table-icons/table-view.svg"
+            alt="View"
+          />
+        </a>
+        <a routerLink="/user/{{ user._id }}/edit">
+          <img
+            src="../../../../assets/icons/table-icons/table-edit.svg"
+            alt="Edit"
+          />
+        </a>
+        <a>
+          <img
+            src="../../../../assets/icons/table-icons/table-approve.svg"
+            alt="Approve"
+          />
+        </a>
+        <a>
+          <img
+            src="../../../../assets/icons/table-icons/table-delete.svg"
+            alt="Delete"
+          />
+        </a>
+      </td>
+    </tr>
+    }@empty {
+    <p class="empty">Няма събития, чакащи одобрение!</p>
+    }
+  </tbody>
+</table>

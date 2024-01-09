@@ -10,5 +10,5 @@ import { CommonModule } from '@angular/common';
   styleUrl: './section-nav.component.scss',
 })
 export class SectionNavComponent {
-  @Input() options: { label: string; route: string }[] = [];
+  @Input() options: { label: string; route: string; hasData: boolean }[] = [];
 }

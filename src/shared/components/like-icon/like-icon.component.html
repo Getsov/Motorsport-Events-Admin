@@ -1,0 +1,14 @@
+<div class="like-container">
+  <img class="like-icon" [src]="likeIconSrc" alt="Like-icon" />
+  <p
+    class="likes-count"
+    [style.font-size]="fontSize"
+    [ngClass]="{
+      'like-count-small': fontSize === '10px',
+      'like-count-medium': fontSize === '12px',
+      'like-count-large': fontSize === '14px'
+    }"
+  >
+    {{ likedCount }}
+  </p>
+</div>

@@ -1,0 +1,137 @@
+.event-details {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  font-size: 16px;
+
+  .grey-text {
+    color: rgba(166, 162, 160, 1);
+  }
+
+  h1 {
+    color: rgba(255, 116, 24, 1);
+    font-size: 32px;
+    font-style: normal;
+    font-weight: 600;
+    line-height: 38.4px;
+    margin-bottom: 24px;
+  }
+
+  .long-title {
+    margin-bottom: 24px;
+  }
+
+  img {
+    max-width: 558px;
+    height: 294px;
+    margin-bottom: 24px;
+  }
+
+  .categories {
+    margin-bottom: 24px;
+
+    p {
+      border: 1px solid rgba(166, 162, 160, 1);
+      border-radius: 4px;
+      padding: 4px 10px;
+      font-size: 14px;
+      font-weight: 400;
+    }
+  }
+
+  .event-description {
+    max-width: 794px;
+    line-height: 24px;
+    margin-bottom: 24px;
+    font-weight: 400px;
+  }
+
+  h3 {
+    color: rgba(255, 220, 35, 1);
+    font-size: 18px;
+    font-weight: 600;
+    line-height: 27px;
+    margin-bottom: 16px;
+  }
+
+  .organizer-info,
+  .dates {
+    margin-bottom: 16px;
+    p {
+      display: inline-block;
+    }
+  }
+
+  .organizer-info p:last-child {
+    margin-left: 16px;
+  }
+
+  .dates p:nth-child(2) {
+    margin-left: 16px;
+  }
+
+  .price-list {
+    display: flex;
+    flex-direction: row;
+    gap: 16px;
+    margin-bottom: 24px;
+
+    h4 {
+      font-size: 18px;
+      font-weight: 500;
+      line-height: 27px;
+    }
+
+    .price-row {
+      margin-bottom: 3px;
+      p {
+        display: inline-block;
+        line-height: 24px;
+      }
+      :first-child {
+        font-weight: 600;
+        text-align: center;
+        border-radius: 4px;
+        background-color: rgba(255, 220, 35, 1);
+        color: rgba(13, 13, 13, 1);
+        width: 60px;
+      }
+
+      :last-child {
+        margin-left: 16px;
+      }
+    }
+  }
+
+  .participant-prices .price-row p:first-child {
+    background-color: rgba(255, 116, 24, 1);
+  }
+
+  .adress-title {
+    font-size: 18px;
+    font-weight: 500;
+    line-height: 27px;
+  }
+
+  .adress {
+    line-height: 24px;
+    font-weight: 400;
+    margin-bottom: 8px;
+  }
+
+  .contacts-title {
+    font-size: 18px;
+
+    font-weight: 500;
+    line-height: 27px;
+  }
+
+  .contact-info {
+    p {
+      font-weight: 400;
+      line-height: 24px;
+      text-align: center;
+    }
+    margin-bottom: 36px;
+  }
+}

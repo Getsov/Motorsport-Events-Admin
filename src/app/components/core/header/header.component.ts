@@ -8,4 +8,6 @@ import { RouterLink, RouterLinkActive } from '@angular/router';
   styleUrl: './header.component.scss',
   imports: [RouterLink, RouterLinkActive],
 })
-export class HeaderComponent {}
+export class HeaderComponent {
+  // Add hamburger menu styles. (the design is not finished)
+}
