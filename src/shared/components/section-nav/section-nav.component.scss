@@ -41,7 +41,7 @@ a .red-dot {
 }
 
 .activebutton .red-dot {
-  background-color: white;
+  display: none;
 }
 
 @media (max-width: 600px) {

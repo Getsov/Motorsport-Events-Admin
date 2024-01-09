@@ -1,16 +1,5 @@
 header {
   width: 100vw;
-  img,
-  nav {
-    display: inline-block;
-  }
-
-  .hamburger-menu {
-    display: none;
-    width: 32px;
-    height: 24px;
-    color: rgba(166, 162, 160, 1);
-  }
 
   .header-container {
     margin: 40px;
@@ -18,32 +7,55 @@ header {
     flex-wrap: nowrap;
     justify-content: space-between;
     align-items: center;
+    height: 56px;
 
-    .navbar {
-      display: flex;
-      flex-direction: row;
-      flex-wrap: nowrap;
-      align-items: flex-end;
-      gap: 16px;
+    img,
+    nav {
+      display: inline-block;
+    }
 
-      li a {
-        text-decoration: none;
-        flex-grow: 1;
-        flex-shrink: 1;
-        color: rgba(255, 116, 24, 1);
-        font-family: Open Sans;
-        font-size: 18px;
-        font-style: normal;
-        font-weight: 500;
-        line-height: 150%;
-        padding: 16px 18px;
-        border-radius: 4px;
+    .hamburger-menu {
+      display: none;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      cursor: pointer;
+      padding: 16px;
+
+      span {
+        height: 3px;
+        width: 32px;
+        background-color: rgba(166, 162, 160, 1);
+        margin: 3px 0;
+        display: block;
       }
 
-      li a.activebutton {
-        background-color: rgba(255, 116, 24, 1);
-        color: rgba(13, 13, 13, 1);
-        font-weight: 600;
+      .navbar {
+        display: flex;
+        flex-direction: row;
+        flex-wrap: nowrap;
+        align-items: flex-end;
+        gap: 16px;
+
+        li a {
+          text-decoration: none;
+          flex-grow: 1;
+          flex-shrink: 1;
+          color: rgba(255, 116, 24, 1);
+          font-family: Open Sans;
+          font-size: 18px;
+          font-style: normal;
+          font-weight: 500;
+          line-height: 150%;
+          padding: 16px 18px;
+          border-radius: 4px;
+        }
+
+        li a.activebutton {
+          background-color: rgba(255, 116, 24, 1);
+          color: rgba(13, 13, 13, 1);
+          font-weight: 600;
+        }
       }
     }
   }
@@ -53,7 +65,7 @@ header {
   header {
     .header-container {
       .hamburger-menu {
-        display: block;
+        display: flex;
       }
       .navbar {
         display: none; /* Hide the navigation links by default */
