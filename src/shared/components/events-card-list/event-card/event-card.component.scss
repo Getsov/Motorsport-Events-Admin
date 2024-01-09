@@ -6,7 +6,6 @@
   width: 288px;
   display: flex;
   flex-direction: column;
-  justify-content: space-between;
   position: relative;
   z-index: 0;
 
@@ -60,7 +59,7 @@
   }
 
   .buttons {
-    margin-top: 4px;
+    margin-top: auto;
     display: grid;
     grid-template-columns: repeat(2, 1fr);
     gap: 8px;
