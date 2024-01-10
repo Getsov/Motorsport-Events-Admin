@@ -3,11 +3,12 @@ import { Event } from '../../../../shared/interfaces/Event';
 import { CommonModule } from '@angular/common';
 import { ActivatedRoute } from '@angular/router';
 import { EventService } from '../../../../shared/services/event.service';
+import { GoogleMapsModule } from '@angular/google-maps';
 
 @Component({
   selector: 'app-event-details',
   standalone: true,
-  imports: [CommonModule],
+  imports: [CommonModule, GoogleMapsModule],
   templateUrl: './event-details.component.html',
   styleUrl: './event-details.component.scss',
 })
