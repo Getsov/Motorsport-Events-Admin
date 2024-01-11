@@ -37,6 +37,9 @@ export class EventDetailsComponent implements OnInit {
     _id: '',
   };
 
+  mapOptions: google.maps.MapOptions = {};
+  marker: any = {};
+
   constructor(
     private route: ActivatedRoute,
     private eventService: EventService
@@ -52,7 +55,23 @@ export class EventDetailsComponent implements OnInit {
     this.eventService.getEventDetails(eventId).subscribe({
       next: (eventDetails) => {
         this.event = eventDetails;
-        console.log(this.event);
+        let lat = Number(this.event.contacts.coordinates.lat);
+        let lng = Number(this.event.contacts.coordinates.lng);
+
+        this.mapOptions = {
+          center: {
+            lat,
+            lng,
+          },
+          zoom: 14,
+        };
+
+        this.marker = {
+          position: {
+            lat,
+            lng,
+          },
+        };
       },
       error: (error) => {
         console.log(error.message);
