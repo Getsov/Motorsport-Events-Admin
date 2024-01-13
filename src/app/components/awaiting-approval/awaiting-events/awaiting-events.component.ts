@@ -22,7 +22,6 @@ export class AwaitingEventsComponent implements OnInit {
       this.effect();
     }, 2000);
   }
-
   effect() {
     this.awaitingApprovalEvents = this.eventService.eventsForApproval();
     this.isLoading = false;

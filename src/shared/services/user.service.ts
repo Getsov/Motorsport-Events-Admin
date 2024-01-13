@@ -23,7 +23,7 @@ export class UserService {
     const options = { headers: headers };
 
     return this.http.get<User[]>(
-      `${baseUrl}/user/organizersForApproval`,
+      `${baseUrl}/user/getAllOrganizersForApproval`,
       options
     );
   }
