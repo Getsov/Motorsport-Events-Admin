@@ -26,6 +26,31 @@ header {
         background-color: rgba(166, 162, 160, 1);
         margin: 3px 0;
         display: block;
+        transition: transform 0.3s ease-in-out;
+      }
+
+      &.open {
+        span:nth-child(1) {
+          transform: rotate(45deg) translate(6px, 8px);
+        }
+        span:nth-child(2) {
+          transform: rotate(-45deg) translate(-1px, 0px);
+        }
+        span:nth-child(3) {
+          opacity: 0;
+        }
+      }
+
+      &.close {
+        span:nth-child(1) {
+          transform: rotate(0deg) translate(0, 0);
+        }
+        span:nth-child(2) {
+          opacity: 1;
+        }
+        span:nth-child(3) {
+          transform: rotate(0deg) translate(0, 0);
+        }
       }
     }
 
@@ -63,17 +88,117 @@ header {
   header {
     .header-container {
       margin: 0;
+      position: relative;
       .hamburger-menu {
         display: flex;
         margin: 6px;
+        z-index: 1;
       }
       .navbar {
-        display: none;
+        flex-direction: column;
+        gap: 8px;
+        position: absolute;
+        top: 0;
+        right: 0;
+        height: 100vh;
+        width: 0;
+        background-color: rgba(13, 13, 13, 1);
+        z-index: 1;
+        align-items: flex-start;
+        border-left: 1px solid rgba(166, 162, 160, 1);
+
+        &.open {
+          width: 40%;
+          transition: width 0.4s ease-in-out;
+        }
+
+        &.close {
+          width: 0;
+          transition: width 0.4s ease-in-out;
+        }
+
+        li {
+          padding: 16px;
+          margin-left: 32px;
+        }
+
+        ul {
+          margin-top: 12px;
+          width: 100%;
+        }
       }
       .logo {
         width: 24px;
         height: 24px;
         margin: 18px 0 18px 16px;
+      }
+    }
+  }
+}
+
+@media (max-width: 850px) {
+  header {
+    .header-container {
+      .navbar {
+        &.open {
+          width: 50%;
+        }
+      }
+    }
+  }
+}
+
+@media (max-width: 680px) {
+  header {
+    .header-container {
+      .navbar {
+        &.open {
+          width: 60%;
+        }
+      }
+    }
+  }
+}
+
+@media (max-width: 560px) {
+  header {
+    .header-container {
+      .navbar {
+        &.open {
+          width: 65%;
+        }
+      }
+    }
+  }
+}
+
+@media (max-width: 520px) {
+  header {
+    .header-container {
+      .hamburger-menu {
+        margin: 0;
+        padding-left: 6px;
+      }
+      .navbar {
+        &.open {
+          width: 70%;
+        }
+        ul {
+          margin-top: 8px;
+        }
+
+        li {
+          margin-left: 0;
+          padding: 6px;
+          a {
+            padding: 8px;
+            font-size: 14px;
+          }
+        }
+
+        li:first-child {
+          padding-right: 2px;
+        }
       }
     }
   }
