@@ -1,3 +1,7 @@
 <section class="awaiting-events">
+  @if(isLoading){
+  <app-loader />
+  }@else {
   <app-events-card-list [eventsList]="awaitingApprovalEvents" />
+  }
 </section>
