@@ -62,11 +62,18 @@ header {
 @media (max-width: 990px) {
   header {
     .header-container {
+      margin: 0;
       .hamburger-menu {
         display: flex;
+        margin: 6px;
       }
       .navbar {
         display: none;
+      }
+      .logo {
+        width: 24px;
+        height: 24px;
+        margin: 18px 0 18px 16px;
       }
     }
   }
