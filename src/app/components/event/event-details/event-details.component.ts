@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Event } from '../../../../shared/interfaces/Event';
-import { CommonModule } from '@angular/common';
+import { CommonModule, DatePipe } from '@angular/common';
 import { ActivatedRoute } from '@angular/router';
 import { EventService } from '../../../../shared/services/event.service';
 import { GoogleMapsModule } from '@angular/google-maps';
@@ -11,6 +11,7 @@ import { GoogleMapsModule } from '@angular/google-maps';
   imports: [CommonModule, GoogleMapsModule],
   templateUrl: './event-details.component.html',
   styleUrl: './event-details.component.scss',
+  providers: [DatePipe],
 })
 export class EventDetailsComponent implements OnInit {
   event: Event = {
@@ -30,7 +31,7 @@ export class EventDetailsComponent implements OnInit {
       phone: '',
       email: '',
     },
-    category: '',
+    categories: [],
     likes: [],
     creator: { email: '', role: '', isDeleted: false },
     isDeleted: false,
@@ -39,10 +40,12 @@ export class EventDetailsComponent implements OnInit {
 
   mapOptions: google.maps.MapOptions = {};
   marker: any = {};
+  eventDates = '';
 
   constructor(
     private route: ActivatedRoute,
-    private eventService: EventService
+    private eventService: EventService,
+    public datePipe: DatePipe
   ) {}
 
   ngOnInit(): void {
@@ -55,6 +58,7 @@ export class EventDetailsComponent implements OnInit {
     this.eventService.getEventDetails(eventId).subscribe({
       next: (eventDetails) => {
         this.event = eventDetails;
+
         let lat = Number(this.event.contacts.coordinates.lat);
         let lng = Number(this.event.contacts.coordinates.lng);
 

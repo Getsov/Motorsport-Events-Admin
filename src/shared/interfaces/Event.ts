@@ -7,7 +7,7 @@ export interface Event {
   longDescription?: string;
   visitorPrices: { price: number; description: string; _id: string }[];
   participantPrices?: { price: number; description: string; _id: string }[];
-  dates: { date: string; startTime: string; endTime: string }[];
+  dates: { date: string; startTime: string; endTime: string; _id: string }[];
   imageUrl: string;
   contacts: {
     coordinates: { lat: number; lng: number };
@@ -16,7 +16,7 @@ export interface Event {
     phone: string;
     email: string;
   };
-  category: string;
+  categories: string[];
   likes: [];
   creator: User;
   winners?: { name: string; vehicle: string; place: number }[];

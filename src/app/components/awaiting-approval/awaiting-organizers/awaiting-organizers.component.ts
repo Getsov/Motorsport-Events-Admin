@@ -18,7 +18,6 @@ export class AwaitingOrganizersComponent {
     effect(() => {
       this.awaitingApprovalOrganizers =
         this.userService.organizersForApproval();
-      console.log(this.awaitingApprovalOrganizers);
     });
   }
 }
