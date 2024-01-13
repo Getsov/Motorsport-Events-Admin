@@ -4,6 +4,7 @@ import { CommonModule, DatePipe } from '@angular/common';
 import { ActivatedRoute } from '@angular/router';
 import { EventService } from '../../../../shared/services/event.service';
 import { GoogleMapsModule } from '@angular/google-maps';
+import { MediaMatcher } from '@angular/cdk/layout';
 
 @Component({
   selector: 'app-event-details',
@@ -41,17 +42,27 @@ export class EventDetailsComponent implements OnInit {
   mapOptions: google.maps.MapOptions = {};
   marker: any = {};
   eventDates = '';
+  mapWidth: number = 0;
+  mapHeight: number = 0;
 
   constructor(
     private route: ActivatedRoute,
     private eventService: EventService,
-    public datePipe: DatePipe
+    public datePipe: DatePipe,
+    private mediaMatcher: MediaMatcher
   ) {}
 
   ngOnInit(): void {
     this.route.params.subscribe((params) => {
       this.loadEventDetails(params['eventId']);
     });
+
+    // Check if the screen width is below 600px
+    const isSmallScreen =
+      this.mediaMatcher.matchMedia('(max-width: 600px)').matches;
+
+    this.mapWidth = isSmallScreen ? 328 : 600;
+    this.mapHeight = isSmallScreen ? 200 : 400;
   }
 
   private loadEventDetails(eventId: string) {

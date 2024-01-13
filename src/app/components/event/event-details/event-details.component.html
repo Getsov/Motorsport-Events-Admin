@@ -62,9 +62,13 @@
     {{ event.contacts.region }}, {{ event.contacts.address }}
   </p>
 
-  <!-- <google-map [options]="mapOptions" width="558" height="294">
+  <google-map
+    [options]="mapOptions"
+    width="{{ mapWidth }}"
+    height="{{ mapHeight }}"
+  >
     <map-marker [position]="marker.position"></map-marker>
-  </google-map> -->
+  </google-map>
 
   <h6 class="contacts-title">Контакти:</h6>
   <div class="contact-info">
