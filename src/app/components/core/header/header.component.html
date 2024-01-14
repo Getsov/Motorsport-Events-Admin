@@ -5,7 +5,7 @@
       src="../../../../assets/images/app-logo.png"
       alt="app-logo"
     />
-    <nav class="navbar">
+    <nav class="navbar" [ngClass]="{ open: isMenuOpen, close: !isMenuOpen }">
       <ul role="list" class="navbar">
         <li>
           <a
@@ -58,7 +58,11 @@
         </li>
       </ul>
     </nav>
-    <div class="hamburger-menu">
+    <div
+      class="hamburger-menu"
+      (click)="toggleMenu()"
+      [ngClass]="{ open: isMenuOpen, close: !isMenuOpen }"
+    >
       <span></span>
       <span></span>
       <span></span>

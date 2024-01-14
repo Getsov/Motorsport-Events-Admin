@@ -1,6 +1,6 @@
 import { Component, Input } from '@angular/core';
 import { Event } from '../../../interfaces/Event';
-import { CommonModule, IMAGE_CONFIG } from '@angular/common';
+import { CommonModule, DatePipe, IMAGE_CONFIG } from '@angular/common';
 import { RouterLink } from '@angular/router';
 import { LikeIconComponent } from '../../like-icon/like-icon.component';
 
@@ -29,7 +29,7 @@ export class EventCardComponent {
       phone: '',
       email: '',
     },
-    category: '',
+    categories: [],
     likes: [],
     creator: { email: '', role: '', isDeleted: false },
     isDeleted: false,

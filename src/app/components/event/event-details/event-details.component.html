@@ -1,10 +1,15 @@
 <section class="event-details">
   <h1>{{ event.shortTitle }}</h1>
   <p class="long-title">{{ event.longTitle }}</p>
-
-  <img src="{{ event.imageUrl }}" alt="{{ event.shortTitle }}" />
+  <div class="image-container">
+    <img src="{{ event.imageUrl }}" alt="{{ event.shortTitle }}" />
+  </div>
   <div class="categories">
-    <p class="grey-text">{{ event.category }}</p>
+    @for(category of event.categories; track category){
+    <p class="grey-text">{{ category }}</p>
+    }@empty {
+    <p class="grey-text">none</p>
+    }
   </div>
   <p class="event-description">{{ event.longDescription }}</p>
   <h3>Информация за събитието</h3>
@@ -14,8 +19,15 @@
       <p class="grey-text">{{ event.creator.organizatorName }}</p>
     </div>
     <div class="dates">
-      <p>Дати:</p>
-      <p class="grey-text">15.3.21 - от: 15:30 до 17:70 ч.</p>
+      <p class="date-title">Дати:</p>
+      <div class="date">
+        @for(date of event.dates; track date._id){
+        <p class="grey-text">
+          {{ datePipe.transform(date.date, "dd.MM.yyyy г.") }} - от:
+          {{ date.startTime }} до {{ date.endTime }} ч.
+        </p>
+        }
+      </div>
     </div>
     <div class="price-list">
       <div class="visitor-prices">
@@ -49,11 +61,17 @@
   <p class="adress grey-text">
     {{ event.contacts.region }}, {{ event.contacts.address }}
   </p>
-  <div class="map">MAP</div>
+
+  <google-map
+    [options]="mapOptions"
+    width="{{ mapWidth }}"
+    height="{{ mapHeight }}"
+  >
+    <map-marker [position]="marker.position"></map-marker>
+  </google-map>
 
   <h6 class="contacts-title">Контакти:</h6>
   <div class="contact-info">
-    <p class="grey-text">{{ event.creator.organizatorName }}</p>
     <p class="grey-text">{{ event.creator.email }}</p>
     <p class="grey-text">{{ event.creator.phone }}</p>
   </div>
