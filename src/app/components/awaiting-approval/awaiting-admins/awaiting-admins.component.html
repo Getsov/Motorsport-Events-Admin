@@ -1,1 +1,10 @@
-<p>awaiting-admins works!</p>
+<section class="awaiting-admins">
+  @if(isLoading){
+  <app-loader />
+  }@else{ @if(awaitingApprovalAdmins.length < 1){
+  <p>Няма администратори, чакащи одобрение!</p>
+
+  }@else {
+  <app-accounts-table [usersList]="awaitingApprovalAdmins" />
+  } }
+</section>
