@@ -38,5 +38,6 @@ export class AwaitingApprovalComponent {
   ngOnInit() {
     this.eventService.setEventsForApprove();
     this.userService.setOrganizersForApprove();
+    this.userService.setAdminsForApprove();
   }
 }
