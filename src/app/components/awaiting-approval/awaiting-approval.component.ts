@@ -23,6 +23,11 @@ export class AwaitingApprovalComponent {
       route: 'awaiting-organizers',
       hasData: false,
     },
+    {
+      label: 'Чакащи администратори',
+      route: 'awaiting-admins',
+      hasData: true,
+    },
   ];
 
   constructor(

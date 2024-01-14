@@ -19,6 +19,7 @@ import { UserComponent } from './components/user/user.component';
 import { EventComponent } from './components/event/event.component';
 import { RegisterComponent } from './components/user/register/register.component';
 import { LoginComponent } from './components/user/login/login.component';
+import { AwaitingAdminsComponent } from './components/awaiting-approval/awaiting-admins/awaiting-admins.component';
 
 export const routes: Routes = [
   {
@@ -28,6 +29,7 @@ export const routes: Routes = [
       { path: '', redirectTo: 'awaiting-events', pathMatch: 'full' },
       { path: 'awaiting-events', component: AwaitingEventsComponent },
       { path: 'awaiting-organizers', component: AwaitingOrganizersComponent },
+      { path: 'awaiting-admins', component: AwaitingAdminsComponent },
     ],
   },
   {
