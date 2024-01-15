@@ -44,7 +44,10 @@ export class EventCardComponent {
       .approveDisapproveEvent(this.event._id, updatedStatus)
       .subscribe({
         next: (response) => {
-          console.log('removed');
+          this.eventService.removeEventFromApproveList(this.event._id);
+        },
+        error: (error) => {
+          console.log(error.message);
         },
       });
   }
