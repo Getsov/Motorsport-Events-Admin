@@ -93,6 +93,9 @@ header {
         display: flex;
         margin: 6px;
         z-index: 1;
+        &.open {
+          margin-top: 30px;
+        }
       }
       .navbar {
         flex-direction: column;
@@ -178,26 +181,27 @@ header {
       .hamburger-menu {
         margin: 0;
         padding-left: 6px;
+        &.open {
+          margin-top: 0;
+        }
       }
       .navbar {
+        gap: 24px;
         &.open {
           width: 70%;
         }
         ul {
-          margin-top: 8px;
+          padding-top: 16px;
+          padding-left: 16px;
         }
 
         li {
-          margin-left: 0;
-          padding: 6px;
+          margin: 0;
+          padding: 0;
           a {
             padding: 8px;
             font-size: 14px;
           }
-        }
-
-        li:first-child {
-          padding-right: 2px;
         }
       }
     }
