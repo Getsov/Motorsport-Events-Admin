@@ -1,4 +1,4 @@
-import { HttpClient, HttpHeaders } from '@angular/common/http';
+import { HttpClient } from '@angular/common/http';
 import { Injectable, signal } from '@angular/core';
 import { environment } from '../../enviroments/enviroment';
 import { Observable } from 'rxjs';
@@ -31,7 +31,10 @@ export class EventService {
     return this.http.get<Event>(`${baseUrl}/events/${eventId}`, options);
   }
 
-  approveDisapproveEvent(eventId: string, updatedStatus: {}) {
+  approveDisapproveEvent(
+    eventId: string,
+    updatedStatus: Object
+  ): Observable<object> {
     const options = getOptions();
 
     return this.http.put(
@@ -41,7 +44,15 @@ export class EventService {
     );
   }
 
-  deleteEvent(eventId: string) {}
+  deleteEvent(eventId: string, updatedStatus: Object): Observable<object> {
+    const options = getOptions();
+
+    return this.http.put(
+      `${baseUrl}/events/deleteRestoreEvent/${eventId} `,
+      updatedStatus,
+      options
+    );
+  }
   // API CALLS END--------
 
   // SIGNALS-----

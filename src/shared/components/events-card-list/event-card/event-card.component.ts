@@ -53,7 +53,16 @@ export class EventCardComponent {
   }
 
   deleteEvent() {
-    console.log('delete');
+    const updatedStatus = { isDeleted: true };
+
+    this.eventService.deleteEvent(this.event._id, updatedStatus).subscribe({
+      next: (response) => {
+        this.eventService.removeEventFromApproveList(this.event._id);
+      },
+      error: (error) => {
+        console.log(error.message);
+      },
+    });
   }
 
   constructor(private eventService: EventService) {}
