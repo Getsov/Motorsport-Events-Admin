@@ -52,5 +52,9 @@ export class EventCardComponent {
       });
   }
 
+  deleteEvent() {
+    console.log('delete');
+  }
+
   constructor(private eventService: EventService) {}
 }
