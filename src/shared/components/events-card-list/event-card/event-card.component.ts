@@ -3,6 +3,7 @@ import { Event } from '../../../interfaces/Event';
 import { CommonModule, DatePipe, IMAGE_CONFIG } from '@angular/common';
 import { RouterLink } from '@angular/router';
 import { LikeIconComponent } from '../../like-icon/like-icon.component';
+import { EventService } from '../../../services/event.service';
 
 @Component({
   selector: 'app-event-card',
@@ -33,6 +34,20 @@ export class EventCardComponent {
     likes: [],
     creator: { email: '', role: '', isDeleted: false },
     isDeleted: false,
+    isApproved: false,
     _id: '',
   };
+
+  approveEvent() {
+    const updatedStatus = { isApproved: true };
+    this.eventService
+      .approveDisapproveEvent(this.event._id, updatedStatus)
+      .subscribe({
+        next: (response) => {
+          console.log('removed');
+        },
+      });
+  }
+
+  constructor(private eventService: EventService) {}
 }

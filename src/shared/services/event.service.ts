@@ -29,14 +29,18 @@ export class EventService {
     );
   }
 
-  approveDisapproveEvent(eventId: string) {
+  approveDisapproveEvent(eventId: string, updatedStatus: {}) {
     const headers = new HttpHeaders({
       'Content-Type': 'application/json',
       'X-Authorization': accessToken,
     });
     const options = { headers: headers };
 
-    return this.http.put(`${baseUrl}/events/${eventId}`, options);
+    return this.http.put(
+      `${baseUrl}/events/approveDisapproveEvent/${eventId}`,
+      updatedStatus,
+      options
+    );
   }
 
   getEventDetails(eventId: string): Observable<Event> {

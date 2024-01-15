@@ -36,6 +36,7 @@ export class EventDetailsComponent implements OnInit {
     likes: [],
     creator: { email: '', role: '', isDeleted: false },
     isDeleted: false,
+    isApproved: false,
     _id: '',
   };
 
