@@ -3,8 +3,9 @@ import { Injectable, signal } from '@angular/core';
 import { environment } from '../../enviroments/enviroment';
 import { Observable } from 'rxjs';
 import { Event } from '../interfaces/Event';
+import { getOptions } from '../utils/http-utils';
 
-const { baseUrl, accessToken } = environment;
+const { baseUrl } = environment;
 
 @Injectable({
   providedIn: 'root',
@@ -16,12 +17,7 @@ export class EventService {
 
   getEventsForApproval(): Observable<Event[]> {
     // Login from postman and set your access token from enviroment. We dont have login yet.
-    const headers = new HttpHeaders({
-      'Content-Type': 'application/json',
-      'X-Authorization': accessToken,
-    });
-
-    const options = { headers: headers };
+    const options = getOptions();
 
     return this.http.get<Event[]>(
       `${baseUrl}/events/eventsForApproval`,
@@ -29,12 +25,14 @@ export class EventService {
     );
   }
 
+  getEventDetails(eventId: string): Observable<Event> {
+    const options = getOptions();
+
+    return this.http.get<Event>(`${baseUrl}/events/${eventId}`, options);
+  }
+
   approveDisapproveEvent(eventId: string, updatedStatus: {}) {
-    const headers = new HttpHeaders({
-      'Content-Type': 'application/json',
-      'X-Authorization': accessToken,
-    });
-    const options = { headers: headers };
+    const options = getOptions();
 
     return this.http.put(
       `${baseUrl}/events/approveDisapproveEvent/${eventId}`,
@@ -43,14 +41,7 @@ export class EventService {
     );
   }
 
-  getEventDetails(eventId: string): Observable<Event> {
-    const headers = new HttpHeaders({
-      'Content-Type': 'application/json',
-      'X-Authorization': accessToken,
-    });
-    const options = { headers: headers };
-    return this.http.get<Event>(`${baseUrl}/events/${eventId}`, options);
-  }
+  deleteEvent(eventId: string) {}
   // API CALLS END--------
 
   // SIGNALS-----
