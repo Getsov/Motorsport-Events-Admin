@@ -48,9 +48,7 @@ export class EventCardComponent implements OnDestroy {
       .approveDisapproveEvent(this.event._id, updatedStatus)
       .subscribe({
         next: (response) => {
-          this.eventService.eventsForApproval.update((state) =>
-            state.filter((event) => event._id !== this.event._id)
-          );
+          this.eventService.removeEventFromApprovalList(this.event._id);
         },
         error: (error) => {
           console.log(error.message);
@@ -65,9 +63,7 @@ export class EventCardComponent implements OnDestroy {
       .deleteEvent(this.event._id, updatedStatus)
       .subscribe({
         next: (response) => {
-          this.eventService.eventsForApproval.update((state) =>
-            state.filter((event) => event._id !== this.event._id)
-          );
+          this.eventService.removeEventFromApprovalList(this.event._id);
         },
         error: (error) => {
           console.log(error.message);

@@ -74,6 +74,12 @@ export class EventService {
     });
   }
 
+  removeEventFromApprovalList(eventId: string) {
+    this.eventsForApproval.update((state) =>
+      state.filter((event) => event._id !== eventId)
+    );
+  }
+
   // Events for approval signal end.
 
   // SIGNALS END--------
