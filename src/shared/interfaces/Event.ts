@@ -21,5 +21,6 @@ export interface Event {
   creator: User;
   winners?: { name: string; vehicle: string; place: number }[];
   isDeleted: boolean;
+  isApproved: boolean;
   _id: string;
 }

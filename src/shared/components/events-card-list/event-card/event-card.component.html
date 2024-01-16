@@ -25,8 +25,8 @@
   <div class="buttons">
     <a routerLink="/event/{{ event._id }}/details" class="view">Прегледай</a>
     <a routerLink="/event/{{ event._id }}/edit" class="edit">Редактирай</a>
-    <a class="approve">Одобри</a>
-    <a class="delete">Изтрий</a>
+    <a class="approve" (click)="approveEvent()">Одобри</a>
+    <a class="delete" (click)="deleteEvent()">Изтрий</a>
   </div>
   <app-like-icon [likedCount]="event.likes.length" />
 </div>
