@@ -1,6 +1,6 @@
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable, signal } from '@angular/core';
-import { Observable } from 'rxjs';
+import { Observable, Subscription } from 'rxjs';
 import { environment } from '../../enviroments/enviroment';
 import { User } from '../interfaces/User';
 import { getOptions } from '../utils/http-utils';
@@ -46,8 +46,8 @@ export class UserService {
   adminsForApproval = signal<User[]>([]);
   hasAdminsForapproval: boolean = this.adminsForApproval().length < 1;
 
-  setOrganizersForApprove() {
-    this.getOrganizersForApproval().subscribe({
+  setOrganizersForApprove(): Subscription {
+    return this.getOrganizersForApproval().subscribe({
       next: (response) => {
         this.organizersForApproval.update((state) => response);
       },
@@ -57,8 +57,8 @@ export class UserService {
     });
   }
 
-  setAdminsForApprove() {
-    this.getAdminsForApproval().subscribe({
+  setAdminsForApprove(): Subscription {
+    return this.getAdminsForApproval().subscribe({
       next: (response) => {
         this.adminsForApproval.update((state) => response);
       },

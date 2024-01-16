@@ -19,7 +19,7 @@ export class AwaitingOrganizersComponent {
     effect(() => {
       this.awaitingApprovalOrganizers =
         this.userService.organizersForApproval();
-      this.isloading = false;
+      this.isloading = true;
     });
   }
 }

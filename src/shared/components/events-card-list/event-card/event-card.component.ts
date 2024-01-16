@@ -39,46 +39,42 @@ export class EventCardComponent implements OnDestroy {
     _id: '',
   };
 
-  private eventApprovalSubscription: Subscription | undefined;
-  private eventDeletionSubscription: Subscription | undefined;
+  private subscriptions: Subscription[] = [];
 
   approveEvent() {
     const updatedStatus = { isApproved: true };
-    this.eventApprovalSubscription = this.eventService
-      .approveDisapproveEvent(this.event._id, updatedStatus)
-      .subscribe({
-        next: (response) => {
-          this.eventService.removeEventFromApprovalList(this.event._id);
-        },
-        error: (error) => {
-          console.log(error.message);
-        },
-      });
+    this.subscriptions.push(
+      this.eventService
+        .approveDisapproveEvent(this.event._id, updatedStatus)
+        .subscribe({
+          next: (response) => {
+            this.eventService.removeEventFromApprovalList(this.event._id);
+          },
+          error: (error) => {
+            console.log(error.message);
+          },
+        })
+    );
   }
 
   deleteEvent() {
     const updatedStatus = { isDeleted: true };
 
-    this.eventDeletionSubscription = this.eventService
-      .deleteEvent(this.event._id, updatedStatus)
-      .subscribe({
+    this.subscriptions.push(
+      this.eventService.deleteEvent(this.event._id, updatedStatus).subscribe({
         next: (response) => {
           this.eventService.removeEventFromApprovalList(this.event._id);
         },
         error: (error) => {
           console.log(error.message);
         },
-      });
+      })
+    );
   }
 
   constructor(private eventService: EventService) {}
 
   ngOnDestroy(): void {
-    if (this.eventApprovalSubscription) {
-      this.eventApprovalSubscription.unsubscribe();
-    }
-    if (this.eventDeletionSubscription) {
-      this.eventDeletionSubscription.unsubscribe();
-    }
+    this.subscriptions.forEach((subscription) => subscription.unsubscribe());
   }
 }

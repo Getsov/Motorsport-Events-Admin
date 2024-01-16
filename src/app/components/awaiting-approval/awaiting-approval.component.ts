@@ -31,9 +31,7 @@ export class AwaitingApprovalComponent implements OnInit, OnDestroy {
     },
   ];
 
-  eventsForApproveSubscription: Subscription | undefined;
-  setOrganizersForApproveSubscription: Subscription | undefined;
-  setAdminsForApproveSubscription: Subscription | undefined;
+  subscriptions: Subscription[] = [];
 
   constructor(
     private eventService: EventService,
@@ -41,20 +39,16 @@ export class AwaitingApprovalComponent implements OnInit, OnDestroy {
   ) {}
 
   ngOnInit() {
-    this.eventService.setEventsForApprove();
-    this.userService.setOrganizersForApprove();
-    this.userService.setAdminsForApprove();
+    this.subscriptions.push(
+      this.eventService.setEventsForApprove(),
+      this.userService.setOrganizersForApprove(),
+      this.userService.setAdminsForApprove()
+    );
   }
 
   ngOnDestroy(): void {
-    if (this.eventsForApproveSubscription) {
-      this.eventsForApproveSubscription.unsubscribe();
-    }
-    if (this.setOrganizersForApproveSubscription) {
-      this.setOrganizersForApproveSubscription.unsubscribe();
-    }
-    if (this.setAdminsForApproveSubscription) {
-      this.setAdminsForApproveSubscription.unsubscribe();
-    }
+    this.subscriptions.forEach((subscription) => {
+      subscription.unsubscribe();
+    });
   }
 }

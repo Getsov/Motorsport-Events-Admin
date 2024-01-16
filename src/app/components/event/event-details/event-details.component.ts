@@ -47,8 +47,7 @@ export class EventDetailsComponent implements OnInit, OnDestroy {
   mapWidth: number = 0;
   mapHeight: number = 0;
 
-  private eventDetailsSubscription: Subscription | undefined;
-  private routeSubscription: Subscription | undefined;
+  private subscriptions: Subscription[] = [];
 
   constructor(
     private route: ActivatedRoute,
@@ -58,9 +57,11 @@ export class EventDetailsComponent implements OnInit, OnDestroy {
   ) {}
 
   ngOnInit(): void {
-    this.routeSubscription = this.route.params.subscribe((params) => {
-      this.loadEventDetails(params['eventId']);
-    });
+    this.subscriptions.push(
+      this.route.params.subscribe((params) => {
+        this.loadEventDetails(params['eventId']);
+      })
+    );
 
     // Check if the screen width is below 600px
     const isSmallScreen =
@@ -71,19 +72,12 @@ export class EventDetailsComponent implements OnInit, OnDestroy {
   }
 
   ngOnDestroy(): void {
-    if (this.eventDetailsSubscription) {
-      this.eventDetailsSubscription.unsubscribe();
-    }
-
-    if (this.routeSubscription) {
-      this.routeSubscription.unsubscribe();
-    }
+    this.subscriptions.forEach((subscription) => subscription.unsubscribe());
   }
 
   private loadEventDetails(eventId: string) {
-    this.eventDetailsSubscription = this.eventService
-      .getEventDetails(eventId)
-      .subscribe({
+    this.subscriptions.push(
+      this.eventService.getEventDetails(eventId).subscribe({
         next: (eventDetails) => {
           this.event = eventDetails;
 
@@ -108,6 +102,7 @@ export class EventDetailsComponent implements OnInit, OnDestroy {
         error: (error) => {
           console.log(error.message);
         },
-      });
+      })
+    );
   }
 }

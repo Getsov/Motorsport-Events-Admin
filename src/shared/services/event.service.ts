@@ -1,7 +1,7 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable, signal } from '@angular/core';
 import { environment } from '../../enviroments/enviroment';
-import { Observable } from 'rxjs';
+import { Observable, Subscription } from 'rxjs';
 import { Event } from '../interfaces/Event';
 import { getOptions } from '../utils/http-utils';
 
@@ -63,8 +63,8 @@ export class EventService {
 
   hasEventsForApproval: boolean = this.eventsForApproval().length > 1;
 
-  setEventsForApprove() {
-    this.getEventsForApproval().subscribe({
+  setEventsForApprove(): Subscription {
+    return this.getEventsForApproval().subscribe({
       next: (response) => {
         this.eventsForApproval.update((state) => response);
       },
