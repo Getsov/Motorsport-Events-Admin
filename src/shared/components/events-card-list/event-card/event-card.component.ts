@@ -44,7 +44,9 @@ export class EventCardComponent {
       .approveDisapproveEvent(this.event._id, updatedStatus)
       .subscribe({
         next: (response) => {
-          this.eventService.removeEventFromApproveList(this.event._id);
+          this.eventService.eventsForApproval.update((state) =>
+            state.filter((event) => event._id !== this.event._id)
+          );
         },
         error: (error) => {
           console.log(error.message);
@@ -57,7 +59,9 @@ export class EventCardComponent {
 
     this.eventService.deleteEvent(this.event._id, updatedStatus).subscribe({
       next: (response) => {
-        this.eventService.removeEventFromApproveList(this.event._id);
+        this.eventService.eventsForApproval.update((state) =>
+          state.filter((event) => event._id !== this.event._id)
+        );
       },
       error: (error) => {
         console.log(error.message);

@@ -74,12 +74,6 @@ export class EventService {
     });
   }
 
-  removeEventFromApproveList(approvedEventId: string) {
-    this.eventsForApproval.update((state) =>
-      state.filter((event) => event._id !== approvedEventId)
-    );
-  }
-
   // Events for approval signal end.
 
   // SIGNALS END--------
