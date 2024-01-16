@@ -1,10 +1,11 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnDestroy, OnInit } from '@angular/core';
 import { Event } from '../../../../shared/interfaces/Event';
 import { CommonModule, DatePipe } from '@angular/common';
 import { ActivatedRoute } from '@angular/router';
 import { EventService } from '../../../../shared/services/event.service';
 import { GoogleMapsModule } from '@angular/google-maps';
 import { MediaMatcher } from '@angular/cdk/layout';
+import { Subscription } from 'rxjs';
 
 @Component({
   selector: 'app-event-details',
@@ -14,7 +15,7 @@ import { MediaMatcher } from '@angular/cdk/layout';
   styleUrl: './event-details.component.scss',
   providers: [DatePipe],
 })
-export class EventDetailsComponent implements OnInit {
+export class EventDetailsComponent implements OnInit, OnDestroy {
   event: Event = {
     shortTitle: '',
     shortDescription: '',
@@ -46,6 +47,9 @@ export class EventDetailsComponent implements OnInit {
   mapWidth: number = 0;
   mapHeight: number = 0;
 
+  private eventDetailsSubscription: Subscription | undefined;
+  private routeSubscription: Subscription | undefined;
+
   constructor(
     private route: ActivatedRoute,
     private eventService: EventService,
@@ -54,7 +58,7 @@ export class EventDetailsComponent implements OnInit {
   ) {}
 
   ngOnInit(): void {
-    this.route.params.subscribe((params) => {
+    this.routeSubscription = this.route.params.subscribe((params) => {
       this.loadEventDetails(params['eventId']);
     });
 
@@ -66,32 +70,44 @@ export class EventDetailsComponent implements OnInit {
     this.mapHeight = isSmallScreen ? 200 : 400;
   }
 
+  ngOnDestroy(): void {
+    if (this.eventDetailsSubscription) {
+      this.eventDetailsSubscription.unsubscribe();
+    }
+
+    if (this.routeSubscription) {
+      this.routeSubscription.unsubscribe();
+    }
+  }
+
   private loadEventDetails(eventId: string) {
-    this.eventService.getEventDetails(eventId).subscribe({
-      next: (eventDetails) => {
-        this.event = eventDetails;
+    this.eventDetailsSubscription = this.eventService
+      .getEventDetails(eventId)
+      .subscribe({
+        next: (eventDetails) => {
+          this.event = eventDetails;
 
-        let lat = Number(this.event.contacts.coordinates.lat);
-        let lng = Number(this.event.contacts.coordinates.lng);
+          let lat = Number(this.event.contacts.coordinates.lat);
+          let lng = Number(this.event.contacts.coordinates.lng);
 
-        this.mapOptions = {
-          center: {
-            lat,
-            lng,
-          },
-          zoom: 14,
-        };
+          this.mapOptions = {
+            center: {
+              lat,
+              lng,
+            },
+            zoom: 14,
+          };
 
-        this.marker = {
-          position: {
-            lat,
-            lng,
-          },
-        };
-      },
-      error: (error) => {
-        console.log(error.message);
-      },
-    });
+          this.marker = {
+            position: {
+              lat,
+              lng,
+            },
+          };
+        },
+        error: (error) => {
+          console.log(error.message);
+        },
+      });
   }
 }

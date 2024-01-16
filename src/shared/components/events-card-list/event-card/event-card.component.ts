@@ -1,9 +1,10 @@
-import { Component, Input } from '@angular/core';
+import { Component, Input, OnDestroy } from '@angular/core';
 import { Event } from '../../../interfaces/Event';
-import { CommonModule, DatePipe, IMAGE_CONFIG } from '@angular/common';
+import { CommonModule } from '@angular/common';
 import { RouterLink } from '@angular/router';
 import { LikeIconComponent } from '../../like-icon/like-icon.component';
 import { EventService } from '../../../services/event.service';
+import { Subscription } from 'rxjs';
 
 @Component({
   selector: 'app-event-card',
@@ -12,7 +13,7 @@ import { EventService } from '../../../services/event.service';
   templateUrl: './event-card.component.html',
   styleUrl: './event-card.component.scss',
 })
-export class EventCardComponent {
+export class EventCardComponent implements OnDestroy {
   @Input() event: Event = {
     shortTitle: '',
     shortDescription: '',
@@ -38,9 +39,12 @@ export class EventCardComponent {
     _id: '',
   };
 
+  private eventApprovalSubscription: Subscription | undefined;
+  private eventDeletionSubscription: Subscription | undefined;
+
   approveEvent() {
     const updatedStatus = { isApproved: true };
-    this.eventService
+    this.eventApprovalSubscription = this.eventService
       .approveDisapproveEvent(this.event._id, updatedStatus)
       .subscribe({
         next: (response) => {
@@ -57,17 +61,28 @@ export class EventCardComponent {
   deleteEvent() {
     const updatedStatus = { isDeleted: true };
 
-    this.eventService.deleteEvent(this.event._id, updatedStatus).subscribe({
-      next: (response) => {
-        this.eventService.eventsForApproval.update((state) =>
-          state.filter((event) => event._id !== this.event._id)
-        );
-      },
-      error: (error) => {
-        console.log(error.message);
-      },
-    });
+    this.eventDeletionSubscription = this.eventService
+      .deleteEvent(this.event._id, updatedStatus)
+      .subscribe({
+        next: (response) => {
+          this.eventService.eventsForApproval.update((state) =>
+            state.filter((event) => event._id !== this.event._id)
+          );
+        },
+        error: (error) => {
+          console.log(error.message);
+        },
+      });
   }
 
   constructor(private eventService: EventService) {}
+
+  ngOnDestroy(): void {
+    if (this.eventApprovalSubscription) {
+      this.eventApprovalSubscription.unsubscribe();
+    }
+    if (this.eventDeletionSubscription) {
+      this.eventDeletionSubscription.unsubscribe();
+    }
+  }
 }
