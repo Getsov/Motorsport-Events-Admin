@@ -61,7 +61,7 @@ export class EventService {
 
   eventsForApproval = signal<Event[]>([]);
 
-  hasEventsForApproval: boolean = this.eventsForApproval().length < 1;
+  hasEventsForApproval: boolean = this.eventsForApproval().length > 1;
 
   setEventsForApprove() {
     this.getEventsForApproval().subscribe({
