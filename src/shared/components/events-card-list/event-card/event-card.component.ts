@@ -1,15 +1,22 @@
-import { Component, Input, OnDestroy, OnInit } from '@angular/core';
+import { Component, Input, OnDestroy, OnInit, ViewChild } from '@angular/core';
 import { Event } from '../../../interfaces/Event';
 import { CommonModule, DatePipe } from '@angular/common';
 import { RouterLink } from '@angular/router';
 import { LikeIconComponent } from '../../like-icon/like-icon.component';
 import { EventService } from '../../../services/event.service';
 import { Subscription } from 'rxjs';
+import { ConfirmDialogComponent } from '../../confirm-dialog/confirm-dialog.component';
 
 @Component({
   selector: 'app-event-card',
   standalone: true,
-  imports: [CommonModule, RouterLink, LikeIconComponent, DatePipe],
+  imports: [
+    CommonModule,
+    RouterLink,
+    LikeIconComponent,
+    DatePipe,
+    ConfirmDialogComponent,
+  ],
   templateUrl: './event-card.component.html',
   styleUrl: './event-card.component.scss',
 })
@@ -38,11 +45,26 @@ export class EventCardComponent implements OnInit, OnDestroy {
     isApproved: false,
     _id: '',
   };
+  private subscriptions: Subscription[] = [];
+
+  showConfirmationDialog: boolean = false;
+  confirmationMessage: string = '';
 
   startDate: any = '';
   endDate: any = '';
 
-  private subscriptions: Subscription[] = [];
+  onConfirmation(confirmed: boolean) {
+    if (confirmed) {
+      if (this.confirmationMessage.includes('approve')) {
+        this.approveEvent();
+      } else if (this.confirmationMessage.includes('delete')) {
+        this.deleteEvent();
+      }
+    }
+
+    this.showConfirmationDialog = false;
+    this.confirmationMessage = '';
+  }
 
   approveEvent() {
     const updatedStatus = { isApproved: true };
