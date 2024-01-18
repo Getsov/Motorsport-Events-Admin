@@ -1,1 +1,10 @@
-<p>login works!</p>
+<section class="login">
+  <form class="login-form" #form="ngForm" (ngSubmit)="onLoginSubmit(form)">
+    <input type="text" placeholder="Имейл*" id="email" name="email" />
+    <input type="text" placeholder="Парола*" id="password" name="password" />
+    <div class="buttons">
+      <a>Регистрирай се като организатор</a>
+      <button>Вход</button>
+    </div>
+  </form>
+</section>
