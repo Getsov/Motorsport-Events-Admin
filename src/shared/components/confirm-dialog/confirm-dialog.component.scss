@@ -17,16 +17,22 @@
     border-radius: 4px;
     text-align: center;
     border: 1px solid rgba(166, 162, 160, 1);
-    max-width: 592px;
+    max-width: 390px;
     margin: 0 16px;
 
     p,
     button {
-      font-family: "Exo 2";
-      font-size: 24px;
-      font-weight: 600;
-      line-height: 28.8px;
+      font-size: 18px;
+      font-weight: 400;
+      line-height: 27px;
+    }
+
+    p {
       padding: 24px;
+    }
+
+    button {
+      padding: 15px 0;
     }
 
     .button-container {
@@ -42,30 +48,11 @@
   }
 }
 
-@media (max-width: 600px) {
-  .dialog-overlay {
-    .dialog-container {
-      p,
-      button {
-        font-family: "Exo 2";
-        font-size: 22px;
-        font-weight: 600;
-        padding: 12px;
-      }
-    }
-  }
-}
-
 @media (max-width: 430px) {
   .dialog-overlay {
     .dialog-container {
-      p,
       button {
-        font-family: "Exo 2";
-        font-size: 18px;
-        font-weight: 600;
-        line-height: 28.8px;
-        padding: 8px;
+        padding: 10px 0;
       }
     }
   }
