@@ -1,9 +1,5 @@
 <section class="login">
   <form class="login-form" #form="ngForm" (ngSubmit)="onLoginSubmit()">
-    @if(inputEmail.dirty && inputEmail.valid && inputEmail.invalid){
-    <p>diryy</p>
-    }
-
     <input
       type="email"
       placeholder="Имейл*"
@@ -14,6 +10,9 @@
       required
       pattern="^[a-zA-Z0-9\._+\-]+@[a-zA-Z0-9\.]+\.[a-zA-Z]{2,}$"
     />
+    @if(inputEmail.invalid && inputEmail.touched){
+    <p class="input-message invalid-input">Моля въведете валиден имейл!</p>
+    }
 
     <input
       type="password"
