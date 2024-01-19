@@ -17,21 +17,21 @@ export class LoginComponent {
   password: string = '';
 
   onLoginSubmit() {
-    console.log(this.email, this.password);
-
-    // this.userService.login(email, password).subscribe({
-    //   next: (response) => {
-    //     const userDetails = {
-    //       accessToken: response.accessToken,
-    //     };
-
-    //     localStorage.setItem('MotorSportUser', JSON.stringify(userDetails));
-    //   },
-    //   error: (error) => {
-    //     error.message;
-    //   },
-    // });
-    // // this.router.navigate(['/']);
+    this.userService.login(this.email, this.password).subscribe({
+      next: (response) => {
+        const userDetails = {
+          accessToken: response.accessToken,
+          _id: response._id,
+        };
+        this.email = '';
+        this.password = '';
+        localStorage.setItem('MotorSportsUser', JSON.stringify(userDetails));
+        this.router.navigate(['/']);
+      },
+      error: (error) => {
+        error.message;
+      },
+    });
   }
 
   navigateToRegister() {
