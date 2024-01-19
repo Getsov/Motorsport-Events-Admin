@@ -15,7 +15,7 @@
       </label>
       <input
         type="email"
-        [placeholder]="inputEmail.pristine ? 'Имейл*' : ''"
+        [placeholder]="inputEmail.dirty || inputEmail.touched ? '' : 'Имейл*'"
         id="email"
         name="email"
         [(ngModel)]="email"
