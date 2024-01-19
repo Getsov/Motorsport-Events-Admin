@@ -1,7 +1,20 @@
 <section class="login">
   <form class="login-form" #form="ngForm" (ngSubmit)="onLoginSubmit(form)">
-    <input type="text" placeholder="Имейл*" id="email" name="email" />
-    <input type="text" placeholder="Парола*" id="password" name="password" />
+    <input
+      type="email"
+      placeholder="Имейл*"
+      id="email"
+      name="email"
+      ngModel="email"
+    />
+    <input
+      type="password"
+      placeholder="Парола*"
+      id="password"
+      name="password"
+      labelPlacement="floating"
+      ngModel="password"
+    />
     <div class="buttons">
       <a>Регистрирай се като организатор</a>
       <button>Вход</button>

@@ -34,6 +34,15 @@ export class UserService {
     );
   }
 
+  login(email: string, password: string): Observable<any> {
+    const body = {
+      email,
+      password,
+    };
+
+    return this.http.post(`${baseUrl}/user/login`, body);
+  }
+
   // API CALS END-----
 
   // SIGNALS --------
