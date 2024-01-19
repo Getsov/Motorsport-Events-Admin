@@ -2,32 +2,35 @@ import { Component } from '@angular/core';
 import { FormsModule, NgForm } from '@angular/forms';
 import { Router } from '@angular/router';
 import { UserService } from '../../../../shared/services/user.service';
+import { CommonModule } from '@angular/common';
 
 @Component({
   selector: 'app-login',
   standalone: true,
-  imports: [FormsModule],
+  imports: [FormsModule, CommonModule],
   templateUrl: './login.component.html',
   styleUrl: './login.component.scss',
 })
 export class LoginComponent {
-  onLoginSubmit(form: NgForm) {
-    const email = form.value.email;
-    const password = form.value.password;
+  email: string = '';
+  password: string = '';
 
-    this.userService.login(email, password).subscribe({
-      next: (response) => {
-        const userDetails = {
-          accessToken: response.accessToken,
-        };
+  onLoginSubmit() {
+    console.log(this.email, this.password);
 
-        localStorage.setItem('MotorSportUser', JSON.stringify(userDetails));
-      },
-      error: (error) => {
-        error.message;
-      },
-    });
-    // this.router.navigate(['/']);
+    // this.userService.login(email, password).subscribe({
+    //   next: (response) => {
+    //     const userDetails = {
+    //       accessToken: response.accessToken,
+    //     };
+
+    //     localStorage.setItem('MotorSportUser', JSON.stringify(userDetails));
+    //   },
+    //   error: (error) => {
+    //     error.message;
+    //   },
+    // });
+    // // this.router.navigate(['/']);
   }
 
   constructor(private router: Router, private userService: UserService) {}
