@@ -4,6 +4,7 @@ import { environment } from '../../enviroments/enviroment';
 import { Observable, Subscription } from 'rxjs';
 import { Event } from '../interfaces/Event';
 import { getOptions } from '../utils/http-utils';
+import { UserService } from './user.service';
 
 const { baseUrl } = environment;
 
@@ -11,13 +12,17 @@ const { baseUrl } = environment;
   providedIn: 'root',
 })
 export class EventService {
-  constructor(private http: HttpClient) {}
+  accessToken: string = '';
+  constructor(private http: HttpClient, private userService: UserService) {
+    this.accessToken = this.userService.accessToken;
+  }
 
   // API CALLS------
 
   getEventsForApproval(): Observable<Event[]> {
     // Login from postman and set your access token from enviroment. We dont have login yet.
-    const options = getOptions();
+    const options = getOptions(this.accessToken);
+    console.log(options);
 
     return this.http.get<Event[]>(
       `${baseUrl}/events/eventsForApproval`,
@@ -26,7 +31,7 @@ export class EventService {
   }
 
   getEventDetails(eventId: string): Observable<Event> {
-    const options = getOptions();
+    const options = getOptions(this.accessToken);
 
     return this.http.get<Event>(`${baseUrl}/events/${eventId}`, options);
   }
@@ -35,7 +40,7 @@ export class EventService {
     eventId: string,
     updatedStatus: Object
   ): Observable<object> {
-    const options = getOptions();
+    const options = getOptions(this.accessToken);
 
     return this.http.put(
       `${baseUrl}/events/approveDisapproveEvent/${eventId}`,
@@ -45,7 +50,7 @@ export class EventService {
   }
 
   deleteEvent(eventId: string, updatedStatus: Object): Observable<object> {
-    const options = getOptions();
+    const options = getOptions(this.accessToken);
 
     return this.http.put(
       `${baseUrl}/events/deleteRestoreEvent/${eventId} `,
