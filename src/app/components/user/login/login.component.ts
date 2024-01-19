@@ -38,5 +38,9 @@ export class LoginComponent {
     this.router.navigate(['/user/register']);
   }
 
+  navigateToForgotten() {
+    this.router.navigate(['/user/forgotten-password']);
+  }
+
   constructor(private router: Router, private userService: UserService) {}
 }
