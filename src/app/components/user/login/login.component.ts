@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { FormsModule, NgForm } from '@angular/forms';
+import { FormsModule } from '@angular/forms';
 import { Router } from '@angular/router';
 import { UserService } from '../../../../shared/services/user.service';
 import { CommonModule } from '@angular/common';
@@ -32,6 +32,10 @@ export class LoginComponent {
     //   },
     // });
     // // this.router.navigate(['/']);
+  }
+
+  navigateToRegister() {
+    this.router.navigate(['/user/register']);
   }
 
   constructor(private router: Router, private userService: UserService) {}
