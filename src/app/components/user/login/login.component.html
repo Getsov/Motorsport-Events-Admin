@@ -19,7 +19,7 @@
       />
       @if(inputEmail.invalid && inputEmail.touched){
       <p class="invalid-message">
-        @if(inputEmail.errors?.['required']){ Полето е задължително за
+        @if(inputEmail.errors?.['required']) { Полето е задължително за
         попълване! } @if(inputEmail.errors?.['pattern']){ Моля въведете валиден
         имейл! }
       </p>
@@ -27,15 +27,34 @@
     </div>
 
     <div class="input-container">
+      <app-label-with-states
+        [forId]="'password'"
+        [inputRef]="inputPassword"
+        [labelText]="'Парола*'"
+      />
+
       <input
         type="password"
-        placeholder="Парола*"
+        [placeholder]="
+          inputPassword.dirty || inputPassword.touched ? '' : 'Парола*'
+        "
         id="password"
         name="password"
         labelPlacement="floating"
         [(ngModel)]="password"
         #inputPassword="ngModel"
+        required
+        minlength="6"
+        maxlength="24"
       />
+      @if(inputPassword.invalid && inputPassword.touched){
+      <p class="invalid-message">
+        @if(inputPassword.errors?.['required']){ Полето е задължително за
+        попълване! } @if(inputPassword.errors?.['minlength']){ Парола трябва да
+        е с дължина поне 6 символа! } @if(inputPassword.errors?.['maxlength']){
+        Паролата трябва да е с максимална дължина 24 символа! }
+      </p>
+      }
     </div>
 
     <div class="buttons">
