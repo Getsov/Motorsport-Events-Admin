@@ -1,18 +1,12 @@
 <section class="login">
   <form class="login-form" #form="ngForm" (ngSubmit)="onLoginSubmit()">
     <div class="input-container">
-      <label
-        [class.dirty-input]="
-          inputEmail.dirty && inputEmail.untouched && inputEmail.invalid
-        "
-        [class.invalid-input]="inputEmail.invalid && inputEmail.touched"
-        [class.valid-input]="inputEmail.valid"
-        [class.hidden]="inputEmail.pristine"
-        class="label-message"
-        for="email"
-      >
-        Имейл*
-      </label>
+      <app-label-with-states
+        [forId]="'email'"
+        [inputRef]="inputEmail"
+        [labelText]="'Имейл*'"
+      />
+
       <input
         type="email"
         [placeholder]="inputEmail.dirty || inputEmail.touched ? '' : 'Имейл*'"
@@ -24,7 +18,7 @@
         pattern="^[a-zA-Z0-9\._+\-]+@[a-zA-Z0-9\.]+\.[a-zA-Z]{2,}$"
       />
       @if(inputEmail.invalid && inputEmail.touched){
-      <p class="label-message invalid-input">Моля въведете валиден имейл!</p>
+      <p class="invalid-message">Моля въведете валиден имейл!</p>
       }
     </div>
 

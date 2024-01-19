@@ -3,11 +3,12 @@ import { FormsModule, NgForm } from '@angular/forms';
 import { Router } from '@angular/router';
 import { UserService } from '../../../../shared/services/user.service';
 import { CommonModule } from '@angular/common';
+import { LabelWithStatesComponent } from '../../../../shared/components/label-with-states/label-with-states.component';
 
 @Component({
   selector: 'app-login',
   standalone: true,
-  imports: [FormsModule, CommonModule],
+  imports: [FormsModule, CommonModule, LabelWithStatesComponent],
   templateUrl: './login.component.html',
   styleUrl: './login.component.scss',
 })
