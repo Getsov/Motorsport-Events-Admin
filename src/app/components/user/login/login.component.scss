@@ -9,6 +9,14 @@
     align-items: center;
     margin: 0 16px;
 
+    .input-container {
+      width: 100%;
+      margin-top: 18px;
+    }
+    .input-container:first-child {
+      margin-top: 0;
+    }
+
     input.ng-dirty {
       border-bottom: 1px solid rgba(255, 116, 24, 1);
       padding-bottom: 7px;
@@ -33,7 +41,14 @@
     }
 
     .input-message.invalid-input {
-      color: red;
+      color: rgba(255, 0, 0, 1);
+    }
+
+    .input-message.dirty-input {
+      color: rgba(255, 116, 24, 1);
+    }
+    .input-message.valid-input {
+      color: rgba(0, 204, 0, 1);
     }
 
     input {
@@ -46,11 +61,6 @@
       font-size: 16px;
       font-weight: 400;
       line-height: 24px;
-      margin-top: 18px;
-    }
-
-    input:first-child {
-      margin-top: 0; /* Remove the margin-top property only from the first input */
     }
   }
 

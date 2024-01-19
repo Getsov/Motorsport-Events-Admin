@@ -1,28 +1,40 @@
 <section class="login">
   <form class="login-form" #form="ngForm" (ngSubmit)="onLoginSubmit()">
-    <input
-      type="email"
-      placeholder="Имейл*"
-      id="email"
-      name="email"
-      [(ngModel)]="email"
-      #inputEmail="ngModel"
-      required
-      pattern="^[a-zA-Z0-9\._+\-]+@[a-zA-Z0-9\.]+\.[a-zA-Z]{2,}$"
-    />
-    @if(inputEmail.invalid && inputEmail.touched){
-    <p class="input-message invalid-input">Моля въведете валиден имейл!</p>
-    }
+    <div class="input-container">
+      @if(inputEmail.dirty && inputEmail.untouched && inputEmail.invalid){
+      <p class="input-message dirty-input">Имейл*</p>
+      } @if(inputEmail.invalid && inputEmail.touched){
+      <p class="input-message invalid-input">Имейл*</p>
+      } @if(inputEmail.valid){
+      <p class="input-message valid-input">Имейл*</p>
+      }
+      <input
+        type="email"
+        placeholder="Имейл*"
+        id="email"
+        name="email"
+        [(ngModel)]="email"
+        #inputEmail="ngModel"
+        required
+        pattern="^[a-zA-Z0-9\._+\-]+@[a-zA-Z0-9\.]+\.[a-zA-Z]{2,}$"
+      />
+      @if(inputEmail.invalid && inputEmail.touched){
+      <p class="input-message invalid-input">Моля въведете валиден имейл!</p>
+      }
+    </div>
 
-    <input
-      type="password"
-      placeholder="Парола*"
-      id="password"
-      name="password"
-      labelPlacement="floating"
-      [(ngModel)]="password"
-      #inputPassword="ngModel"
-    />
+    <div class="input-container">
+      <input
+        type="password"
+        placeholder="Парола*"
+        id="password"
+        name="password"
+        labelPlacement="floating"
+        [(ngModel)]="password"
+        #inputPassword="ngModel"
+      />
+    </div>
+
     <div class="buttons">
       <a>Регистрирай се като организатор</a>
       <button>Вход</button>
