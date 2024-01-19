@@ -18,7 +18,11 @@
         pattern="^[a-zA-Z0-9\._+\-]+@[a-zA-Z0-9\.]+\.[a-zA-Z]{2,}$"
       />
       @if(inputEmail.invalid && inputEmail.touched){
-      <p class="invalid-message">Моля въведете валиден имейл!</p>
+      <p class="invalid-message">
+        @if(inputEmail.errors?.['required']){ Полето е задължително за
+        попълване! } @if(inputEmail.errors?.['pattern']){ Моля въведете валиден
+        имейл! }
+      </p>
       }
     </div>
 
