@@ -1,16 +1,21 @@
 <section class="login">
   <form class="login-form" #form="ngForm" (ngSubmit)="onLoginSubmit()">
     <div class="input-container">
-      @if(inputEmail.dirty && inputEmail.untouched && inputEmail.invalid){
-      <p class="input-message dirty-input">Имейл*</p>
-      } @if(inputEmail.invalid && inputEmail.touched){
-      <p class="input-message invalid-input">Имейл*</p>
-      } @if(inputEmail.valid){
-      <p class="input-message valid-input">Имейл*</p>
-      }
+      <label
+        [class.dirty-input]="
+          inputEmail.dirty && inputEmail.untouched && inputEmail.invalid
+        "
+        [class.invalid-input]="inputEmail.invalid && inputEmail.touched"
+        [class.valid-input]="inputEmail.valid"
+        [class.hidden]="inputEmail.pristine"
+        class="label-message"
+        for="email"
+      >
+        Имейл*
+      </label>
       <input
         type="email"
-        placeholder="Имейл*"
+        [placeholder]="inputEmail.pristine ? 'Имейл*' : ''"
         id="email"
         name="email"
         [(ngModel)]="email"
@@ -19,7 +24,7 @@
         pattern="^[a-zA-Z0-9\._+\-]+@[a-zA-Z0-9\.]+\.[a-zA-Z]{2,}$"
       />
       @if(inputEmail.invalid && inputEmail.touched){
-      <p class="input-message invalid-input">Моля въведете валиден имейл!</p>
+      <p class="label-message invalid-input">Моля въведете валиден имейл!</p>
       }
     </div>
 
