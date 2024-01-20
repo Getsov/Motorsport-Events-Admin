@@ -1,5 +1,5 @@
 import { CommonModule } from '@angular/common';
-import { Component, OnInit } from '@angular/core';
+import { Component, effect } from '@angular/core';
 import { RouterLink, RouterLinkActive } from '@angular/router';
 import { AuthService } from '../../../../shared/services/auth.service';
 import { User } from '../../../../shared/interfaces/User';
@@ -11,7 +11,7 @@ import { User } from '../../../../shared/interfaces/User';
   styleUrl: './header.component.scss',
   imports: [RouterLink, RouterLinkActive, CommonModule],
 })
-export class HeaderComponent implements OnInit {
+export class HeaderComponent {
   isMenuOpen: boolean = false;
   currentUser: User | undefined;
 
@@ -19,7 +19,9 @@ export class HeaderComponent implements OnInit {
     this.isMenuOpen = !this.isMenuOpen;
   }
 
-  constructor(private authService: AuthService) {}
-
-  ngOnInit(): void {}
+  constructor(private authService: AuthService) {
+    effect(() => {
+      this.currentUser = this.authService.currentUser();
+    });
+  }
 }

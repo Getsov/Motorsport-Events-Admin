@@ -7,6 +7,7 @@
     />
     <nav class="navbar" [ngClass]="{ open: isMenuOpen, close: !isMenuOpen }">
       <ul role="list" class="navbar">
+        @if(currentUser){
         <li>
           <a
             routerLink="/awaiting-approval"
@@ -50,20 +51,22 @@
         </li>
         <li>
           <a
+            href="/logout"
+            routerLinkActive="activebutton"
+            ariaCurrentWhenActive="page"
+            >Изход</a
+          >
+        </li>
+        }@else {
+        <li>
+          <a
             routerLink="user/login"
             routerLinkActive="activebutton"
             ariaCurrentWhenActive="page"
             >Вход</a
           >
         </li>
-        <li>
-          <a
-            href="/"
-            routerLinkActive="activebutton"
-            ariaCurrentWhenActive="page"
-            >Изход</a
-          >
-        </li>
+        }
       </ul>
     </nav>
     <div

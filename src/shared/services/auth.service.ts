@@ -21,6 +21,7 @@ export class AuthService implements OnDestroy {
       const localStorageData = JSON.parse(localStorageItem);
       this.accessToken = localStorageData.accessToken;
       this.userId = localStorageData._id;
+      this.setUser(this.accessToken, this.userId);
     }
   }
 
