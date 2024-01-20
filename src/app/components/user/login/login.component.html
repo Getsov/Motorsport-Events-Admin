@@ -59,7 +59,7 @@
 
     <div class="buttons">
       <a (click)="navigateToRegister()">Регистрирай се като организатор</a>
-      <button>Вход</button>
+      <button [disabled]="form.invalid || form.pristine">Вход</button>
     </div>
   </form>
   <p class="forgotten" (click)="navigateToForgotten()">Забравена парола</p>
