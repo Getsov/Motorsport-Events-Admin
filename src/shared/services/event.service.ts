@@ -4,7 +4,7 @@ import { environment } from '../../enviroments/enviroment';
 import { Observable, Subscription } from 'rxjs';
 import { Event } from '../interfaces/Event';
 import { getOptions } from '../utils/http-utils';
-import { UserService } from './user.service';
+import { AuthService } from './auth.service';
 
 const { baseUrl } = environment;
 
@@ -13,8 +13,9 @@ const { baseUrl } = environment;
 })
 export class EventService {
   accessToken: string = '';
-  constructor(private http: HttpClient, private userService: UserService) {
-    this.accessToken = this.userService.accessToken;
+
+  constructor(private http: HttpClient, private authService: AuthService) {
+    this.accessToken = this.authService.accessToken;
   }
 
   // API CALLS------

@@ -4,6 +4,7 @@ import { Observable, Subscription } from 'rxjs';
 import { environment } from '../../enviroments/enviroment';
 import { User } from '../interfaces/User';
 import { getOptions } from '../utils/http-utils';
+import { AuthService } from './auth.service';
 
 const { baseUrl } = environment;
 
@@ -13,13 +14,8 @@ const { baseUrl } = environment;
 export class UserService {
   accessToken: string = '';
 
-  constructor(private http: HttpClient) {
-    const localStorageItem = localStorage.getItem('MotorSportsUser') || '';
-
-    if (localStorageItem) {
-      const localStorageData = JSON.parse(localStorageItem);
-      this.accessToken = localStorageData.accessToken;
-    }
+  constructor(private http: HttpClient, private authService: AuthService) {
+    this.accessToken = this.authService.accessToken;
   }
 
   //  API CALLS ----------
@@ -47,15 +43,6 @@ export class UserService {
     const options = getOptions(accessToken);
 
     return this.http.get<User>(`${baseUrl}/user/getUserById/${_id}`, options);
-  }
-
-  login(email: string, password: string): Observable<any> {
-    const body = {
-      email,
-      password,
-    };
-
-    return this.http.post(`${baseUrl}/user/login`, body);
   }
 
   // API CALS END-----

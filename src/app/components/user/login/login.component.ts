@@ -1,9 +1,9 @@
 import { Component } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { Router } from '@angular/router';
-import { UserService } from '../../../../shared/services/user.service';
 import { CommonModule } from '@angular/common';
 import { LabelWithStatesComponent } from '../../../../shared/components/label-with-states/label-with-states.component';
+import { AuthService } from '../../../../shared/services/auth.service';
 
 @Component({
   selector: 'app-login',
@@ -17,7 +17,7 @@ export class LoginComponent {
   password: string = '';
 
   onLoginSubmit() {
-    this.userService.login(this.email, this.password).subscribe({
+    this.authService.login(this.email, this.password).subscribe({
       next: (response) => {
         const userDetails = {
           accessToken: response.accessToken,
@@ -42,5 +42,5 @@ export class LoginComponent {
     this.router.navigate(['/user/forgotten-password']);
   }
 
-  constructor(private router: Router, private userService: UserService) {}
+  constructor(private router: Router, private authService: AuthService) {}
 }
