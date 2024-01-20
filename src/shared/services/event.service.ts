@@ -12,18 +12,12 @@ const { baseUrl } = environment;
   providedIn: 'root',
 })
 export class EventService {
-  accessToken: string = '';
-
-  constructor(private http: HttpClient, private authService: AuthService) {
-    this.accessToken = this.authService.accessToken;
-  }
+  constructor(private http: HttpClient, private authService: AuthService) {}
 
   // API CALLS------
 
   getEventsForApproval(): Observable<Event[]> {
-    // Login from postman and set your access token from enviroment. We dont have login yet.
-    const options = getOptions(this.accessToken);
-    console.log(options);
+    const options = getOptions(this.authService.accessToken);
 
     return this.http.get<Event[]>(
       `${baseUrl}/events/eventsForApproval`,
@@ -32,7 +26,7 @@ export class EventService {
   }
 
   getEventDetails(eventId: string): Observable<Event> {
-    const options = getOptions(this.accessToken);
+    const options = getOptions(this.authService.accessToken);
 
     return this.http.get<Event>(`${baseUrl}/events/${eventId}`, options);
   }
@@ -41,7 +35,7 @@ export class EventService {
     eventId: string,
     updatedStatus: Object
   ): Observable<object> {
-    const options = getOptions(this.accessToken);
+    const options = getOptions(this.authService.accessToken);
 
     return this.http.put(
       `${baseUrl}/events/approveDisapproveEvent/${eventId}`,
@@ -51,7 +45,7 @@ export class EventService {
   }
 
   deleteEvent(eventId: string, updatedStatus: Object): Observable<object> {
-    const options = getOptions(this.accessToken);
+    const options = getOptions(this.authService.accessToken);
 
     return this.http.put(
       `${baseUrl}/events/deleteRestoreEvent/${eventId} `,

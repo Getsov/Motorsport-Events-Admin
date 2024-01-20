@@ -26,7 +26,9 @@ export class LoginComponent {
         this.email = '';
         this.password = '';
         localStorage.setItem('MotorSportsUser', JSON.stringify(userDetails));
-        this.router.navigate(['/']);
+        this.authService.setUser(userDetails.accessToken, userDetails._id);
+        this.authService.accessToken = userDetails.accessToken;
+        this.router.navigate(['/awaiting-approval']);
       },
       error: (error) => {
         error.message;
