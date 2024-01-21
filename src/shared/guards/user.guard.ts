@@ -12,7 +12,7 @@ import { AuthService } from '../services/auth.service';
 @Injectable({
   providedIn: 'root',
 })
-export class AuthGuard implements CanActivate {
+export class UserGuard implements CanActivate {
   constructor(private authService: AuthService, private router: Router) {}
 
   canActivate(
@@ -24,10 +24,9 @@ export class AuthGuard implements CanActivate {
     | Observable<boolean | UrlTree>
     | Promise<boolean | UrlTree> {
     if (!!this.authService.userDetails.accessToken) {
-      return true;
+      return this.router.navigateByUrl('/');
     } else {
-      // Navigate to the login page or another unauthorized page
-      return this.router.navigateByUrl('user/login');
+      return true;
     }
   }
 }

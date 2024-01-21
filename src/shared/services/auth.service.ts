@@ -39,6 +39,7 @@ export class AuthService implements OnDestroy {
 
   logout(): void {
     localStorage.clear();
+    this.userDetails = {};
     this.currentUser.update((state) => undefined);
   }
 
