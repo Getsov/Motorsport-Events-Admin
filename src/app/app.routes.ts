@@ -27,13 +27,13 @@ import { OrganizerEventsComponent } from './components/organizer-events/organize
 import { NotApprovedComponent } from './components/organizer-events/not-approved/not-approved.component';
 import { UpcomingApprovedComponent } from './components/organizer-events/upcoming-approved/upcoming-approved.component';
 import { PastApprovedComponent } from './components/organizer-events/past-approved/past-approved.component';
-import { OrganizerGuard } from '../shared/guards/organizator.guard';
+import { AdminGuard } from '../shared/guards/admin.guard';
 
 export const routes: Routes = [
   {
     path: 'awaiting-approval',
     component: AwaitingApprovalComponent,
-    canActivate: [OrganizerGuard],
+    canActivate: [AdminGuard],
     children: [
       { path: '', redirectTo: 'awaiting-events', pathMatch: 'full' },
       { path: 'awaiting-events', component: AwaitingEventsComponent },
@@ -44,7 +44,7 @@ export const routes: Routes = [
   {
     path: 'events',
     component: EventsComponent,
-    canActivate: [OrganizerGuard],
+    canActivate: [AdminGuard],
     children: [
       { path: '', redirectTo: 'upcoming-events', pathMatch: 'full' },
       { path: 'upcoming-events', component: UpcomingEventsComponent },
@@ -54,7 +54,7 @@ export const routes: Routes = [
   {
     path: 'accounts',
     component: AccountsComponent,
-    canActivate: [OrganizerGuard],
+    canActivate: [AdminGuard],
     children: [
       { path: '', redirectTo: 'admin-accounts', pathMatch: 'full' },
       { path: 'admin-accounts', component: AdminAccountsComponent },

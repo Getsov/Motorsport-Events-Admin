@@ -12,7 +12,7 @@ import { AuthService } from '../services/auth.service';
 @Injectable({
   providedIn: 'root',
 })
-export class OrganizerGuard implements CanActivate {
+export class AdminGuard implements CanActivate {
   constructor(private authService: AuthService, private router: Router) {}
 
   canActivate(
@@ -23,7 +23,7 @@ export class OrganizerGuard implements CanActivate {
     | UrlTree
     | Observable<boolean | UrlTree>
     | Promise<boolean | UrlTree> {
-    if (this.authService.userDetails.role === 'organizer') {
+    if (this.authService.userDetails.userRole === 'admin') {
       return true;
     } else {
       return this.router.navigateByUrl('/organizer-events');
