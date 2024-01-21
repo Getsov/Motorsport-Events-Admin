@@ -28,7 +28,6 @@ import { NotApprovedComponent } from './components/organizer-events/not-approved
 import { UpcomingApprovedComponent } from './components/organizer-events/upcoming-approved/upcoming-approved.component';
 import { PastApprovedComponent } from './components/organizer-events/past-approved/past-approved.component';
 import { AdminGuard } from '../shared/guards/admin.guard';
-import { OrganizerGuard } from '../shared/guards/organizator.guard';
 
 export const routes: Routes = [
   {
@@ -114,7 +113,7 @@ export const routes: Routes = [
   {
     path: 'organizer-events',
     component: OrganizerEventsComponent,
-    canActivate: [OrganizerGuard],
+    canActivate: [AuthGuard],
     children: [
       { path: '', redirectTo: 'not-approved', pathMatch: 'full' },
       { path: 'not-approved', component: NotApprovedComponent },
