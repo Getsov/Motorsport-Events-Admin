@@ -24,9 +24,9 @@ export class OrganizerGuard implements CanActivate {
     | Observable<boolean | UrlTree>
     | Promise<boolean | UrlTree> {
     if (this.authService.userDetails.role === 'organizer') {
-      return this.router.navigateByUrl('/');
-    } else {
       return true;
+    } else {
+      return this.router.navigateByUrl('/organizer-events');
     }
   }
 }

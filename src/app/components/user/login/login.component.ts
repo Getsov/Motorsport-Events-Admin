@@ -24,6 +24,10 @@ export class LoginComponent {
           _id: response._id,
           userRole: response.role,
         };
+        // TODO: Add error popup then the popups are ready(regular users cannot login)
+        if (userDetails.userRole === 'regular') {
+          return;
+        }
 
         localStorage.setItem('MotorSportsUser', JSON.stringify(userDetails));
         this.authService.setUser(userDetails.accessToken, userDetails._id);
