@@ -12,12 +12,15 @@ const { baseUrl } = environment;
   providedIn: 'root',
 })
 export class UserService {
-  constructor(private http: HttpClient, private authService: AuthService) {}
+  accessToken: string = '';
+  constructor(private http: HttpClient, private authService: AuthService) {
+    this.accessToken = this.authService.userDetails.accessToken;
+  }
 
   //  API CALLS ----------
   getOrganizersForApproval(): Observable<User[]> {
     // Login from postman and set your access token from enviroment. We dont have login yet.
-    const options = getOptions(this.authService.accessToken);
+    const options = getOptions(this.accessToken);
 
     return this.http.get<User[]>(
       `${baseUrl}/user/getAllOrganizersForApproval`,
@@ -27,7 +30,7 @@ export class UserService {
 
   getAdminsForApproval(): Observable<User[]> {
     // Login from postman and set your access token from enviroment. We dont have login yet.
-    const options = getOptions(this.authService.accessToken);
+    const options = getOptions(this.accessToken);
 
     return this.http.get<User[]>(
       `${baseUrl}/user/getAllAdminsForApproval`,
@@ -36,7 +39,7 @@ export class UserService {
   }
 
   getUser(accessToken: string, _id: string) {
-    const options = getOptions(this.authService.accessToken);
+    const options = getOptions(this.accessToken);
 
     return this.http.get<User>(`${baseUrl}/user/getUserById/${_id}`, options);
   }

@@ -22,6 +22,7 @@ import { LoginComponent } from './components/user/login/login.component';
 import { AwaitingAdminsComponent } from './components/awaiting-approval/awaiting-admins/awaiting-admins.component';
 import { ForgottenPasswordComponent } from './components/user/forgotten-password/forgotten-password.component';
 import { AuthGuard } from '../shared/guards/auth.guard';
+import { UserGuard } from '../shared/guards/user.guard';
 
 export const routes: Routes = [
   {
@@ -61,8 +62,12 @@ export const routes: Routes = [
     component: UserComponent,
     children: [
       { path: '', redirectTo: 'register', pathMatch: 'full' },
-      { path: 'register', component: RegisterComponent },
-      { path: 'login', component: LoginComponent },
+      {
+        path: 'register',
+        component: RegisterComponent,
+        canActivate: [UserGuard],
+      },
+      { path: 'login', component: LoginComponent, canActivate: [UserGuard] },
       {
         path: 'forgotten-password',
         component: ForgottenPasswordComponent,

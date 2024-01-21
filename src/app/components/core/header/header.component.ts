@@ -19,7 +19,7 @@ export class HeaderComponent {
     this.isMenuOpen = !this.isMenuOpen;
   }
 
-  constructor(private authService: AuthService) {
+  constructor(public authService: AuthService) {
     effect(() => {
       this.currentUser = this.authService.currentUser();
     });

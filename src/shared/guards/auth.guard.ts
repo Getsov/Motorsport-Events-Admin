@@ -13,12 +13,7 @@ import { AuthService } from '../services/auth.service';
   providedIn: 'root',
 })
 export class AuthGuard implements CanActivate {
-  hasUser: boolean = false;
-  constructor(private authService: AuthService, private router: Router) {
-    effect(() => {
-      this.hasUser = this.authService.currentUser === undefined ? false : true;
-    });
-  }
+  constructor(private authService: AuthService, private router: Router) {}
 
   canActivate(
     next: ActivatedRouteSnapshot,
@@ -28,15 +23,9 @@ export class AuthGuard implements CanActivate {
     | UrlTree
     | Observable<boolean | UrlTree>
     | Promise<boolean | UrlTree> {
-    if (this.hasUser) {
-      console.log('pass');
-
+    if (!!this.authService.userDetails.accessToken) {
       return true;
     } else {
-      console.log();
-
-      console.log('denny');
-
       // Navigate to the login page or another unauthorized page
       return this.router.navigateByUrl('user/login');
     }
