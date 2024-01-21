@@ -24,7 +24,6 @@ export class OrganizerGuard implements CanActivate {
     | Observable<boolean | UrlTree>
     | Promise<boolean | UrlTree> {
     if (this.authService.userDetails.userRole === 'organizer') {
-      console.log(this.authService.userDetails.userRole);
       return true;
     } else {
       return this.router.navigateByUrl('/');
