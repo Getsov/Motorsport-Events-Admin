@@ -23,6 +23,10 @@ import { AwaitingAdminsComponent } from './components/awaiting-approval/awaiting
 import { ForgottenPasswordComponent } from './components/user/forgotten-password/forgotten-password.component';
 import { AuthGuard } from '../shared/guards/auth.guard';
 import { UserGuard } from '../shared/guards/user.guard';
+import { OrganizerEventsComponent } from './components/organizer-events/organizer-events.component';
+import { NotApprovedComponent } from './components/organizer-events/not-approved/not-approved.component';
+import { UpcomingApprovedComponent } from './components/organizer-events/upcoming-approved/upcoming-approved.component';
+import { PastApprovedComponent } from './components/organizer-events/past-approved/past-approved.component';
 
 export const routes: Routes = [
   {
@@ -103,6 +107,17 @@ export const routes: Routes = [
       { path: 'create', component: CreateEventComponent },
       { path: ':eventId/edit', component: EditEventComponent },
       { path: ':eventId/details', component: EventDetailsComponent },
+    ],
+  },
+  {
+    path: 'organizer-events',
+    component: OrganizerEventsComponent,
+    canActivate: [AuthGuard],
+    children: [
+      { path: '', redirectTo: 'not-approved', pathMatch: 'full' },
+      { path: 'not-approved', component: NotApprovedComponent },
+      { path: 'upcoming-approved', component: UpcomingApprovedComponent },
+      { path: 'past-approved', component: PastApprovedComponent },
     ],
   },
 
