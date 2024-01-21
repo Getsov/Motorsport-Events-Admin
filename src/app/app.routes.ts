@@ -21,14 +21,17 @@ import { RegisterComponent } from './components/user/register/register.component
 import { LoginComponent } from './components/user/login/login.component';
 import { AwaitingAdminsComponent } from './components/awaiting-approval/awaiting-admins/awaiting-admins.component';
 import { ForgottenPasswordComponent } from './components/user/forgotten-password/forgotten-password.component';
-import { AuthGuard } from '../shared/guards/auth.guard';
-import { UserGuard } from '../shared/guards/user.guard';
+import {
+  isLoggedInGuard,
+  isLoggedOutGuard,
+  isOrganizerGuard,
+} from '../shared/guards/auth.guard';
 
 export const routes: Routes = [
   {
     path: 'awaiting-approval',
     component: AwaitingApprovalComponent,
-    canActivate: [AuthGuard],
+    canActivate: [isLoggedInGuard],
     children: [
       { path: '', redirectTo: 'awaiting-events', pathMatch: 'full' },
       { path: 'awaiting-events', component: AwaitingEventsComponent },
@@ -39,7 +42,7 @@ export const routes: Routes = [
   {
     path: 'events',
     component: EventsComponent,
-    canActivate: [AuthGuard],
+    canActivate: [isLoggedInGuard],
     children: [
       { path: '', redirectTo: 'upcoming-events', pathMatch: 'full' },
       { path: 'upcoming-events', component: UpcomingEventsComponent },
@@ -49,7 +52,7 @@ export const routes: Routes = [
   {
     path: 'accounts',
     component: AccountsComponent,
-    canActivate: [AuthGuard],
+    canActivate: [isLoggedInGuard],
     children: [
       { path: '', redirectTo: 'admin-accounts', pathMatch: 'full' },
       { path: 'admin-accounts', component: AdminAccountsComponent },
@@ -65,35 +68,39 @@ export const routes: Routes = [
       {
         path: 'register',
         component: RegisterComponent,
-        canActivate: [UserGuard],
+        canActivate: [isLoggedOutGuard],
       },
-      { path: 'login', component: LoginComponent, canActivate: [UserGuard] },
+      {
+        path: 'login',
+        component: LoginComponent,
+        canActivate: [isLoggedOutGuard],
+      },
       {
         path: 'forgotten-password',
         component: ForgottenPasswordComponent,
-        canActivate: [AuthGuard],
+        canActivate: [isLoggedInGuard],
       },
       {
         path: ':userId/profile',
         component: ProfileComponent,
-        canActivate: [AuthGuard],
+        canActivate: [isLoggedInGuard],
       },
       {
         path: ':userId/details',
         component: UserDetailsComponent,
-        canActivate: [AuthGuard],
+        canActivate: [isLoggedInGuard],
       },
       {
         path: ':userId/edit',
         component: EditProfileComponent,
-        canActivate: [AuthGuard],
+        canActivate: [isLoggedInGuard],
       },
     ],
   },
   {
     path: 'event',
     component: EventComponent,
-    canActivate: [AuthGuard],
+    canActivate: [isLoggedInGuard],
     children: [
       { path: '', redirectTo: 'create', pathMatch: 'full' },
       { path: 'create', component: CreateEventComponent },
