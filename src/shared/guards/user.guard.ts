@@ -24,7 +24,8 @@ export class UserGuard implements CanActivate {
     | Observable<boolean | UrlTree>
     | Promise<boolean | UrlTree> {
     if (!!this.authService.userDetails.accessToken) {
-      return this.router.navigateByUrl('/');
+      this.router.navigateByUrl('/');
+      return false;
     } else {
       return true;
     }

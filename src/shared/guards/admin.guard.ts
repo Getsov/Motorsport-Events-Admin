@@ -26,7 +26,8 @@ export class AdminGuard implements CanActivate {
     if (this.authService.userDetails.userRole === 'admin') {
       return true;
     } else {
-      return this.router.navigateByUrl('/');
+      this.router.navigateByUrl('/organizer-events');
+      return false;
     }
   }
 }

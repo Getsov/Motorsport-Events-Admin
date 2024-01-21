@@ -26,7 +26,8 @@ export class OrganizerGuard implements CanActivate {
     if (this.authService.userDetails.userRole === 'organizer') {
       return true;
     } else {
-      return this.router.navigateByUrl('/');
+      this.router.navigateByUrl('/awaiting-approval');
+      return false;
     }
   }
 }
