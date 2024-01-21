@@ -1,11 +1,44 @@
-import { inject } from '@angular/core';
-import { ActivatedRouteSnapshot, RouterStateSnapshot } from '@angular/router';
+import { Injectable, effect } from '@angular/core';
+import {
+  CanActivate,
+  ActivatedRouteSnapshot,
+  RouterStateSnapshot,
+  UrlTree,
+  Router,
+} from '@angular/router';
+import { Observable } from 'rxjs';
 import { AuthService } from '../services/auth.service';
 
-export const isLoggedInGuard = (
-  route: ActivatedRouteSnapshot,
-  state: RouterStateSnapshot
-) => {
-  const auth = inject(AuthService);
-  return auth.currentUser() === undefined ? false : true;
-};
+@Injectable({
+  providedIn: 'root',
+})
+export class AuthGuard implements CanActivate {
+  hasUser: boolean = false;
+  constructor(private authService: AuthService, private router: Router) {
+    effect(() => {
+      this.hasUser = this.authService.currentUser === undefined ? false : true;
+    });
+  }
+
+  canActivate(
+    next: ActivatedRouteSnapshot,
+    state: RouterStateSnapshot
+  ):
+    | boolean
+    | UrlTree
+    | Observable<boolean | UrlTree>
+    | Promise<boolean | UrlTree> {
+    if (this.hasUser) {
+      console.log('pass');
+
+      return true;
+    } else {
+      console.log();
+
+      console.log('denny');
+
+      // Navigate to the login page or another unauthorized page
+      return this.router.navigateByUrl('user/login');
+    }
+  }
+}
