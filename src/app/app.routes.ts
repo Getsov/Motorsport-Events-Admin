@@ -33,7 +33,7 @@ export const routes: Routes = [
   {
     path: 'awaiting-approval',
     component: AwaitingApprovalComponent,
-    canActivate: [AuthGuard, OrganizerGuard],
+    canActivate: [OrganizerGuard],
     children: [
       { path: '', redirectTo: 'awaiting-events', pathMatch: 'full' },
       { path: 'awaiting-events', component: AwaitingEventsComponent },
@@ -44,7 +44,7 @@ export const routes: Routes = [
   {
     path: 'events',
     component: EventsComponent,
-    canActivate: [AuthGuard, OrganizerGuard],
+    canActivate: [OrganizerGuard],
     children: [
       { path: '', redirectTo: 'upcoming-events', pathMatch: 'full' },
       { path: 'upcoming-events', component: UpcomingEventsComponent },
@@ -54,7 +54,7 @@ export const routes: Routes = [
   {
     path: 'accounts',
     component: AccountsComponent,
-    canActivate: [AuthGuard, OrganizerGuard],
+    canActivate: [OrganizerGuard],
     children: [
       { path: '', redirectTo: 'admin-accounts', pathMatch: 'full' },
       { path: 'admin-accounts', component: AdminAccountsComponent },
@@ -80,7 +80,7 @@ export const routes: Routes = [
       {
         path: 'forgotten-password',
         component: ForgottenPasswordComponent,
-        canActivate: [UserGuard],
+        canActivate: [AuthGuard],
       },
       {
         path: ':userId/profile',
