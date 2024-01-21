@@ -55,7 +55,13 @@ export class AuthService implements OnDestroy {
         next: (response) => {
           const currentUser = response as User;
           this.currentUser.update((state) => currentUser);
-          this.userDetails.userRole = currentUser.role;
+          const updatedData = {
+            accessToken,
+            userRole: currentUser.role,
+            _id: currentUser._id,
+          };
+          this.userDetails = updatedData;
+          localStorage.setItem('MotorSportsUser', JSON.stringify(updatedData));
         },
         error: (error) => {
           console.log(error.message);
