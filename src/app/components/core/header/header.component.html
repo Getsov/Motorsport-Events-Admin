@@ -7,6 +7,7 @@
     />
     <nav class="navbar" [ngClass]="{ open: isMenuOpen, close: !isMenuOpen }">
       <ul role="list" class="navbar">
+        @if(currentUser){
         <li>
           <a
             routerLink="/awaiting-approval"
@@ -39,6 +40,7 @@
             >Акаунти</a
           >
         </li>
+        <!-- TODO: ADD USER ID HERE -->
         <li>
           <a
             routerLink="user/654654/profile"
@@ -47,15 +49,32 @@
             >Профил</a
           >
         </li>
-        <!-- TODO: LOGOUT -->
         <li>
           <a
-            href="/"
+            href="/logout"
             routerLinkActive="activebutton"
             ariaCurrentWhenActive="page"
             >Изход</a
           >
         </li>
+        }@else {
+        <li>
+          <a
+            routerLink="user/login"
+            routerLinkActive="activebutton"
+            ariaCurrentWhenActive="page"
+            >Вход</a
+          >
+        </li>
+        <li>
+          <a
+            routerLink="user/register"
+            routerLinkActive="activebutton"
+            ariaCurrentWhenActive="page"
+            >Регистрация</a
+          >
+        </li>
+        }
       </ul>
     </nav>
     <div

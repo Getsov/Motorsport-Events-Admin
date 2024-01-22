@@ -9,53 +9,55 @@
   position: relative;
   z-index: 0;
 
-  .event-img {
-    margin: 0 auto;
-    border-radius: 4px;
-    height: 168px;
-    object-fit: contain;
-    color: white;
-  }
+  .content {
+    text-align: left;
 
-  h3 {
-    margin-top: 8px;
-    font-family: "Open Sans";
-    font-size: 16px;
-    font-style: normal;
-    font-weight: 500;
-    line-height: 24px;
-  }
-
-  p {
-    margin-left: 4px;
-    font-size: 12px;
-    font-style: normal;
-    font-weight: 500;
-    line-height: 18px;
-  }
-
-  .contacts {
-    margin-top: 4px;
-
-    p,
-    img {
-      display: inline-block;
+    .event-img {
+      margin: 0 auto;
+      border-radius: 4px;
+      height: 168px;
+      object-fit: contain;
+      color: white;
     }
-  }
 
-  .dates {
-    margin-top: 4px;
-
-    p,
-    img {
-      display: inline-block;
+    h3 {
+      margin-top: 8px;
+      font-family: "Open Sans";
+      font-size: 16px;
+      font-style: normal;
+      font-weight: 500;
+      line-height: 24px;
     }
-  }
 
-  .description {
-    margin-top: 4px;
-    color: #c2bfbe;
-    margin-bottom: auto;
+    p {
+      margin-left: 4px;
+      font-size: 12px;
+      font-style: normal;
+      font-weight: 500;
+      line-height: 18px;
+    }
+
+    .contacts {
+      margin-top: 4px;
+
+      p,
+      img {
+        display: inline-block;
+      }
+    }
+
+    .dates {
+      p,
+      img {
+        display: inline-block;
+      }
+    }
+
+    .description {
+      margin-top: 4px;
+      color: #c2bfbe;
+      margin-bottom: auto;
+    }
   }
 
   .buttons {

@@ -1,6 +1,8 @@
 import { CommonModule } from '@angular/common';
-import { Component } from '@angular/core';
+import { Component, effect } from '@angular/core';
 import { RouterLink, RouterLinkActive } from '@angular/router';
+import { AuthService } from '../../../../shared/services/auth.service';
+import { User } from '../../../../shared/interfaces/User';
 
 @Component({
   selector: 'app-header',
@@ -10,11 +12,16 @@ import { RouterLink, RouterLinkActive } from '@angular/router';
   imports: [RouterLink, RouterLinkActive, CommonModule],
 })
 export class HeaderComponent {
-  // Add hamburger menu styles. (the design is not finished)
-
-  isMenuOpen = false;
+  isMenuOpen: boolean = false;
+  currentUser: User | undefined;
 
   toggleMenu() {
     this.isMenuOpen = !this.isMenuOpen;
+  }
+
+  constructor(private authService: AuthService) {
+    effect(() => {
+      this.currentUser = this.authService.currentUser();
+    });
   }
 }

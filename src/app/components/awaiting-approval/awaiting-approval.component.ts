@@ -3,7 +3,6 @@ import { RouterOutlet } from '@angular/router';
 import { SectionNavComponent } from '../../../shared/components/section-nav/section-nav.component';
 import { EventService } from '../../../shared/services/event.service';
 import { UserService } from '../../../shared/services/user.service';
-import { Subscription } from 'rxjs';
 
 @Component({
   selector: 'app-awaiting-approval',
@@ -12,7 +11,7 @@ import { Subscription } from 'rxjs';
   templateUrl: './awaiting-approval.component.html',
   styleUrl: './awaiting-approval.component.scss',
 })
-export class AwaitingApprovalComponent implements OnInit, OnDestroy {
+export class AwaitingApprovalComponent {
   hasEventsForApproval: boolean = this.eventService.hasEventsForApproval;
   hasOrganizersForApprove: boolean = this.userService.hasOrganizersForapproval;
 
@@ -31,24 +30,8 @@ export class AwaitingApprovalComponent implements OnInit, OnDestroy {
     },
   ];
 
-  subscriptions: Subscription[] = [];
-
   constructor(
     private eventService: EventService,
     private userService: UserService
   ) {}
-
-  ngOnInit() {
-    this.subscriptions.push(
-      this.eventService.setEventsForApprove(),
-      this.userService.setOrganizersForApprove(),
-      this.userService.setAdminsForApprove()
-    );
-  }
-
-  ngOnDestroy(): void {
-    this.subscriptions.forEach((subscription) => {
-      subscription.unsubscribe();
-    });
-  }
 }

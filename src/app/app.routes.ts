@@ -20,6 +20,7 @@ import { EventComponent } from './components/event/event.component';
 import { RegisterComponent } from './components/user/register/register.component';
 import { LoginComponent } from './components/user/login/login.component';
 import { AwaitingAdminsComponent } from './components/awaiting-approval/awaiting-admins/awaiting-admins.component';
+import { ForgottenPasswordComponent } from './components/user/forgotten-password/forgotten-password.component';
 
 export const routes: Routes = [
   {
@@ -58,6 +59,7 @@ export const routes: Routes = [
       { path: '', redirectTo: 'register', pathMatch: 'full' },
       { path: 'register', component: RegisterComponent },
       { path: 'login', component: LoginComponent },
+      { path: 'forgotten-password', component: ForgottenPasswordComponent },
       { path: ':userId/profile', component: ProfileComponent },
       { path: ':userId/details', component: UserDetailsComponent },
       { path: ':userId/edit', component: EditProfileComponent },
