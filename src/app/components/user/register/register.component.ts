@@ -14,10 +14,12 @@ export class RegisterComponent {
   registerData = {
     email: '',
     password: '',
-    rePassword: '',
+    repassword: '',
     firstName: '',
-    phoner: '',
+    phone: '',
     region: '',
     role: 'organizer',
   };
+
+  onRegisterSubmit() {}
 }

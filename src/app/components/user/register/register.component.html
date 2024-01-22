@@ -1,1 +1,146 @@
-<p>register works!</p>
+<section class="register">
+  <form class="login-form" #form="ngForm" (ngSubmit)="onRegisterSubmit()">
+    <div class="input-container">
+      <app-label-with-states
+        [forId]="'email'"
+        [inputRef]="inputEmail"
+        [labelText]="'Имейл*'"
+      />
+
+      <input
+        type="email"
+        [placeholder]="inputEmail.dirty || inputEmail.touched ? '' : 'Имейл*'"
+        id="email"
+        name="email"
+        [(ngModel)]="registerData.email"
+        #inputEmail="ngModel"
+        required
+        pattern="^[a-zA-Z0-9\._+\-]+@[a-zA-Z0-9\.]+\.[a-zA-Z]{2,}$"
+      />
+      @if(inputEmail.invalid && inputEmail.touched){
+      <p class="invalid-message">
+        @if(inputEmail.errors?.['required']) { Полето е задължително за
+        попълване! } @if(inputEmail.errors?.['pattern']){ Моля въведете валиден
+        имейл! }
+      </p>
+      }
+    </div>
+
+    <div class="input-container">
+      <app-label-with-states
+        [forId]="'password'"
+        [inputRef]="inputPassword"
+        [labelText]="'Парола*'"
+      />
+
+      <input
+        type="password"
+        [placeholder]="
+          inputPassword.dirty || inputPassword.touched ? '' : 'Парола*'
+        "
+        id="password"
+        name="password"
+        labelPlacement="floating"
+        [(ngModel)]="registerData.password"
+        #inputPassword="ngModel"
+        required
+        minlength="6"
+        maxlength="24"
+      />
+      @if(inputPassword.invalid && inputPassword.touched){
+      <p class="invalid-message">
+        @if(inputPassword.errors?.['required']){ Полето е задължително за
+        попълване! } @if(inputPassword.errors?.['minlength']){ Парола трябва да
+        е с дължина поне 6 символа! } @if(inputPassword.errors?.['maxlength']){
+        Паролата трябва да е с максимална дължина 24 символа! }
+      </p>
+      }
+    </div>
+
+    <div class="input-container">
+      <app-label-with-states
+        [forId]="'rePassword'"
+        [inputRef]="inputRePassword"
+        [labelText]="'Повтори парола*'"
+      />
+
+      <input
+        type="password"
+        [placeholder]="
+          inputRePassword.dirty || inputRePassword.touched
+            ? ''
+            : 'Повтори парола*'
+        "
+        id="rePassword"
+        name="rePassword"
+        [(ngModel)]="registerData.repassword"
+        #inputRePassword="ngModel"
+        required
+        minlength="6"
+        maxlength="24"
+      />
+      @if(inputPassword.invalid && inputPassword.touched){
+      <p class="invalid-message">
+        @if(inputPassword.errors?.['required']){ Полето е задължително за
+        попълване! } @if(inputPassword.errors?.['minlength']){ Парола трябва да
+        е с дължина поне 6 символа! } @if(inputPassword.errors?.['maxlength']){
+        Паролата трябва да е с максимална дължина 24 символа! }
+      </p>
+      }
+    </div>
+
+    <div class="input-container">
+      <app-label-with-states
+        [forId]="'firstName'"
+        [inputRef]="inputFirstName"
+        [labelText]="'Име*'"
+      />
+
+      <input
+        type="text"
+        [placeholder]="
+          inputFirstName.dirty || inputFirstName.touched ? '' : 'Име*'
+        "
+        id="firstName"
+        name="firstName"
+        [(ngModel)]="registerData.firstName"
+        #inputFirstName="ngModel"
+        required
+      />
+      @if(inputFirstName.invalid && inputFirstName.touched){
+      <p class="invalid-message">
+        @if(inputFirstName.errors?.['required']) { Полето е задължително за
+        попълване! }
+      </p>
+      }
+    </div>
+
+    <div class="input-container">
+      <app-label-with-states
+        [forId]="'phone'"
+        [inputRef]="inputEmail"
+        [labelText]="'Телефон*'"
+      />
+
+      <input
+        type="number"
+        [placeholder]="inputPhone.dirty || inputPhone.touched ? '' : 'Имейл*'"
+        id="phone"
+        name="phone"
+        [(ngModel)]="registerData.phone"
+        #inputPhone="ngModel"
+        required
+      />
+      @if(inputPhone.invalid && inputPhone.touched){
+      <p class="invalid-message">
+        @if(inputEmail.errors?.['required']) { Полето е задължително за
+        попълване! }
+      </p>
+      }
+    </div>
+
+    <div class="buttons">
+      <button [disabled]="form.invalid || form.pristine">Вход</button>
+    </div>
+  </form>
+</section>

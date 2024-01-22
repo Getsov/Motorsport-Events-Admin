@@ -52,6 +52,10 @@
       line-height: 24px;
     }
 
+    input::placeholder {
+      color: rgba(255, 255, 255, 1);
+    }
+
     .invalid-message {
       width: 100%;
       text-align: left;
