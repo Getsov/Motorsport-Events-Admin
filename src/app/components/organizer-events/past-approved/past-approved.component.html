@@ -1,6 +1,6 @@
 <app-section-sort class="sort-section"/>
 @if(isLoading){
-    <app-loader />
+    <app-loader class="spinner" />
     }@else { @if(eventsData.length < 1){
     <p class="no-events">Няма отминали събития!</p>
     }@else{
