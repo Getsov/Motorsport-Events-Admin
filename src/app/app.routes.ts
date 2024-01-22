@@ -21,11 +21,19 @@ import { RegisterComponent } from './components/user/register/register.component
 import { LoginComponent } from './components/user/login/login.component';
 import { AwaitingAdminsComponent } from './components/awaiting-approval/awaiting-admins/awaiting-admins.component';
 import { ForgottenPasswordComponent } from './components/user/forgotten-password/forgotten-password.component';
+import { AuthGuard } from '../shared/guards/auth.guard';
+import { UserGuard } from '../shared/guards/user.guard';
+import { OrganizerEventsComponent } from './components/organizer-events/organizer-events.component';
+import { NotApprovedComponent } from './components/organizer-events/not-approved/not-approved.component';
+import { UpcomingApprovedComponent } from './components/organizer-events/upcoming-approved/upcoming-approved.component';
+import { PastApprovedComponent } from './components/organizer-events/past-approved/past-approved.component';
+import { AdminGuard } from '../shared/guards/admin.guard';
 
 export const routes: Routes = [
   {
     path: 'awaiting-approval',
     component: AwaitingApprovalComponent,
+    canActivate: [AdminGuard],
     children: [
       { path: '', redirectTo: 'awaiting-events', pathMatch: 'full' },
       { path: 'awaiting-events', component: AwaitingEventsComponent },
@@ -36,6 +44,7 @@ export const routes: Routes = [
   {
     path: 'events',
     component: EventsComponent,
+    canActivate: [AdminGuard],
     children: [
       { path: '', redirectTo: 'upcoming-events', pathMatch: 'full' },
       { path: 'upcoming-events', component: UpcomingEventsComponent },
@@ -45,6 +54,7 @@ export const routes: Routes = [
   {
     path: 'accounts',
     component: AccountsComponent,
+    canActivate: [AdminGuard],
     children: [
       { path: '', redirectTo: 'admin-accounts', pathMatch: 'full' },
       { path: 'admin-accounts', component: AdminAccountsComponent },
@@ -57,22 +67,58 @@ export const routes: Routes = [
     component: UserComponent,
     children: [
       { path: '', redirectTo: 'register', pathMatch: 'full' },
-      { path: 'register', component: RegisterComponent },
-      { path: 'login', component: LoginComponent },
-      { path: 'forgotten-password', component: ForgottenPasswordComponent },
-      { path: ':userId/profile', component: ProfileComponent },
-      { path: ':userId/details', component: UserDetailsComponent },
-      { path: ':userId/edit', component: EditProfileComponent },
+      {
+        path: 'register',
+        component: RegisterComponent,
+        canActivate: [UserGuard],
+      },
+      {
+        path: 'login',
+        component: LoginComponent,
+        canActivate: [UserGuard],
+      },
+      {
+        path: 'forgotten-password',
+        component: ForgottenPasswordComponent,
+        canActivate: [AuthGuard],
+      },
+      {
+        path: ':userId/profile',
+        component: ProfileComponent,
+        canActivate: [AuthGuard],
+      },
+      {
+        path: ':userId/details',
+        component: UserDetailsComponent,
+        canActivate: [AuthGuard],
+      },
+      {
+        path: ':userId/edit',
+        component: EditProfileComponent,
+        canActivate: [AuthGuard],
+      },
     ],
   },
   {
     path: 'event',
     component: EventComponent,
+    canActivate: [AuthGuard],
     children: [
       { path: '', redirectTo: 'create', pathMatch: 'full' },
       { path: 'create', component: CreateEventComponent },
       { path: ':eventId/edit', component: EditEventComponent },
       { path: ':eventId/details', component: EventDetailsComponent },
+    ],
+  },
+  {
+    path: 'organizer-events',
+    component: OrganizerEventsComponent,
+    canActivate: [AuthGuard],
+    children: [
+      { path: '', redirectTo: 'not-approved', pathMatch: 'full' },
+      { path: 'not-approved', component: NotApprovedComponent },
+      { path: 'upcoming-approved', component: UpcomingApprovedComponent },
+      { path: 'past-approved', component: PastApprovedComponent },
     ],
   },
 

@@ -22,12 +22,20 @@ export class LoginComponent {
         const userDetails = {
           accessToken: response.accessToken,
           _id: response._id,
+          userRole: response.role,
         };
-        this.email = '';
-        this.password = '';
+        // TODO: Add error popup then the popups are ready(regular users cannot login)
+        if (userDetails.userRole === 'regular') {
+          return;
+        }
+
         localStorage.setItem('MotorSportsUser', JSON.stringify(userDetails));
         this.authService.setUser(userDetails.accessToken, userDetails._id);
-        this.authService.accessToken = userDetails.accessToken;
+        this.authService.userDetails = userDetails;
+
+        this.email = '';
+        this.password = '';
+
         this.router.navigate(['/awaiting-approval']);
       },
       error: (error) => {

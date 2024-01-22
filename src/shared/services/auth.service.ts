@@ -10,8 +10,8 @@ const { baseUrl } = environment;
   providedIn: 'root',
 })
 export class AuthService implements OnDestroy {
-  accessToken: string = '';
-  userId: string = '';
+  userDetails: any = {};
+
   subscription: Subscription | undefined;
 
   constructor(private http: HttpClient) {
@@ -19,9 +19,12 @@ export class AuthService implements OnDestroy {
 
     if (localStorageItem) {
       const localStorageData = JSON.parse(localStorageItem);
-      this.accessToken = localStorageData.accessToken;
-      this.userId = localStorageData._id;
-      this.setUser(this.accessToken, this.userId);
+      this.userDetails = {
+        accessToken: localStorageData.accessToken,
+        userId: localStorageData._id,
+        userRole: localStorageData.userRole,
+      };
+      this.setUser(this.userDetails.accessToken, this.userDetails.userId);
     }
   }
 
@@ -32,6 +35,12 @@ export class AuthService implements OnDestroy {
     };
 
     return this.http.post(`${baseUrl}/user/login`, body);
+  }
+
+  logout(): void {
+    localStorage.clear();
+    this.userDetails = {};
+    this.currentUser.update((state) => undefined);
   }
 
   // SIGNALS
@@ -46,9 +55,17 @@ export class AuthService implements OnDestroy {
         next: (response) => {
           const currentUser = response as User;
           this.currentUser.update((state) => currentUser);
+          const updatedData = {
+            accessToken,
+            userRole: currentUser.role,
+            _id: currentUser._id,
+          };
+          this.userDetails = updatedData;
+          localStorage.setItem('MotorSportsUser', JSON.stringify(updatedData));
         },
         error: (error) => {
           console.log(error.message);
+          this.userDetails = {};
         },
       });
   }

@@ -12,12 +12,15 @@ const { baseUrl } = environment;
   providedIn: 'root',
 })
 export class EventService {
-  constructor(private http: HttpClient, private authService: AuthService) {}
+  accessToken: string = '';
+  constructor(private http: HttpClient, private authService: AuthService) {
+    this.accessToken = this.authService.userDetails.accessToken;
+  }
 
   // API CALLS------
 
   getEventsForApproval(): Observable<Event[]> {
-    const options = getOptions(this.authService.accessToken);
+    const options = getOptions(this.accessToken);
 
     return this.http.get<Event[]>(
       `${baseUrl}/events/eventsForApproval`,
@@ -26,7 +29,7 @@ export class EventService {
   }
 
   getEventDetails(eventId: string): Observable<Event> {
-    const options = getOptions(this.authService.accessToken);
+    const options = getOptions(this.accessToken);
 
     return this.http.get<Event>(`${baseUrl}/events/${eventId}`, options);
   }
@@ -35,7 +38,7 @@ export class EventService {
     eventId: string,
     updatedStatus: Object
   ): Observable<object> {
-    const options = getOptions(this.authService.accessToken);
+    const options = getOptions(this.accessToken);
 
     return this.http.put(
       `${baseUrl}/events/approveDisapproveEvent/${eventId}`,
@@ -45,7 +48,7 @@ export class EventService {
   }
 
   deleteEvent(eventId: string, updatedStatus: Object): Observable<object> {
-    const options = getOptions(this.authService.accessToken);
+    const options = getOptions(this.accessToken);
 
     return this.http.put(
       `${baseUrl}/events/deleteRestoreEvent/${eventId} `,
