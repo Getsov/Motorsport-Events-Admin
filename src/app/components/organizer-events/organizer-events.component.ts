@@ -14,10 +14,10 @@ export class OrganizerEventsComponent {
   // TODO make the hasData property dynamic
   options = [
     { label: 'Чакащи одобрение', route: 'not-approved', hasData: true },
-    { label: 'Мои предстоящи събития', route: 'past-approved', hasData: true },
+    { label: 'Мои предстоящи събития', route: 'upcoming-approved', hasData: true },
     {
       label: 'Мои отминали събития',
-      route: 'upcoming-approved',
+      route: 'past-approved',
       hasData: true,
     },
   ];
