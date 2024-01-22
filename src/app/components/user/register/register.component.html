@@ -118,13 +118,13 @@
     <div class="input-container">
       <app-label-with-states
         [forId]="'phone'"
-        [inputRef]="inputEmail"
+        [inputRef]="inputPhone"
         [labelText]="'Телефон*'"
       />
 
       <input
         type="number"
-        [placeholder]="inputPhone.dirty || inputPhone.touched ? '' : 'Имейл*'"
+        [placeholder]="inputPhone.dirty || inputPhone.touched ? '' : 'Телефон*'"
         id="phone"
         name="phone"
         [(ngModel)]="registerData.phone"
@@ -133,13 +133,40 @@
       />
       @if(inputPhone.invalid && inputPhone.touched){
       <p class="invalid-message">
-        @if(inputEmail.errors?.['required']) { Полето е задължително за
+        @if(inputPhone.errors?.['required']) { Полето е задължително за
+        попълване! }
+      </p>
+      }
+    </div>
+
+    <div class="input-container">
+      <app-label-with-states
+        [forId]="'region'"
+        [inputRef]="inputRegion"
+        [labelText]="'Регион*'"
+      />
+
+      <input
+        type="select"
+        [placeholder]="
+          inputRegion.dirty || inputRegion.touched ? '' : 'Регион*'
+        "
+        id="phone"
+        name="phone"
+        [(ngModel)]="registerData.phone"
+        #inputRegion="ngModel"
+        required
+      />
+      @if(inputRegion.invalid && inputRegion.touched){
+      <p class="invalid-message">
+        @if(inputRegion.errors?.['required']) { Полето е задължително за
         попълване! }
       </p>
       }
     </div>
 
     <div class="buttons">
+      <a>Откажи</a>
       <button [disabled]="form.invalid || form.pristine">Вход</button>
     </div>
   </form>
