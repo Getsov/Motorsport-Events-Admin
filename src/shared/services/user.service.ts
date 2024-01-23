@@ -12,11 +12,9 @@ const { baseUrl } = environment;
   providedIn: 'root',
 })
 export class UserService {
-  accessToken: string = '';
-  options = getOptions(this.accessToken);
-
+  options;
   constructor(private http: HttpClient, private authService: AuthService) {
-    this.accessToken = this.authService.userDetails.accessToken;
+    this.options = getOptions(this.authService.userDetails.accessToken);
   }
 
   //  API CALLS ----------

@@ -1,4 +1,4 @@
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable, signal } from '@angular/core';
 import { environment } from '../../enviroments/enviroment';
 import { Observable, Subscription } from 'rxjs';
@@ -12,10 +12,9 @@ const { baseUrl } = environment;
   providedIn: 'root',
 })
 export class EventService {
-  accessToken: string = '';
-  options = getOptions(this.accessToken);
+  options;
   constructor(private http: HttpClient, private authService: AuthService) {
-    this.accessToken = this.authService.userDetails.accessToken;
+    this.options = getOptions(this.authService.userDetails.accessToken);
   }
 
   // API CALLS------
@@ -43,12 +42,10 @@ export class EventService {
   }
 
   deleteEvent(eventId: string, updatedStatus: Object): Observable<object> {
-    const options = getOptions(this.accessToken);
-
     return this.http.put(
       `${baseUrl}/events/deleteRestoreEvent/${eventId} `,
       updatedStatus,
-      options
+      this.options
     );
   }
   getUpcomingEvents(): Observable<Event[]> {
