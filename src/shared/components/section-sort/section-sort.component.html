@@ -1,17 +1,38 @@
 <div class="section">
-    <div class="search-container">
-        <i class="search-icon"></i>
-        <input type="search" [(ngModel)]="searchQuery" onchange="searchEvents()" name="search" placeholder="Търси събитие" class="search-item">
-    </div>
-    <div class="select">
-        <select name="category" [(ngModel)]="selectedCategory" onchange="searchEvents()" placeholder="Категория" class="select-item">
-            <option disabled selected value="">Категория</option>
-            <option *ngFor="let item of categories; let i = index" [value]="i+1">{{item}}</option>
-        </select>
-        <select name="region" [(ngModel)]="regionQuery" onchange="searchEvents()" class="select-item">
-            <option disabled selected value="">Регион</option>
-            <option *ngFor="let item of regions; let i = index" [value]="i+1">{{item}}</option>
-            <option value="option2">Option 2</option>
-        </select>
-    </div>
+  <div class="search-container">
+    <i class="search-icon"></i>
+    <input
+      type="search"
+      [(ngModel)]="searchQuery"
+      onchange="searchEvents()"
+      name="search"
+      placeholder="Търси събитие"
+      class="search-item"
+    />
+  </div>
+  <div class="select">
+    <select
+      name="category"
+      [(ngModel)]="selectedCategory"
+      onchange="searchEvents()"
+      placeholder="Категория"
+      class="select-item"
+    >
+      <option disabled selected value="">Категория</option>
+      <option *ngFor="let item of categories; let i = index" [value]="i + 1">
+        {{ item }}
+      </option>
+    </select>
+    <select
+      name="region"
+      [(ngModel)]="regionQuery"
+      onchange="searchEvents()"
+      class="select-item"
+    >
+      <option disabled selected value="">Регион</option>
+      <option *ngFor="let item of regions; let i = index" [value]="i + 1">
+        {{ item }}
+      </option>
+    </select>
+  </div>
 </div>

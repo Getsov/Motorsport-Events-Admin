@@ -9,10 +9,9 @@ import { FormsModule } from '@angular/forms';
   standalone: true,
   imports: [NgFor, FormsModule],
   templateUrl: './section-sort.component.html',
-  styleUrl: './section-sort.component.scss'
+  styleUrl: './section-sort.component.scss',
 })
 export class SectionSortComponent {
-
   searchQuery: [] = [];
   regionQuery: [] = [];
   selectedCategory: number[] = [];
