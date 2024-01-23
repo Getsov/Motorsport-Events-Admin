@@ -28,6 +28,7 @@ import { NotApprovedComponent } from './components/organizer-events/not-approved
 import { UpcomingApprovedComponent } from './components/organizer-events/upcoming-approved/upcoming-approved.component';
 import { PastApprovedComponent } from './components/organizer-events/past-approved/past-approved.component';
 import { AdminGuard } from '../shared/guards/admin.guard';
+import { EventsCardListComponent } from '../shared/components/events-card-list/events-card-list.component';
 
 export const routes: Routes = [
   {
@@ -36,7 +37,7 @@ export const routes: Routes = [
     canActivate: [AdminGuard],
     children: [
       { path: '', redirectTo: 'awaiting-events', pathMatch: 'full' },
-      { path: 'awaiting-events', component: AwaitingEventsComponent },
+      { path: 'awaiting-events', component: EventsCardListComponent },
       { path: 'awaiting-organizers', component: AwaitingOrganizersComponent },
       { path: 'awaiting-admins', component: AwaitingAdminsComponent },
     ],
