@@ -1,4 +1,4 @@
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable, signal } from '@angular/core';
 import { environment } from '../../enviroments/enviroment';
 import { Observable, Subscription } from 'rxjs';
@@ -12,60 +12,51 @@ const { baseUrl } = environment;
   providedIn: 'root',
 })
 export class EventService {
-  accessToken: string = '';
+  options;
   constructor(private http: HttpClient, private authService: AuthService) {
-    this.accessToken = this.authService.userDetails.accessToken;
+    this.options = getOptions(this.authService.userDetails.accessToken);
   }
 
   // API CALLS------
 
   getEventsForApproval(): Observable<Event[]> {
-    const options = getOptions(this.accessToken);
-
     return this.http.get<Event[]>(
       `${baseUrl}/events/eventsForApproval`,
-      options
+      this.options
     );
   }
 
   getEventDetails(eventId: string): Observable<Event> {
-    const options = getOptions(this.accessToken);
-
-    return this.http.get<Event>(`${baseUrl}/events/${eventId}`, options);
+    return this.http.get<Event>(`${baseUrl}/events/${eventId}`, this.options);
   }
 
   approveDisapproveEvent(
     eventId: string,
     updatedStatus: Object
   ): Observable<object> {
-    const options = getOptions(this.accessToken);
-
     return this.http.put(
       `${baseUrl}/events/approveDisapproveEvent/${eventId}`,
       updatedStatus,
-      options
+      this.options
     );
   }
 
   deleteEvent(eventId: string, updatedStatus: Object): Observable<object> {
-    const options = getOptions(this.accessToken);
-
     return this.http.put(
       `${baseUrl}/events/deleteRestoreEvent/${eventId} `,
       updatedStatus,
-      options
+      this.options
     );
   }
-  getUpcomingEvents(query: string = ''): Observable<Event[]>{
-    const options = getOptions(this.accessToken);
-
-    return this.http.get<Event[]>(`${baseUrl}/events/upcomingEvents`, options)
+  getUpcomingEvents(): Observable<Event[]> {
+    return this.http.get<Event[]>(
+      `${baseUrl}/events/upcomingEvents`,
+      this.options
+    );
   }
 
-  getPastEvents(query: string = ''): Observable<Event[]>{
-    const options = getOptions(this.accessToken);
-
-    return this.http.get<Event[]>(`${baseUrl}/events/pastEvents`, options)
+  getPastEvents(): Observable<Event[]> {
+    return this.http.get<Event[]>(`${baseUrl}/events/pastEvents`, this.options);
   }
   // API CALLS END--------
 

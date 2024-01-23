@@ -9,12 +9,12 @@ import { Component, Input, OnInit } from '@angular/core';
   imports: [CommonModule],
 })
 export class LikeIconComponent implements OnInit {
-  constructor() {}
-
   @Input() likedCount: number = 0;
 
   likeIconSrc: string = '../../../assets/icons/like-icons/not-liked-small.svg';
   fontSize: string = '12px';
+
+  constructor() {}
 
   ngOnInit() {
     // configurate icon

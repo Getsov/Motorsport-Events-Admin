@@ -10,12 +10,13 @@ import { SectionNavComponent } from '../../../shared/components/section-nav/sect
   styleUrl: './events.component.scss',
 })
 export class EventsComponent implements OnInit {
-  constructor() {}
   // TODO make the hasData property dynamic
   options = [
     { label: 'Предстоящи събития', route: 'upcoming-events', hasData: true },
     { label: 'Отминали Събития', route: 'past-events', hasData: true },
   ];
+
+  constructor() {}
 
   ngOnInit() {}
 }

@@ -16,6 +16,8 @@ export class LoginComponent {
   email: string = '';
   password: string = '';
 
+  constructor(private router: Router, private authService: AuthService) {}
+
   onLoginSubmit() {
     this.authService.login(this.email, this.password).subscribe({
       next: (response) => {
@@ -51,6 +53,4 @@ export class LoginComponent {
   navigateToForgotten() {
     this.router.navigate(['/user/forgotten-password']);
   }
-
-  constructor(private router: Router, private authService: AuthService) {}
 }

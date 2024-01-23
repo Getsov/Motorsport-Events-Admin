@@ -4,10 +4,7 @@ import { CreateEventComponent } from './components/event/create-event/create-eve
 import { AccountsComponent } from './components/accounts/accounts.component';
 import { ProfileComponent } from './components/user/profile/profile.component';
 import { AwaitingApprovalComponent } from './components/awaiting-approval/awaiting-approval.component';
-import { AwaitingEventsComponent } from './components/awaiting-approval/awaiting-events/awaiting-events.component';
 import { AwaitingOrganizersComponent } from './components/awaiting-approval/awaiting-organizers/awaiting-organizers.component';
-import { UpcomingEventsComponent } from './components/events/upcoming-events/upcoming-events.component';
-import { PastEventsComponent } from './components/events/past-events/past-events.component';
 import { AdminAccountsComponent } from './components/accounts/admin-accounts/admin-accounts.component';
 import { OrganizerAccountsComponent } from './components/accounts/organizer-accounts/organizer-accounts.component';
 import { UserAccountsComponent } from './components/accounts/user-accounts/user-accounts.component';
@@ -28,6 +25,7 @@ import { NotApprovedComponent } from './components/organizer-events/not-approved
 import { UpcomingApprovedComponent } from './components/organizer-events/upcoming-approved/upcoming-approved.component';
 import { PastApprovedComponent } from './components/organizer-events/past-approved/past-approved.component';
 import { AdminGuard } from '../shared/guards/admin.guard';
+import { EventsCardListComponent } from '../shared/components/events-card-list/events-card-list.component';
 
 export const routes: Routes = [
   {
@@ -36,7 +34,7 @@ export const routes: Routes = [
     canActivate: [AdminGuard],
     children: [
       { path: '', redirectTo: 'awaiting-events', pathMatch: 'full' },
-      { path: 'awaiting-events', component: AwaitingEventsComponent },
+      { path: 'awaiting-events', component: EventsCardListComponent },
       { path: 'awaiting-organizers', component: AwaitingOrganizersComponent },
       { path: 'awaiting-admins', component: AwaitingAdminsComponent },
     ],
@@ -47,8 +45,8 @@ export const routes: Routes = [
     canActivate: [AdminGuard],
     children: [
       { path: '', redirectTo: 'upcoming-events', pathMatch: 'full' },
-      { path: 'upcoming-events', component: UpcomingEventsComponent },
-      { path: 'past-events', component: PastEventsComponent },
+      { path: 'upcoming-events', component: EventsCardListComponent },
+      { path: 'past-events', component: EventsCardListComponent },
     ],
   },
   {
