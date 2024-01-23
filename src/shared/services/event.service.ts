@@ -13,6 +13,7 @@ const { baseUrl } = environment;
 })
 export class EventService {
   accessToken: string = '';
+  options = getOptions(this.accessToken);
   constructor(private http: HttpClient, private authService: AuthService) {
     this.accessToken = this.authService.userDetails.accessToken;
   }
@@ -20,30 +21,24 @@ export class EventService {
   // API CALLS------
 
   getEventsForApproval(): Observable<Event[]> {
-    const options = getOptions(this.accessToken);
-
     return this.http.get<Event[]>(
       `${baseUrl}/events/eventsForApproval`,
-      options
+      this.options
     );
   }
 
   getEventDetails(eventId: string): Observable<Event> {
-    const options = getOptions(this.accessToken);
-
-    return this.http.get<Event>(`${baseUrl}/events/${eventId}`, options);
+    return this.http.get<Event>(`${baseUrl}/events/${eventId}`, this.options);
   }
 
   approveDisapproveEvent(
     eventId: string,
     updatedStatus: Object
   ): Observable<object> {
-    const options = getOptions(this.accessToken);
-
     return this.http.put(
       `${baseUrl}/events/approveDisapproveEvent/${eventId}`,
       updatedStatus,
-      options
+      this.options
     );
   }
 
@@ -56,16 +51,15 @@ export class EventService {
       options
     );
   }
-  getUpcomingEvents(query: string = ''): Observable<Event[]>{
-    const options = getOptions(this.accessToken);
-
-    return this.http.get<Event[]>(`${baseUrl}/events/upcomingEvents`, options)
+  getUpcomingEvents(): Observable<Event[]> {
+    return this.http.get<Event[]>(
+      `${baseUrl}/events/upcomingEvents`,
+      this.options
+    );
   }
 
-  getPastEvents(query: string = ''): Observable<Event[]>{
-    const options = getOptions(this.accessToken);
-
-    return this.http.get<Event[]>(`${baseUrl}/events/pastEvents`, options)
+  getPastEvents(): Observable<Event[]> {
+    return this.http.get<Event[]>(`${baseUrl}/events/pastEvents`, this.options);
   }
   // API CALLS END--------
 
