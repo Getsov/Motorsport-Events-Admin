@@ -50,9 +50,10 @@
       @if(inputPassword.invalid && inputPassword.touched){
       <p class="invalid-message">
         @if(inputPassword.errors?.['required']){ Полето е задължително за
-        попълване! } @if(inputPassword.errors?.['minlength']){ Парола трябва да
-        е с дължина поне 6 символа! } @if(inputPassword.errors?.['maxlength']){
-        Паролата трябва да е с максимална дължина 24 символа! }
+        попълване! } @if(inputPassword.errors?.['minlength']){ Паролата трябва
+        да е с дължина поне 6 символа! }
+        @if(inputPassword.errors?.['maxlength']){ Паролата трябва да е с
+        максимална дължина 24 символа! }
       </p>
       }
     </div>
