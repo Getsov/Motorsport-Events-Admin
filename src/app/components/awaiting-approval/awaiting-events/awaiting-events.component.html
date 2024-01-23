@@ -1,9 +1,0 @@
-<section class="awaiting-events">
-  @if(isLoading){
-  <app-loader />
-  }@else { @if(awaitingApprovalEvents.length < 1){
-  <p>Няма събития, чакащи одобрение!</p>
-  }@else{
-  <app-events-card-list [eventsList]="awaitingApprovalEvents" />
-  } }
-</section>
