@@ -71,10 +71,6 @@ export class EventDetailsComponent implements OnInit, OnDestroy {
     this.mapHeight = isSmallScreen ? 200 : 400;
   }
 
-  ngOnDestroy(): void {
-    this.subscriptions.forEach((subscription) => subscription.unsubscribe());
-  }
-
   private loadEventDetails(eventId: string) {
     this.subscriptions.push(
       this.eventService.getEventDetails(eventId).subscribe({
@@ -104,5 +100,9 @@ export class EventDetailsComponent implements OnInit, OnDestroy {
         },
       })
     );
+  }
+
+  ngOnDestroy(): void {
+    this.subscriptions.forEach((subscription) => subscription.unsubscribe());
   }
 }

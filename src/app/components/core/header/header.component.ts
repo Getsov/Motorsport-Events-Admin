@@ -15,13 +15,13 @@ export class HeaderComponent {
   isMenuOpen: boolean = false;
   currentUser: User | undefined;
 
-  toggleMenu() {
-    this.isMenuOpen = !this.isMenuOpen;
-  }
-
   constructor(public authService: AuthService) {
     effect(() => {
       this.currentUser = this.authService.currentUser();
     });
+  }
+
+  toggleMenu() {
+    this.isMenuOpen = !this.isMenuOpen;
   }
 }

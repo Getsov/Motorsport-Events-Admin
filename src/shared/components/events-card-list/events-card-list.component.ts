@@ -12,6 +12,4 @@ import { EventCardComponent } from './event-card/event-card.component';
 })
 export class EventsCardListComponent {
   @Input() eventsList: Event[] = [];
-  // TODO:
-  // 1. Add functionality to approve and delete buttons.
 }
