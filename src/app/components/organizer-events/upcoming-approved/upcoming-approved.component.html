@@ -1,1 +1,8 @@
-<p>upcoming-approved works!</p>
+<app-section-sort class="sort-section"/>
+@if(isLoading){
+    <app-loader class="spinner" />
+    }@else { @if(eventsData.length < 1){
+    <p class="no-events">Няма предстоящи събития!</p>
+    }@else{
+    <app-events-card-list [eventsList]="eventsData" />
+    } }

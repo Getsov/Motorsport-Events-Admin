@@ -56,6 +56,17 @@ export class EventService {
       options
     );
   }
+  getUpcomingEvents(query: string = ''): Observable<Event[]>{
+    const options = getOptions(this.accessToken);
+
+    return this.http.get<Event[]>(`${baseUrl}/events/upcomingEvents`, options)
+  }
+
+  getPastEvents(query: string = ''): Observable<Event[]>{
+    const options = getOptions(this.accessToken);
+
+    return this.http.get<Event[]>(`${baseUrl}/events/pastEvents`, options)
+  }
   // API CALLS END--------
 
   // SIGNALS-----
