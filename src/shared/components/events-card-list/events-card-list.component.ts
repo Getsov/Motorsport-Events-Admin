@@ -24,9 +24,6 @@ export class EventsCardListComponent {
       setState: () => this.eventService.setEventsForApprove(),
       getState: () => this.eventService.eventsForApproval(),
     },
-    test: {
-      asdas: ' asdasd',
-    },
   };
 
   constructor(
