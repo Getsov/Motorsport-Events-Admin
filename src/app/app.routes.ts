@@ -21,9 +21,6 @@ import { ForgottenPasswordComponent } from './components/user/forgotten-password
 import { AuthGuard } from '../shared/guards/auth.guard';
 import { UserGuard } from '../shared/guards/user.guard';
 import { OrganizerEventsComponent } from './components/organizer-events/organizer-events.component';
-import { NotApprovedComponent } from './components/organizer-events/not-approved/not-approved.component';
-import { UpcomingApprovedComponent } from './components/organizer-events/upcoming-approved/upcoming-approved.component';
-import { PastApprovedComponent } from './components/organizer-events/past-approved/past-approved.component';
 import { AdminGuard } from '../shared/guards/admin.guard';
 import { EventsCardListComponent } from '../shared/components/events-card-list/events-card-list.component';
 import { OrganizerEventsSectionComponent } from '../shared/components/organizer-events-section/organizer-events-section.component';
