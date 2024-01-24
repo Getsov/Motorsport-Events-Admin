@@ -48,11 +48,9 @@ export class EventService {
       this.options
     );
   }
+
   getUpcomingEvents(): Observable<Event[]> {
-    return this.http.get<Event[]>(
-      `${baseUrl}/events/upcomingEvents`,
-      this.options
-    );
+    return this.http.get<Event[]>(`${baseUrl}/events/upcomingEvents`,this.options);
   }
 
   getPastEvents(): Observable<Event[]> {
@@ -86,6 +84,44 @@ export class EventService {
   }
 
   // Events for approval signal end.
+
+  // Upcoming events signal
+
+  upcomingEvents = signal<Event[]>([]);
+
+  hasUpcomingEvents: boolean = this.upcomingEvents().length > 1;
+
+  setUpcomingEvents(): Subscription {
+    return this.getUpcomingEvents().subscribe({
+      next: (response) => {
+        this.upcomingEvents.update((state) => response);
+      },
+      error: (error) => {
+        console.log(error);
+      },
+    });
+  }
+
+  // Upcoming events signal end
+
+  // Past events signal
+
+  pastEvents = signal<Event[]>([]);
+
+  hasPastEvents: boolean = this.pastEvents().length > 1;
+
+  setPastEvents(): Subscription {
+    return this.getPastEvents().subscribe({
+      next: (response) => {
+        this.pastEvents.update((state) => response);
+      },
+      error: (error) => {
+        console.log(error);
+      },
+    });
+  }
+
+  // Past events signal end
 
   // SIGNALS END--------
 }
