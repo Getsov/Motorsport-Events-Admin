@@ -1,11 +1,12 @@
 import { Component } from '@angular/core';
 import { SectionNavComponent } from '../../../shared/components/section-nav/section-nav.component';
 import { RouterOutlet } from '@angular/router';
+import { SectionSortComponent } from '../../../shared/components/section-sort/section-sort.component';
 
 @Component({
   selector: 'app-organizer-events',
   standalone: true,
-  imports: [SectionNavComponent, RouterOutlet],
+  imports: [SectionNavComponent, RouterOutlet, SectionSortComponent],
   templateUrl: './organizer-events.component.html',
   styleUrl: './organizer-events.component.scss',
 })
