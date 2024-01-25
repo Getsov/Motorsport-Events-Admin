@@ -19,7 +19,7 @@ export class EventService {
 
   // API CALLS------
 
-  getEventsForApproval(): Observable<Event[]> {
+  getEventsForApproval(query = ''): Observable<Event[]> {
     return this.http.get<Event[]>(
       `${baseUrl}/events/eventsForApproval`,
       this.options
@@ -49,11 +49,11 @@ export class EventService {
     );
   }
 
-  getUpcomingEvents(): Observable<Event[]> {
+  getUpcomingEvents(query = ''): Observable<Event[]> {
     return this.http.get<Event[]>(`${baseUrl}/events/upcomingEvents`,this.options);
   }
 
-  getPastEvents(): Observable<Event[]> {
+  getPastEvents(query = ''): Observable<Event[]> {
     return this.http.get<Event[]>(`${baseUrl}/events/pastEvents`, this.options);
   }
   // API CALLS END--------
@@ -66,8 +66,8 @@ export class EventService {
 
   hasEventsForApproval: boolean = this.eventsForApproval().length > 1;
 
-  setEventsForApprove(): Subscription {
-    return this.getEventsForApproval().subscribe({
+  setEventsForApprove(query = ''): Subscription {
+    return this.getEventsForApproval(query = '').subscribe({
       next: (response) => {
         this.eventsForApproval.update((state) => response);
       },
@@ -91,8 +91,8 @@ export class EventService {
 
   hasUpcomingEvents: boolean = this.upcomingEvents().length > 1;
 
-  setUpcomingEvents(): Subscription {
-    return this.getUpcomingEvents().subscribe({
+  setUpcomingEvents(query = ''): Subscription {
+    return this.getUpcomingEvents(query = '').subscribe({
       next: (response) => {
         this.upcomingEvents.update((state) => response);
       },
@@ -110,8 +110,8 @@ export class EventService {
 
   hasPastEvents: boolean = this.pastEvents().length > 1;
 
-  setPastEvents(): Subscription {
-    return this.getPastEvents().subscribe({
+  setPastEvents(query = ''): Subscription {
+    return this.getPastEvents(query = '').subscribe({
       next: (response) => {
         this.pastEvents.update((state) => response);
       },
