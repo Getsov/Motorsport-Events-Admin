@@ -23,7 +23,6 @@ import { UserGuard } from '../shared/guards/user.guard';
 import { OrganizerEventsComponent } from './components/organizer-events/organizer-events.component';
 import { AdminGuard } from '../shared/guards/admin.guard';
 import { EventsCardListComponent } from '../shared/components/events-card-list/events-card-list.component';
-import { OrganizerEventsSectionComponent } from '../shared/components/organizer-events-section/organizer-events-section.component';
 
 export const routes: Routes = [
   {
