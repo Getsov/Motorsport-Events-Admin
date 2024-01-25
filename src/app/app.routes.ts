@@ -112,9 +112,9 @@ export const routes: Routes = [
     canActivate: [AuthGuard],
     children: [
       { path: '', redirectTo: 'not-approved', pathMatch: 'full' },
-      { path: 'not-approved', component: OrganizerEventsSectionComponent },
-      { path: 'upcoming-approved', component: OrganizerEventsSectionComponent },
-      { path: 'past-approved', component: OrganizerEventsSectionComponent },
+      { path: 'not-approved', component: EventsCardListComponent },
+      { path: 'upcoming-approved', component: EventsCardListComponent },
+      { path: 'past-approved', component: EventsCardListComponent },
     ],
   },
 
