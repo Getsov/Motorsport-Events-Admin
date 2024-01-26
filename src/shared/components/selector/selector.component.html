@@ -1,0 +1,33 @@
+<!-- <div class="auth-input">
+  <ion-select
+    interface="popover"
+    placeholder="Населено място"
+    class="region-select"
+    slot="end"
+    name="region"
+    #region
+  >
+    <ion-select-option value="{{ region }}" *ngFor="let region of regions">{{
+      region
+    }}</ion-select-option>
+  </ion-select>
+</div> -->
+<div class="auth-wrapper">
+  <div class="auth-input region-select-wrapper">
+    <ion-select
+      labelPlacement="floating"
+      label="Населено място"
+      class="region-select"
+      okText="Ок"
+      cancelText="Откажи"
+      slot="end"
+      name="region"
+      #region
+      (ionChange)="onRegionChange($event.detail.value)"
+    >
+      <ion-select-option value="{{ region }}" *ngFor="let region of regions">{{
+        region
+      }}</ion-select-option>
+    </ion-select>
+  </div>
+</div>
