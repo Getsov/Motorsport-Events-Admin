@@ -1,64 +1,9 @@
-// .user-organization-toggle-wrapper {
-//   display: flex;
-//   gap: 20px;
-//   align-items: center;
-//   justify-content: center;
-//   color: #a6a2a0;
-//   margin: 1em 0 2em 0;
-// }
-
-// .user-organization-toggle-wrapper {
-//   ion-toggle {
-//     --track-background: #ddd;
-//     --track-background-checked: #ddd;
-
-//     --handle-width: 1em;
-//     --handle-height: 1em;
-//     --handle-background: var(--ion-color-primary);
-//     --handle-background-checked: var(--ion-color-primary);
-//   }
-
-//   ion-toggle::part(track) {
-//     width: 40px;
-//     height: 20px;
-//     overflow: visible;
-//     box-shadow: 0 0 6px -2px #ff7418;
-//   }
-
-//   label {
-//     font-weight: 600;
-//     font-size: 14px;
-//   }
-
-//   .checked-toggle {
-//     color: var(--ion-color-primary);
-//     font-weight: 600;
-//   }
-// }
-
-// ion-select {
-//   --placeholder-color: #ffffff;
-//   --placeholder-opacity: 1;
-//   width: 100%;
-//   justify-content: flex-end;
-//   position: relative;
-// }
-
-// ion-select::part(icon) {
-//   color: #ffffff;
-//   content: url("../../../assets/icon/arrow-up-down.svg");
-//   position: absolute;
-//   right: 1.6em;
-//   top: transform(translateY(-50%));
-//   height: 20px;
-//   width: 10px;
-// }
-
 @import url("../../../shared/styles/select-inputs-styles.scss");
 
 ::ng-deep .alert-wrapper .alert-head {
   justify-content: center;
   align-items: center;
+  background-color: rgba(13, 13, 13, 1);
   h2 {
     color: rgba(255, 116, 24, 1);
     font-size: 18px;
@@ -68,56 +13,45 @@
   }
 }
 
-// ::ng-deep
-//   [aria-checked="true"].sc-ion-alert-md
-//   .alert-radio-icon.sc-ion-alert-md {
-//   color: rgba(255, 116, 24, 1);
-//   background-color: rgba(255, 116, 24, 1);
-// }
+::ng-deep .alert-radio-group.sc-ion-alert-md {
+  background-color: rgba(13, 13, 13, 1);
+}
 
-.user-organization-toggle-wrapper {
+::ng-deep .alert-button-group.sc-ion-alert-md {
+  justify-content: space-around;
+  flex-wrap: nowrap;
+  padding-inline-end: 0px;
+  padding-inline-start: 0px;
+  padding-top: 0;
+  padding-bottom: 0;
+}
+
+::ng-deep .alert-wrapper .alert-button-group .alert-button {
+  width: 49.2%;
+  height: 48px;
+}
+
+::ng-deep .alert-wrapper .alert-button-group .alert-button > span {
+  width: 100%;
+  height: 100% !important;
+  border-right: none;
   display: flex;
-  gap: 20px;
   align-items: center;
   justify-content: center;
-  color: #a6a2a0;
-  margin: 1em 0 2em 0;
-}
-
-.user-organization-toggle-wrapper {
-  ion-toggle {
-    --track-background: #ddd;
-    --track-background-checked: #ddd;
-
-    --handle-width: 1em;
-    --handle-height: 1em;
-    --handle-background: var(--ion-color-primary);
-    --handle-background-checked: var(--ion-color-primary);
-  }
-
-  ion-toggle::part(track) {
-    width: 40px;
-    height: 20px;
-    overflow: visible;
-    box-shadow: 0 0 6px -2px #ff7418;
-  }
-
-  label {
-    font-weight: 600;
-    font-size: 14px;
-  }
-
-  .checked-toggle {
-    color: var(--ion-color-primary);
-    font-weight: 600;
-  }
-}
-
-.region-select-wrapper {
-  position: relative;
+  font-size: 16px;
+  font-weight: 400;
+  line-height: 24px;
 }
 
 ion-select::part(icon) {
   position: absolute;
   top: calc(50% - 10px);
+}
+
+::ng-deep .select-wrapper-inner {
+  margin-left: 16px;
+}
+
+ion-select {
+  --highlight-color-focused: none;
 }

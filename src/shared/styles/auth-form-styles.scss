@@ -137,6 +137,10 @@
 .alert-radio-group::-webkit-scrollbar {
   width: 0.75em;
   display: block !important;
+  background-color: rgba(51, 49, 47, 1);
+  width: 10px;
+  height: 113px;
+  padding: 0 2px;
 }
 
 .alert-radio-group::-webkit-scrollbar-thumb {
