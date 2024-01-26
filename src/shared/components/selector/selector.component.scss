@@ -56,6 +56,25 @@
 
 @import url("../../../shared/styles/select-inputs-styles.scss");
 
+::ng-deep .alert-wrapper .alert-head {
+  justify-content: center;
+  align-items: center;
+  h2 {
+    color: rgba(255, 116, 24, 1);
+    font-size: 18px;
+    font-weight: 700;
+    line-height: 21.6px;
+    margin: 8px 24px;
+  }
+}
+
+// ::ng-deep
+//   [aria-checked="true"].sc-ion-alert-md
+//   .alert-radio-icon.sc-ion-alert-md {
+//   color: rgba(255, 116, 24, 1);
+//   background-color: rgba(255, 116, 24, 1);
+// }
+
 .user-organization-toggle-wrapper {
   display: flex;
   gap: 20px;
