@@ -27,8 +27,10 @@
 }
 
 ::ng-deep .alert-wrapper .alert-button-group .alert-button {
-  width: 49.2%;
+  width: 50%;
   height: 48px;
+  margin: 0;
+  padding: 0;
 }
 
 ::ng-deep .alert-wrapper .alert-button-group .alert-button > span {
@@ -48,10 +50,14 @@ ion-select::part(icon) {
   top: calc(50% - 10px);
 }
 
-::ng-deep .select-wrapper-inner {
-  margin-left: 16px;
-}
-
 ion-select {
   --highlight-color-focused: none;
+}
+
+ion-select.custom-valid-input {
+  border-bottom: 1px solid #00cc00 !important;
+}
+
+ion-select.custom-valid-input::part(label) {
+  color: #00cc00;
 }
