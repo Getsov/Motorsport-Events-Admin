@@ -27,7 +27,11 @@ export class RegisterComponent {
     role: 'organizer',
   };
 
-  region: string = '';
+  onRegionSelect(region: any) {
+    this.registerData.region = region;
+  }
 
-  onRegisterSubmit() {}
+  onRegisterSubmit() {
+    console.log(this.registerData);
+  }
 }
