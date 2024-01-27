@@ -15,9 +15,9 @@
       required
       (ionChange)="onRegionChange($event.detail.value)"
     >
-      <ion-select-option value="{{ region }}" *ngFor="let region of regions">{{
-        region
-      }}</ion-select-option>
+      @for(region of regions; track region){
+      <ion-select-option value="{{ region }}">{{ region }}</ion-select-option>
+      }
     </ion-select>
   </div>
 </div>

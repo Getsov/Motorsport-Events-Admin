@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, EventEmitter, OnInit, Output } from '@angular/core';
 import BulgarianRegions from '../../data/regions';
 import { CommonModule, NgFor } from '@angular/common';
 import { FormsModule } from '@angular/forms';
@@ -19,10 +19,9 @@ export class SingleSelectorComponent implements OnInit {
   regions: any = Object.keys(BulgarianRegions).filter((value) =>
     isNaN(Number(value))
   );
-  selectedRegion: string = '';
+  @Output() selectedRegion = new EventEmitter<string>();
 
   onRegionChange(region: string) {
-    this.selectedRegion = region;
-    console.log(this.selectedRegion);
+    this.selectedRegion.emit(region);
   }
 }

@@ -139,33 +139,7 @@
       }
     </div>
 
-    <!-- <div class="input-container">
-      <app-label-with-states
-        [forId]="'region'"
-        [inputRef]="inputRegion"
-        [labelText]="'Регион*'"
-      />
-
-      <input
-        type="select"
-        [placeholder]="
-          inputRegion.dirty || inputRegion.touched ? '' : 'Регион*'
-        "
-        id="phone"
-        name="phone"
-        [(ngModel)]="registerData.phone"
-        #inputRegion="ngModel"
-        required
-      />
-      @if(inputRegion.invalid && inputRegion.touched){
-      <p class="invalid-message">
-        @if(inputRegion.errors?.['required']) { Полето е задължително за
-        попълване! }
-      </p>
-      }
-    </div> -->
-
-    <app-single-selector />
+    <app-single-selector (region)="($event)" />
 
     <div class="buttons">
       <a>Откажи</a>

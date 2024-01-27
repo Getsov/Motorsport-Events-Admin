@@ -27,5 +27,7 @@ export class RegisterComponent {
     role: 'organizer',
   };
 
+  region: string = '';
+
   onRegisterSubmit() {}
 }

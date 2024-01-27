@@ -61,3 +61,9 @@ ion-select.custom-valid-input {
 ion-select.custom-valid-input::part(label) {
   color: #00cc00;
 }
+
+ion-select.custom-valid-input.region-select::part(icon),
+ion-select.event-type-select::part(icon),
+ion-select.date-hour-select::part(icon) {
+  content: url("../../../assets/icon/arrow-up-down-success.png");
+}
