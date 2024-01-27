@@ -43,6 +43,10 @@ export class AuthService implements OnDestroy {
     this.currentUser.update((state) => undefined);
   }
 
+  register(registerData: object): Observable<any> {
+    return this.http.post(`${baseUrl}/user/register`, registerData);
+  }
+
   // SIGNALS
   currentUser = signal<User | undefined>(undefined);
 

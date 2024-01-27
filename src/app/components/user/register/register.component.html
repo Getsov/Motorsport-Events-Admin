@@ -92,24 +92,24 @@
     <div class="input-container">
       <app-label-with-states
         [forId]="'firstName'"
-        [inputRef]="inputFirstName"
+        [inputRef]="organizatorName"
         [labelText]="'Име*'"
       />
 
       <input
         type="text"
         [placeholder]="
-          inputFirstName.dirty || inputFirstName.touched ? '' : 'Име*'
+          organizatorName.dirty || organizatorName.touched ? '' : 'Име*'
         "
         id="firstName"
         name="firstName"
-        [(ngModel)]="registerData.firstName"
-        #inputFirstName="ngModel"
+        [(ngModel)]="registerData.organizatorName"
+        #organizatorName="ngModel"
         required
       />
-      @if(inputFirstName.invalid && inputFirstName.touched){
+      @if(organizatorName.invalid && organizatorName.touched){
       <p class="invalid-message">
-        @if(inputFirstName.errors?.['required']) { Полето е задължително за
+        @if(organizatorName.errors?.['required']) { Полето е задължително за
         попълване! }
       </p>
       }
