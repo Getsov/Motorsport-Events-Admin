@@ -1,5 +1,9 @@
 <section class="register">
-  <form class="login-form" #form="ngForm" (ngSubmit)="onRegisterSubmit()">
+  <form
+    class="register-form form"
+    #form="ngForm"
+    (ngSubmit)="onRegisterSubmit()"
+  >
     <div class="input-container">
       <app-label-with-states
         [forId]="'email'"
@@ -142,8 +146,10 @@
     <app-single-selector (selectedRegion)="onRegionSelect($event)" />
 
     <div class="buttons">
-      <a>Откажи</a>
-      <button [disabled]="form.invalid || form.pristine">Вход</button>
+      <button class="secondary">Откажи</button>
+      <button [disabled]="form.invalid || form.pristine" class="submit">
+        Вход
+      </button>
     </div>
   </form>
 </section>

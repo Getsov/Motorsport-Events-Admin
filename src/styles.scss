@@ -156,3 +156,93 @@ body {
 @import "@ionic/angular/css/text-alignment.css";
 @import "@ionic/angular/css/text-transformation.css";
 @import "@ionic/angular/css/flex-utils.css";
+
+.form {
+  width: 592px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin: 0 16px;
+
+  .input-container {
+    width: 100%;
+    margin-top: 18px;
+  }
+  .input-container:first-child {
+    margin-top: 0;
+  }
+
+  input.ng-dirty {
+    border-bottom: 1px solid rgba(255, 116, 24, 1);
+    padding-bottom: 7px;
+  }
+
+  input.ng-dirty.ng-valid {
+    border-bottom: 1px solid rgba(0, 204, 0, 1);
+  }
+
+  input.ng-invalid.ng-touched {
+    border-bottom: 1px solid rgba(255, 0, 0, 1);
+  }
+
+  input {
+    color: rgba(255, 255, 255, 1);
+    width: 100%;
+    background-color: inherit;
+    border: none;
+    border-bottom: 1px solid rgba(255, 255, 255, 1);
+    padding: 0px 0px 12px 16px;
+    font-size: 16px;
+    font-weight: 400;
+    line-height: 24px;
+  }
+
+  input::placeholder {
+    color: rgba(255, 255, 255, 1);
+  }
+
+  .invalid-message {
+    width: 100%;
+    text-align: left;
+    padding-left: 16px;
+    font-size: 14px;
+    font-weight: 400;
+    line-height: 18px;
+    margin-top: 5px;
+    color: rgba(255, 0, 0, 1);
+  }
+
+  .buttons {
+    width: 100%;
+    text-align: center;
+    margin-top: 40px;
+    font-weight: 600;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    text-align: center;
+    a,
+    button {
+      border-radius: 4px;
+      display: block;
+      width: 40%;
+      height: 56px;
+      width: 284px;
+      cursor: pointer;
+      border: none;
+    }
+    .secondary {
+      color: rgba(255, 116, 24, 1);
+      background-color: rgba(13, 13, 13, 1);
+      border: 2px solid rgba(255, 116, 24, 1);
+      font-size: 16px;
+      padding: 0 24px;
+    }
+
+    .submit {
+      color: rgba(13, 13, 13, 1);
+      background-color: rgba(255, 116, 24, 1);
+      font-size: 18px;
+    }
+  }
+}

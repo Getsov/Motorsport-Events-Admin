@@ -41,7 +41,9 @@ export class RegisterComponent implements OnDestroy {
     this.subscription = this.authService.register(this.registerData).subscribe({
       next: (response) => {
         // success toaster
-        console.log(response);
+      },
+      error: (error) => {
+        console.log(error.error);
       },
     });
   }
