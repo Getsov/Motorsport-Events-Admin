@@ -221,6 +221,12 @@ body {
     flex-wrap: wrap;
     justify-content: space-between;
     text-align: center;
+
+    button:disabled {
+      cursor: not-allowed;
+      background-color: rgba(67, 64, 62, 1);
+    }
+
     a,
     button {
       border-radius: 4px;
