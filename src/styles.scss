@@ -158,7 +158,6 @@ body {
 @import "@ionic/angular/css/flex-utils.css";
 
 .form {
-  width: 592px;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -219,7 +218,8 @@ body {
     font-weight: 600;
     display: flex;
     flex-wrap: wrap;
-    justify-content: space-between;
+    gap: 24px;
+    justify-content: center;
     text-align: center;
 
     button:disabled {
@@ -250,5 +250,11 @@ body {
       background-color: rgba(255, 116, 24, 1);
       font-size: 18px;
     }
+  }
+}
+
+@media (max-width: 623px) {
+  .form .buttons {
+    gap: 16px;
   }
 }
