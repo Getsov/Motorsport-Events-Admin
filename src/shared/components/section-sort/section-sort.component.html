@@ -4,7 +4,7 @@
     <input
       type="search"
       [(ngModel)]="searchQuery"
-      onchange="searchEvents()"
+      (input)="searchEvents()"
       name="search"
       placeholder="Търси събитие"
       class="search-item"
@@ -12,9 +12,10 @@
   </div>
   <div class="select">
     <select
+      multiple
       name="category"
       [(ngModel)]="selectedCategory"
-      onchange="searchEvents()"
+      (change)="searchEvents()"
       placeholder="Категория"
       class="select-item"
     >
@@ -24,9 +25,10 @@
       </option>
     </select>
     <select
+      multiple
       name="region"
       [(ngModel)]="regionQuery"
-      onchange="searchEvents()"
+      (change)="searchEvents()"
       class="select-item"
     >
       <option disabled selected value="">Регион</option>
