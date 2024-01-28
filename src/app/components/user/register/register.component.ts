@@ -48,6 +48,18 @@ export class RegisterComponent implements OnDestroy {
     });
   }
 
+  clearData() {
+    this.registerData = {
+      email: '',
+      password: '',
+      repassword: '',
+      organizatorName: '',
+      phone: '',
+      region: '',
+      role: 'organizer',
+    };
+  }
+
   ngOnDestroy(): void {
     if (this.subscription) {
       this.subscription.unsubscribe();
