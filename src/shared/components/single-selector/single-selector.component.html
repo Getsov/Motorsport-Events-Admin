@@ -11,11 +11,16 @@
       [(ngModel)]="selectedRegionValue"
       #region="ngModel"
       required
-      (ionChange)="onRegionChange($event.detail.value)"
+      (ionChange)="onRegionChange()"
     >
       @for(region of regions; track region){
       <ion-select-option>{{ region }}</ion-select-option>
       }
     </ion-select>
   </div>
+  @if(region.invalid && region.touched ){
+  <p class="invalid-message">
+    @if(region.errors?.['required']) { Полето е задължително за попълване! }
+  </p>
+  }
 </div>

@@ -1,7 +1,13 @@
-import { Component, EventEmitter, OnInit, Output } from '@angular/core';
+import {
+  Component,
+  EventEmitter,
+  OnInit,
+  Output,
+  ViewChild,
+} from '@angular/core';
 import BulgarianRegions from '../../data/regions';
 import { CommonModule, NgFor } from '@angular/common';
-import { FormsModule } from '@angular/forms';
+import { FormsModule, NgModel } from '@angular/forms';
 import { IonSelect, IonSelectOption } from '@ionic/angular/standalone';
 
 @Component({
@@ -13,16 +19,23 @@ import { IonSelect, IonSelectOption } from '@ionic/angular/standalone';
 })
 export class SingleSelectorComponent implements OnInit {
   selectedRegionValue: string | null = null;
+  @ViewChild('region') regionControl!: NgModel;
+  @Output() regionFormControl = new EventEmitter<NgModel>();
   constructor() {}
 
   ngOnInit() {}
 
+  ngAfterViewInit() {
+    // Emitting the reference after view initialization
+    this.regionFormControl.emit(this.regionControl);
+  }
+
   regions: any = Object.keys(BulgarianRegions).filter((value) =>
     isNaN(Number(value))
   );
-  @Output() selectedRegion = new EventEmitter<string>();
 
-  onRegionChange(region: string) {
-    this.selectedRegion.emit(region);
+  onRegionChange() {
+    // Emitting changes when the region changes
+    this.regionFormControl.emit(this.regionControl);
   }
 }
