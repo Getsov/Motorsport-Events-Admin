@@ -12,6 +12,7 @@ import { IonSelect, IonSelectOption } from '@ionic/angular/standalone';
   styleUrls: ['./single-selector.component.scss'],
 })
 export class SingleSelectorComponent implements OnInit {
+  selectedRegionValue: string | null = null;
   constructor() {}
 
   ngOnInit() {}

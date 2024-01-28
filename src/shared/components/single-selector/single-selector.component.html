@@ -8,13 +8,14 @@
       cancelText="Откажи"
       slot="center"
       name="region"
-      #region
+      [(ngModel)]="selectedRegionValue"
+      #region="ngModel"
       required
       (ionChange)="onRegionChange($event.detail.value)"
     >
-      @for(region of regions; track region){
-      <ion-select-option value="{{ region }}">{{ region }}</ion-select-option>
-      }
+      <ion-select-option *ngFor="let region of regions" [value]="region">{{
+        region
+      }}</ion-select-option>
     </ion-select>
   </div>
 </div>
