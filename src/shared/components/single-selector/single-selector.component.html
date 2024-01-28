@@ -8,9 +8,6 @@
       cancelText="Откажи"
       slot="center"
       name="region"
-      [ngClass]="
-        region.value ? 'region-select custom-valid-input' : 'region-select'
-      "
       #region
       required
       (ionChange)="onRegionChange($event.detail.value)"
