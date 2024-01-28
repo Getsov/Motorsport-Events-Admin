@@ -1,0 +1,23 @@
+<div class="auth-wrapper">
+  <div class="auth-input region-select-wrapper">
+    <ion-select
+      labelPlacement="floating"
+      label="Регион*"
+      class="region-select"
+      okText="Ок"
+      cancelText="Откажи"
+      slot="center"
+      name="region"
+      [ngClass]="
+        region.value ? 'region-select custom-valid-input' : 'region-select'
+      "
+      #region
+      required
+      (ionChange)="onRegionChange($event.detail.value)"
+    >
+      @for(region of regions; track region){
+      <ion-select-option value="{{ region }}">{{ region }}</ion-select-option>
+      }
+    </ion-select>
+  </div>
+</div>

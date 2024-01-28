@@ -1,0 +1,69 @@
+@import url("../../../shared/styles/select-inputs-styles.scss");
+
+::ng-deep .alert-wrapper .alert-head {
+  justify-content: center;
+  align-items: center;
+  background-color: rgba(13, 13, 13, 1);
+  h2 {
+    color: rgba(255, 116, 24, 1);
+    font-size: 18px;
+    font-weight: 700;
+    line-height: 21.6px;
+    margin: 8px 24px;
+  }
+}
+
+::ng-deep .alert-radio-group.sc-ion-alert-md {
+  background-color: rgba(13, 13, 13, 1);
+}
+
+::ng-deep .alert-button-group.sc-ion-alert-md {
+  justify-content: space-around;
+  flex-wrap: nowrap;
+  padding-inline-end: 0px;
+  padding-inline-start: 0px;
+  padding-top: 0;
+  padding-bottom: 0;
+}
+
+::ng-deep .alert-wrapper .alert-button-group .alert-button {
+  width: 50%;
+  height: 48px;
+  margin: 0;
+  padding: 0;
+}
+
+::ng-deep .alert-wrapper .alert-button-group .alert-button > span {
+  width: 100%;
+  height: 100% !important;
+  border-right: none;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 16px;
+  font-weight: 400;
+  line-height: 24px;
+}
+
+ion-select::part(icon) {
+  position: absolute;
+  top: calc(50% - 10px);
+}
+
+ion-select {
+  --highlight-color-focused: none;
+}
+
+ion-select.custom-valid-input {
+  border-bottom: 1px solid #00cc00 !important;
+}
+
+ion-select.custom-valid-input::part(label) {
+  color: #00cc00;
+}
+
+ion-select.custom-valid-input.region-select::part(icon),
+ion-select.event-type-select::part(icon),
+ion-select.date-hour-select::part(icon) {
+  content: url("../../../assets/icons/input-icons/arrow-up-down-success.png");
+}

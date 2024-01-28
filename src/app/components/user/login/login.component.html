@@ -1,5 +1,5 @@
 <section class="login">
-  <form class="login-form" #form="ngForm" (ngSubmit)="onLoginSubmit()">
+  <form class="login-form form" #form="ngForm" (ngSubmit)="onLoginSubmit(form)">
     <div class="input-container">
       <app-label-with-states
         [forId]="'email'"
@@ -59,8 +59,10 @@
     </div>
 
     <div class="buttons">
-      <a (click)="navigateToRegister()">Регистрирай се като организатор</a>
-      <button [disabled]="form.invalid || form.pristine">Вход</button>
+      <a (click)="navigateToRegister()" class="secondary"
+        >Регистрирай се като организатор</a
+      >
+      <button class="submit">Вход</button>
     </div>
   </form>
   <p class="forgotten" (click)="navigateToForgotten()">Забравена парола</p>
