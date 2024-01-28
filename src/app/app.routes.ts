@@ -44,6 +44,7 @@ export const routes: Routes = [
       { path: '', redirectTo: 'upcoming-events', pathMatch: 'full' },
       { path: 'upcoming-events', component: EventsCardListComponent },
       { path: 'past-events', component: EventsCardListComponent },
+      { path: 'deleted-events', component: EventsCardListComponent }
     ],
   },
   {
