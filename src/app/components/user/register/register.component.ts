@@ -1,7 +1,7 @@
 import { Component, OnDestroy } from '@angular/core';
 import { LabelWithStatesComponent } from '../../../../shared/components/label-with-states/label-with-states.component';
 import { CommonModule } from '@angular/common';
-import { FormsModule } from '@angular/forms';
+import { FormsModule, NgForm } from '@angular/forms';
 import { SingleSelectorComponent } from '../../../../shared/components/single-selector/single-selector.component';
 import { AuthService } from '../../../../shared/services/auth.service';
 import { Subscription } from 'rxjs';
@@ -39,7 +39,13 @@ export class RegisterComponent implements OnDestroy {
     this.registerData.region = region;
   }
 
-  onRegisterSubmit() {
+  onRegisterSubmit(form: NgForm) {
+    if (form.invalid) {
+      return Object.values(form.controls).forEach((control) => {
+        control.markAsTouched();
+      });
+    }
+
     this.subscription = this.authService.register(this.registerData).subscribe({
       next: (response) => {
         // success toaster

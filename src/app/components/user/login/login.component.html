@@ -1,5 +1,5 @@
 <section class="login">
-  <form class="login-form form" #form="ngForm" (ngSubmit)="onLoginSubmit()">
+  <form class="login-form form" #form="ngForm" (ngSubmit)="onLoginSubmit(form)">
     <div class="input-container">
       <app-label-with-states
         [forId]="'email'"
