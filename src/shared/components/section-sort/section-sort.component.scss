@@ -13,10 +13,11 @@
         border-bottom: 1px solid #FFFFFF;
         margin-bottom: 8px;
         .search-icon{
-            content: url("../../icons/search.svg");
+            content: url("../../../assets/icons/search.svg");
         }
         .search-item{
             background: none;
+            color: #FFFFFF;
             width: 100%;
         }
         .search-item::placeholder {
