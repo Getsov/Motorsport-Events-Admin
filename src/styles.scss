@@ -132,7 +132,11 @@ body {
   background-color: #0d0d0d;
   color: rgba(255, 255, 255, 1);
   max-width: 100vw;
-  overflow-y: scroll;
+}
+
+html,
+body {
+  overflow-y: auto !important;
 }
 
 // FORM: Universal auth form styles
