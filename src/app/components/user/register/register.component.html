@@ -146,10 +146,10 @@
     <app-single-selector (selectedRegion)="onRegionSelect($event)" />
 
     <div class="buttons">
-      <button class="secondary">Откажи</button>
-      <button [disabled]="form.invalid || form.pristine" class="submit">
-        Вход
+      <button class="secondary" type="button" (click)="clearData()">
+        Откажи
       </button>
+      <button class="submit">Вход</button>
     </div>
   </form>
 </section>

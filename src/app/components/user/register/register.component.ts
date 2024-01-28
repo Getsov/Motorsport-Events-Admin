@@ -19,7 +19,7 @@ import { Subscription } from 'rxjs';
   styleUrl: './register.component.scss',
 })
 export class RegisterComponent implements OnDestroy {
-  registerData = {
+  emptyRegisterData = {
     email: '',
     password: '',
     repassword: '',
@@ -28,6 +28,8 @@ export class RegisterComponent implements OnDestroy {
     region: '',
     role: 'organizer',
   };
+
+  registerData = { ...this.emptyRegisterData };
 
   subscription: Subscription | undefined;
 
@@ -49,15 +51,7 @@ export class RegisterComponent implements OnDestroy {
   }
 
   clearData() {
-    this.registerData = {
-      email: '',
-      password: '',
-      repassword: '',
-      organizatorName: '',
-      phone: '',
-      region: '',
-      role: 'organizer',
-    };
+    return (this.registerData = { ...this.emptyRegisterData });
   }
 
   ngOnDestroy(): void {
