@@ -75,7 +75,7 @@ export const routes: Routes = [
       {
         path: 'forgotten-password',
         component: ForgottenPasswordComponent,
-        canActivate: [AuthGuard],
+        canActivate: [UserGuard],
       },
       {
         path: ':userId/profile',

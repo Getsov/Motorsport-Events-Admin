@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { FormsModule } from '@angular/forms';
+import { FormsModule, NgForm } from '@angular/forms';
 import { Router } from '@angular/router';
 import { CommonModule } from '@angular/common';
 import { LabelWithStatesComponent } from '../../../../shared/components/label-with-states/label-with-states.component';
@@ -18,7 +18,13 @@ export class LoginComponent {
 
   constructor(private router: Router, private authService: AuthService) {}
 
-  onLoginSubmit() {
+  onLoginSubmit(form: NgForm) {
+    if (form.invalid) {
+      return Object.values(form.controls).forEach((control) => {
+        control.markAsTouched();
+      });
+    }
+
     this.authService.login(this.email, this.password).subscribe({
       next: (response) => {
         const userDetails = {

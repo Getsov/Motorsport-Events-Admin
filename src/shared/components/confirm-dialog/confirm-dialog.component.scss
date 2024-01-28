@@ -44,6 +44,10 @@
         background-color: rgba(13, 13, 13, 1);
         cursor: pointer;
       }
+
+      button:first-child {
+        border-right: 1px solid rgba(166, 162, 160, 1);
+      }
     }
   }
 }
