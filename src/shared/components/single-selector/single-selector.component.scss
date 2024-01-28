@@ -62,6 +62,10 @@ ion-select.select-expanded.ion-touched.select-ltr {
   border-bottom: 1px solid rgba(255, 116, 24, 1) !important;
 }
 
+ion-select.select-expanded.ion-touched.select-ltr::part(icon) {
+  content: url("../../../assets/icons/input-icons/arrow-up-down-active.svg");
+}
+
 ion-select.has-value.ion-touched {
   border-bottom: 1px solid #00cc00 !important;
 }
@@ -70,7 +74,7 @@ ion-select.has-value.ion-touched::part(label) {
   color: #00cc00;
 }
 
-ion-select.has-value.ion-tuched::part(icon) {
+ion-select.has-value.ion-touched::part(icon) {
   content: url("../../../assets/icons/input-icons/arrow-up-down-success.png");
 }
 
@@ -82,13 +86,9 @@ ion-select.ion-touched {
   border-bottom: 1px solid rgba(255, 0, 0, 1) !important;
 }
 
-// ion-select.ion-invalid::part(label) {
-//   color: rgba(255, 0, 0, 1);
-// }
-
-// ion-select.ion-invalid {
-//   border-bottom: 1px solid rgba(255, 0, 0, 1) !important;
-// }
+ion-select.ion-touched::part(icon) {
+  content: url("../../../assets/icons/input-icons/arrow-up-down-error.png");
+}
 
 div.select-hightlight {
   display: none !important;
