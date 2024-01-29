@@ -1,0 +1,69 @@
+<section class="login">
+  <form class="login-form form" #form="ngForm" (ngSubmit)="onLoginSubmit(form)">
+    <div class="input-container">
+      <app-label-with-states
+        [forId]="'email'"
+        [inputRef]="inputEmail"
+        [labelText]="'Имейл*'"
+      />
+
+      <input
+        type="email"
+        [placeholder]="inputEmail.dirty || inputEmail.touched ? '' : 'Имейл*'"
+        id="email"
+        name="email"
+        [(ngModel)]="email"
+        #inputEmail="ngModel"
+        required
+        pattern="^[a-zA-Z0-9\._+\-]+@[a-zA-Z0-9\.]+\.[a-zA-Z]{2,}$"
+      />
+      @if(inputEmail.invalid && inputEmail.touched){
+      <p class="invalid-message">
+        @if(inputEmail.errors?.['required']) { Полето е задължително за
+        попълване! } @if(inputEmail.errors?.['pattern']){ Моля въведете валиден
+        имейл! }
+      </p>
+      }
+    </div>
+
+    <div class="input-container">
+      <app-label-with-states
+        [forId]="'password'"
+        [inputRef]="inputPassword"
+        [labelText]="'Парола*'"
+      />
+
+      <input
+        type="password"
+        [placeholder]="
+          inputPassword.dirty || inputPassword.touched ? '' : 'Парола*'
+        "
+        id="password"
+        name="password"
+        labelPlacement="floating"
+        [(ngModel)]="password"
+        #inputPassword="ngModel"
+        required
+        minlength="6"
+        maxlength="24"
+      />
+      @if(inputPassword.invalid && inputPassword.touched){
+      <p class="invalid-message">
+        @if(inputPassword.errors?.['required']){ Полето е задължително за
+        попълване! } @if(inputPassword.errors?.['minlength']){ Паролата трябва
+        да е с дължина поне 6 символа! }
+        @if(inputPassword.errors?.['maxlength']){ Паролата трябва да е с
+        максимална дължина 24 символа! }
+      </p>
+      }
+    </div>
+
+    <div class="buttons">
+      <a (click)="navigateToRegister()" class="secondary"
+        >Регистрирай се като организатор</a
+      >
+      <button class="submit">Вход</button>
+    </div>
+  </form>
+  <p class="forgotten" (click)="navigateToForgotten()">Забравена парола</p>
+</section>

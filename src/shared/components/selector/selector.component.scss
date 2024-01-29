@@ -1,0 +1,115 @@
+@import url("../../../shared/styles/select-inputs-styles.scss");
+
+::ng-deep .alert-wrapper .alert-head {
+  justify-content: center;
+  align-items: center;
+  background-color: rgba(13, 13, 13, 1);
+  h2 {
+    color: rgba(255, 116, 24, 1);
+    font-size: 18px;
+    font-weight: 700;
+    line-height: 21.6px;
+    margin: 8px 24px;
+  }
+}
+
+::ng-deep .alert-radio-group.sc-ion-alert-md {
+  background-color: rgba(13, 13, 13, 1);
+}
+
+::ng-deep .alert-button-group.sc-ion-alert-md {
+  justify-content: space-around;
+  flex-wrap: nowrap;
+  padding-inline-end: 0px;
+  padding-inline-start: 0px;
+  padding-top: 0;
+  padding-bottom: 0;
+}
+
+::ng-deep .alert-wrapper .alert-button-group .alert-button {
+  width: 50%;
+  height: 48px;
+  margin: 0;
+  padding: 0;
+}
+
+::ng-deep .alert-wrapper .alert-button-group .alert-button > span {
+  width: 100%;
+  height: 100% !important;
+  border-right: none;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 16px;
+  font-weight: 400;
+  line-height: 24px;
+}
+
+ion-select::part(icon) {
+  position: absolute;
+  top: calc(50% - 10px);
+}
+
+ion-select {
+  --highlight-color-focused: none;
+}
+
+ion-select.select-expanded.ion-touched.select-ltr::part(label) {
+  color: rgba(255, 116, 24, 1);
+}
+
+ion-select.select-expanded.ion-touched.select-ltr {
+  border-bottom: 1px solid rgba(255, 116, 24, 1) !important;
+}
+
+ion-select.select-expanded.ion-touched.select-ltr::part(icon) {
+  content: url("../../../assets/icons/input-icons/arrow-up-down-active.svg");
+}
+
+ion-select.has-value.ion-touched {
+  border-bottom: 1px solid #00cc00 !important;
+}
+
+ion-select.has-value.ion-touched::part(label) {
+  color: #00cc00;
+}
+
+ion-select.has-value.ion-touched::part(icon) {
+  content: url("../../../assets/icons/input-icons/arrow-up-down-success.png");
+}
+
+ion-select.ion-touched::part(label) {
+  color: rgba(255, 0, 0, 1);
+}
+
+ion-select.ion-touched {
+  border-bottom: 1px solid rgba(255, 0, 0, 1) !important;
+}
+
+ion-select.ion-touched::part(icon) {
+  content: url("../../../assets/icons/input-icons/arrow-up-down-error.png");
+}
+
+div.select-hightlight {
+  display: none !important;
+}
+
+::ng-deep
+  [aria-checked="true"].sc-ion-alert-md
+  .alert-checkbox-icon.sc-ion-alert-md {
+  background-color: rgb(255, 117, 26) !important;
+}
+
+::ng-deep .alert-wrapper .alert-checkbox-icon {
+  border-radius: 100% !important;
+  width: 20px;
+  height: 20px;
+}
+
+::ng-deep
+  [aria-checked="true"].sc-ion-alert-md
+  .alert-checkbox-inner.sc-ion-alert-md {
+  top: 2px;
+  right: 2px;
+  inset-inline-start: 4px;
+}

@@ -1,0 +1,40 @@
+<div class="section">
+  <div class="search-container">
+    <i class="search-icon"></i>
+    <input
+      type="search"
+      [(ngModel)]="searchQuery"
+      (input)="searchEvents()"
+      name="search"
+      placeholder="Търси събитие"
+      class="search-item"
+    />
+  </div>
+  <div class="select">
+    <select
+      multiple
+      name="category"
+      [(ngModel)]="selectedCategory"
+      (change)="searchEvents()"
+      placeholder="Категория"
+      class="select-item"
+    >
+      <option disabled selected value="">Категория</option>
+      <option *ngFor="let item of categories; let i = index" [value]="i + 1">
+        {{ item }}
+      </option>
+    </select>
+    <select
+      multiple
+      name="region"
+      [(ngModel)]="regionQuery"
+      (change)="searchEvents()"
+      class="select-item"
+    >
+      <option disabled selected value="">Регион</option>
+      <option *ngFor="let item of regions; let i = index" [value]="i + 1">
+        {{ item }}
+      </option>
+    </select>
+  </div>
+</div>

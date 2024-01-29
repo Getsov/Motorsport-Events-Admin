@@ -1,0 +1,150 @@
+.event-card {
+  box-shadow: 0px 0px 5px 0.5px rgba(255, 220, 35, 0.3);
+  padding: 8px;
+  border-radius: 4px;
+  height: 408px;
+  width: 288px;
+  display: flex;
+  flex-direction: column;
+  position: relative;
+  z-index: 0;
+
+  .content {
+    text-align: left;
+
+    .event-img {
+      margin: 0 auto;
+      border-radius: 4px;
+      height: 168px;
+      object-fit: contain;
+      color: white;
+    }
+
+    h3 {
+      margin-top: 8px;
+      font-family: "Open Sans";
+      font-size: 16px;
+      font-style: normal;
+      font-weight: 500;
+      line-height: 24px;
+    }
+
+    p {
+      margin-left: 4px;
+      font-size: 12px;
+      font-style: normal;
+      font-weight: 500;
+      line-height: 18px;
+    }
+
+    .contacts {
+      margin-top: 4px;
+
+      p,
+      img {
+        display: inline-block;
+      }
+    }
+
+    .dates {
+      p,
+      img {
+        display: inline-block;
+      }
+    }
+
+    .description {
+      margin-top: 4px;
+      color: #c2bfbe;
+      margin-bottom: auto;
+    }
+  }
+
+  .buttons {
+    margin-top: auto;
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 8px;
+
+    a {
+      text-decoration: none;
+      font-size: 14px;
+      font-style: normal;
+      font-weight: 600;
+      line-height: 21px;
+      text-align: center;
+      padding: 6px 10px 6px 10px;
+      border-radius: 4px;
+      cursor: pointer;
+    }
+
+    .view,
+    .edit:hover,
+    .approve:hover,
+    .approve:active,
+    .delete:hover,
+    .delete:active {
+      color: rgba(13, 13, 13, 1);
+    }
+
+    .view {
+      background-color: rgba(255, 116, 24, 1);
+    }
+
+    .view:hover {
+      background-color: rgba(181, 82, 17, 1);
+    }
+
+    .view:active {
+      background-color: rgba(255, 212, 183, 1);
+    }
+
+    .edit {
+      color: rgba(255, 116, 24, 1);
+      border: 2px solid rgba(255, 116, 24, 1);
+    }
+
+    .edit:hover {
+      background-color: rgba(255, 162, 100, 1);
+      border-color: rgba(255, 162, 100, 1);
+    }
+
+    .edit:active {
+      background-color: rgba(255, 116, 24, 1);
+      border-color: rgba(255, 116, 24, 1);
+    }
+
+    // .edit:active {
+    //   // wait for design
+    // }
+
+    .approve {
+      color: rgba(0, 128, 0, 1);
+      border: 2px solid rgba(0, 128, 0, 1);
+    }
+
+    .approve:hover {
+      background-color: rgba(0, 128, 0, 1);
+    }
+
+    .approve:active {
+      background-color: rgba(138, 197, 138, 1);
+      border-color: rgba(138, 197, 138, 1);
+    }
+
+    .delete {
+      color: rgba(255, 0, 0, 1);
+      border: 2px solid rgba(255, 0, 0, 1);
+    }
+
+    .delete:hover {
+      background-color: rgba(181, 0, 0, 1);
+      border-color: rgba(181, 0, 0, 1);
+    }
+
+    .delete:active {
+      background-color: rgba(255, 84, 84, 1);
+      border-color: rgba(255, 84, 84, 1);
+    }
+  }
+}

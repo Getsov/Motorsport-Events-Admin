@@ -1,0 +1,72 @@
+.dialog-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(13, 13, 13, 0.85);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 3;
+
+  .dialog-container {
+    position: fixed;
+    bottom: 242px;
+    background: rgba(13, 13, 13, 1);
+    border-radius: 4px;
+    text-align: center;
+    border: 1px solid rgba(166, 162, 160, 1);
+    max-width: 390px;
+    margin: 0 16px;
+
+    p,
+    button {
+      font-size: 18px;
+      font-weight: 600;
+      line-height: 27px;
+    }
+
+    p {
+      padding: 24px;
+    }
+
+    button {
+      padding: 15px 0;
+    }
+
+    .button-container {
+      border-top: 1px solid rgba(166, 162, 160, 1);
+
+      button {
+        width: 50%;
+        color: rgba(255, 116, 24, 1);
+        background-color: rgba(13, 13, 13, 1);
+        cursor: pointer;
+      }
+
+      button:hover {
+        background-color: rgba(255, 162, 100, 1);
+        color: rgba(13, 13, 13, 1);
+      }
+
+      button:active {
+        background-color: rgba(255, 116, 24, 1);
+      }
+
+      button:first-child {
+        border-right: 1px solid rgba(166, 162, 160, 1);
+      }
+    }
+  }
+}
+
+@media (max-width: 430px) {
+  .dialog-overlay {
+    .dialog-container {
+      button {
+        padding: 10px 0;
+      }
+    }
+  }
+}

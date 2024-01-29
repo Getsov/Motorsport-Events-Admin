@@ -1,0 +1,32 @@
+.like-container {
+  position: absolute;
+  top: 5px;
+  right: 5px;
+}
+
+.like-icon {
+  z-index: 2;
+  position: relative;
+}
+
+.likes-count {
+  z-index: 3;
+  font-weight: 700;
+  color: rgba(255, 0, 0, 1);
+  position: absolute;
+  transform: translate(-50%, -50%);
+  top: 50%;
+  left: 50%;
+}
+
+.like-count-small {
+  font-size: 10px;
+}
+
+.like-count-medium {
+  font-size: 12px;
+}
+
+.like-count-large {
+  font-size: 14px;
+}

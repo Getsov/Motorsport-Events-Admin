@@ -1,0 +1,10 @@
+<label
+  [class.dirty-input]="inputRef.dirty && inputRef.untouched && inputRef.invalid"
+  [class.invalid-input]="inputRef.invalid && inputRef.touched"
+  [class.valid-input]="inputRef.valid"
+  [class.hidden]="inputRef.pristine"
+  class="label-message"
+  for="{{ forId }}"
+>
+  {{ labelText }}
+</label>

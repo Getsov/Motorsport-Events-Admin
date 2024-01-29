@@ -1,0 +1,78 @@
+<section class="event-details">
+  <h1>{{ event.shortTitle }}</h1>
+  <p class="long-title">{{ event.longTitle }}</p>
+  <div class="image-container">
+    <img src="{{ event.imageUrl }}" alt="{{ event.shortTitle }}" />
+  </div>
+  <div class="categories">
+    @for(category of event.categories; track category){
+    <p class="grey-text">{{ category }}</p>
+    }@empty {
+    <p class="grey-text">none</p>
+    }
+  </div>
+  <p class="event-description">{{ event.longDescription }}</p>
+  <h3>Информация за събитието</h3>
+  <div class="event-info">
+    <div class="organizer-info">
+      <p class="organizer">Организатор на събитието:</p>
+      <p class="grey-text">{{ event.creator.organizatorName }}</p>
+    </div>
+    <div class="dates">
+      <p class="date-title">Дати:</p>
+      <div class="date">
+        @for(date of event.dates; track date._id){
+        <p class="grey-text">
+          {{ datePipe.transform(date.date, "dd.MM.yyyy г.") }} - от:
+          {{ date.startTime }} до {{ date.endTime }} ч.
+        </p>
+        }
+      </div>
+    </div>
+    <div class="price-list">
+      <div class="visitor-prices">
+        <h4>Цени за зрители:</h4>
+        @for (visitorPrice of event.visitorPrices; track visitorPrice._id) {
+        <div class="price-row">
+          <p class="visitor-price">{{ visitorPrice.price }} лв.</p>
+          <p class="grey-text">{{ visitorPrice.description }}</p>
+        </div>
+        }@empty {
+        <p class="empty">Няма ценоразпис!</p>
+        }
+      </div>
+
+      <div class="participant-prices">
+        <h4>Цени за участници:</h4>
+        @for (participantPrice of event.participantPrices; track
+        participantPrice._id) {
+        <div class="price-row">
+          <p class="visitor-price">{{ participantPrice.price }} лв.</p>
+          <p class="grey-text">{{ participantPrice.description }}</p>
+        </div>
+        }@empty {
+        <p class="empty">Няма ценоразпис!</p>
+        }
+      </div>
+    </div>
+  </div>
+
+  <h4 class="adress-title">Адрес на събитието</h4>
+  <p class="adress grey-text">
+    {{ event.contacts.region }}, {{ event.contacts.address }}
+  </p>
+
+  <google-map
+    [options]="mapOptions"
+    width="{{ mapWidth }}"
+    height="{{ mapHeight }}"
+  >
+    <map-marker [position]="marker.position"></map-marker>
+  </google-map>
+
+  <h6 class="contacts-title">Контакти:</h6>
+  <div class="contact-info">
+    <p class="grey-text">{{ event.creator.email }}</p>
+    <p class="grey-text">{{ event.creator.phone }}</p>
+  </div>
+</section>

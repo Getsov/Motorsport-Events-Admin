@@ -1,0 +1,10 @@
+<section class="awaiting-organizers">
+  @if(isloading){
+  <app-loader />
+  }@else{ @if(awaitingApprovalOrganizers.length < 1){
+  <p>Няма организатори, чакащи одобрение!</p>
+
+  }@else {
+  <app-accounts-table [usersList]="awaitingApprovalOrganizers" />
+  } }
+</section>

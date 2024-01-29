@@ -1,0 +1,106 @@
+<header>
+  <div class="header-container">
+    <img
+      class="logo"
+      src="../../../../assets/images/app-logo.png"
+      alt="app-logo"
+    />
+    <nav class="navbar" [ngClass]="{ open: isMenuOpen, close: !isMenuOpen }">
+      <ul role="list" class="navbar">
+        @if(currentUser){ @if(currentUser.role === 'admin'){
+        <li>
+          <a
+            routerLink="/awaiting-approval"
+            routerLinkActive="activebutton"
+            ariaCurrentWhenActive="page"
+            >Чакащи за одобрение</a
+          >
+        </li>
+        <li>
+          <a
+            routerLink="/events"
+            routerLinkActive="activebutton"
+            ariaCurrentWhenActive="page"
+            >Събития</a
+          >
+        </li>
+        <li>
+          <a
+            routerLink="/accounts"
+            routerLinkActive="activebutton"
+            ariaCurrentWhenActive="page"
+            >Акаунти</a
+          >
+        </li>
+
+        } @if(currentUser.role === 'organizer'){
+        <li>
+          <a
+            routerLink="/organizer-events"
+            routerLinkActive="activebutton"
+            ariaCurrentWhenActive="page"
+            >Мои събития</a
+          >
+        </li>
+        }
+
+        <li>
+          <a
+            routerLink="/event/create"
+            routerLinkActive="activebutton"
+            ariaCurrentWhenActive="page"
+            >Създай събитие</a
+          >
+        </li>
+        <li>
+          <a
+            routerLink="user/{{ currentUser._id }}/profile"
+            routerLinkActive="activebutton"
+            ariaCurrentWhenActive="page"
+            >Профил</a
+          >
+        </li>
+        <li>
+          <a
+            href="/logout"
+            routerLinkActive="activebutton"
+            ariaCurrentWhenActive="page"
+            (click)="this.authService.logout()"
+            >Изход</a
+          >
+        </li>
+        }@else {
+        <!-- TODO: add route -->
+        <li>
+          <a routerLink="" ariaCurrentWhenActive="page">Начало</a>
+        </li>
+        <li>
+          <a
+            routerLink="user/login"
+            routerLinkActive="activebutton"
+            ariaCurrentWhenActive="page"
+            >Вход</a
+          >
+        </li>
+        <li>
+          <a
+            routerLink="user/register"
+            routerLinkActive="activebutton"
+            ariaCurrentWhenActive="page"
+            >Регистрация</a
+          >
+        </li>
+        }
+      </ul>
+    </nav>
+    <div
+      class="hamburger-menu"
+      (click)="toggleMenu()"
+      [ngClass]="{ open: isMenuOpen, close: !isMenuOpen }"
+    >
+      <span></span>
+      <span></span>
+      <span></span>
+    </div>
+  </div>
+</header>

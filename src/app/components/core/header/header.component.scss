@@ -1,0 +1,224 @@
+header {
+  .header-container {
+    margin: 40px;
+    display: flex;
+    flex-wrap: nowrap;
+    justify-content: space-between;
+    align-items: center;
+    height: 56px;
+
+    img,
+    nav {
+      display: inline-block;
+    }
+
+    .hamburger-menu {
+      display: none;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      cursor: pointer;
+      padding: 16px;
+
+      span {
+        height: 3px;
+        width: 32px;
+        background-color: rgba(166, 162, 160, 1);
+        margin: 3px 0;
+        display: block;
+        transition: transform 0.3s ease-in-out;
+      }
+
+      &.open {
+        span:nth-child(1) {
+          transform: rotate(45deg) translate(6px, 8px);
+        }
+        span:nth-child(2) {
+          transform: rotate(-45deg) translate(-1px, 0px);
+        }
+        span:nth-child(3) {
+          opacity: 0;
+        }
+      }
+
+      &.close {
+        span:nth-child(1) {
+          transform: rotate(0deg) translate(0, 0);
+        }
+        span:nth-child(2) {
+          opacity: 1;
+        }
+        span:nth-child(3) {
+          transform: rotate(0deg) translate(0, 0);
+        }
+      }
+    }
+
+    .navbar {
+      display: flex;
+      flex-direction: row;
+      flex-wrap: nowrap;
+      align-items: flex-end;
+      gap: 16px;
+
+      li a {
+        text-decoration: none;
+        flex-grow: 1;
+        flex-shrink: 1;
+        color: rgba(255, 116, 24, 1);
+        font-family: Open Sans;
+        font-size: 16px;
+        font-style: normal;
+        font-weight: 600;
+        line-height: 150%;
+        padding: 17px 18px;
+        border-radius: 4px;
+      }
+
+      li a:hover {
+        background-color: rgba(255, 162, 100, 1);
+        color: rgba(13, 13, 13, 1);
+      }
+
+      li a:active {
+        background-color: rgba(255, 116, 24, 1);
+      }
+
+      li a.activebutton {
+        background-color: rgba(255, 116, 24, 1);
+        color: rgba(13, 13, 13, 1);
+      }
+
+      li a.activebutton:hover {
+        background-color: rgba(181, 82, 17, 1);
+      }
+
+      li a.activebutton:active {
+        background-color: rgba(255, 212, 183, 1);
+      }
+    }
+  }
+}
+
+@media (max-width: 990px) {
+  header {
+    .header-container {
+      margin: 0;
+      position: relative;
+      .hamburger-menu {
+        display: flex;
+        margin: 6px;
+        z-index: 10;
+        &.open {
+          margin-top: 30px;
+        }
+      }
+      .navbar {
+        flex-direction: column;
+        gap: 8px;
+        position: absolute;
+        top: 0;
+        right: 0;
+        height: 100vh;
+        width: 0;
+        background-color: rgba(13, 13, 13, 1);
+        z-index: 10;
+        align-items: flex-start;
+        border-left: 1px solid rgba(166, 162, 160, 1);
+
+        &.open {
+          width: 40%;
+          transition: width 0.4s ease-in-out;
+        }
+
+        &.close {
+          width: 0;
+          transition: width 0.4s ease-in-out;
+        }
+
+        li {
+          padding: 16px;
+          margin-left: 32px;
+        }
+
+        ul {
+          padding-top: 12px;
+          width: 100%;
+        }
+      }
+      .logo {
+        width: 24px;
+        height: 24px;
+        margin: 18px 0 18px 16px;
+      }
+    }
+  }
+}
+
+@media (max-width: 850px) {
+  header {
+    .header-container {
+      .navbar {
+        &.open {
+          width: 50%;
+        }
+      }
+    }
+  }
+}
+
+@media (max-width: 680px) {
+  header {
+    .header-container {
+      .navbar {
+        &.open {
+          width: 60%;
+        }
+      }
+    }
+  }
+}
+
+@media (max-width: 560px) {
+  header {
+    .header-container {
+      .navbar {
+        &.open {
+          width: 65%;
+        }
+      }
+    }
+  }
+}
+
+@media (max-width: 520px) {
+  header {
+    .header-container {
+      .hamburger-menu {
+        margin: 0;
+        padding-left: 6px;
+        &.open {
+          margin-top: 0;
+        }
+      }
+      .navbar {
+        gap: 24px;
+        &.open {
+          width: 70%;
+        }
+        ul {
+          padding-top: 16px;
+        }
+
+        li {
+          margin: 0;
+          padding: 0 0 0 16px;
+          a {
+            padding: 8px;
+            font-size: 14px;
+          }
+        }
+      }
+    }
+  }
+}

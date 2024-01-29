@@ -1,0 +1,11 @@
+.register {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+
+  app-selector {
+    width: 100%;
+    max-width: 592px;
+  }
+}
