@@ -105,7 +105,13 @@
     }
 
     .edit:hover {
+      background-color: rgba(255, 162, 100, 1);
+      border-color: rgba(255, 162, 100, 1);
+    }
+
+    .edit:active {
       background-color: rgba(255, 116, 24, 1);
+      border-color: rgba(255, 116, 24, 1);
     }
 
     // .edit:active {
@@ -123,6 +129,7 @@
 
     .approve:active {
       background-color: rgba(138, 197, 138, 1);
+      border-color: rgba(138, 197, 138, 1);
     }
 
     .delete {
