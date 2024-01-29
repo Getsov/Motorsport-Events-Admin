@@ -1,10 +1,10 @@
 import { Component } from '@angular/core';
-import Categories from '../../data/categories';
-import BulgarianRegions from '../../data/regions';
+import { NavigationEnd, Router } from '@angular/router';
 import { NgFor } from '@angular/common';
 import { FormsModule } from '@angular/forms';
+import Categories from '../../data/categories';
+import BulgarianRegions from '../../data/regions';
 import { EventService } from '../../services/event.service';
-import { ActivatedRoute, NavigationEnd, Router } from '@angular/router';
 
 @Component({
   selector: 'app-section-sort',
@@ -13,12 +13,13 @@ import { ActivatedRoute, NavigationEnd, Router } from '@angular/router';
   templateUrl: './section-sort.component.html',
   styleUrl: './section-sort.component.scss',
 })
-export class SectionSortComponent{
+export class SectionSortComponent {
   searchQuery: [] = [];
   regionQuery: [] = [];
-  selectedCategory: number[] = [];
+  selectedCategory: [] = [];
 
-  route: string | undefined;
+  route: string = '';
+
   regions: any = Object.keys(BulgarianRegions).filter((value) =>
     isNaN(Number(value))
   );
@@ -27,59 +28,56 @@ export class SectionSortComponent{
     isNaN(Number(value))
   );
 
-  constructor(
-    private eventService: EventService,
-    private activatedRoute: ActivatedRoute,
-    private router: Router
-    ){
-      this.router.events.subscribe((event) => {
-        if (event instanceof NavigationEnd) {
-          this.route = this.router.url.split('/')[2];
-        }
-      });
-    }
-
-    searchEvents(): void {
-      let query = '';
-  
-      if (this.searchQuery.length > 0) {
-        query += `search=${this.searchQuery}&`;
+  constructor(private eventService: EventService, private router: Router) {
+    this.router.events.subscribe((event) => {
+      if (event instanceof NavigationEnd) {
+        this.route = this.router.url.split('/')[2];
       }
-  
-      if (this.selectedCategory.length > 0) {
-        if (this.selectedCategory.length > 1) {
-          this.selectedCategory.forEach((el) => {
-            query += `category=${el}&`;
+    });
+  }
+
+  searchEvents(): void {
+    
+    const query = this.buildQuery();
+
+    const routeHandlers: { [key: string]: (query: string) => void } = {
+      'not-approved': this.eventService.setMyEventsForApproval.bind(this.eventService),
+      'upcoming-approved': this.eventService.setMyUpcomingEvents.bind(this.eventService),
+      'past-approved': this.eventService.setMyPastEvents.bind(this.eventService),
+      'upcoming-events': this.eventService.setUpcomingEvents.bind(this.eventService),
+      'past-events': this.eventService.setPastEvents.bind(this.eventService),
+      // TODO: Add Deleted Events
+    };
+
+    const routeHandler = routeHandlers[this.route];
+
+    if (routeHandler) {
+      routeHandler(query);
+    }
+  }
+
+  private buildQuery(): string {
+    let query = '';
+
+    const addQueryParam = (
+      paramName: string,
+      paramValue: string | string[]
+    ): void => {
+      if (paramValue.length > 0) {
+        if (Array.isArray(paramValue)) {
+          paramValue.forEach((el) => {
+            query += `${paramName}=${el}&`;
           });
         } else {
-          query += `category=${this.selectedCategory}&`;
-        }
-      } 
-  
-      if (this.regionQuery.length > 0) {
-        if (this.regionQuery.length > 1) {
-          this.regionQuery.forEach((el: string) => {
-            query += `region=${el}&`;
-          });
-        } else {
-          query += `region=${this.regionQuery}&`;
+          query += `${paramName}=${paramValue}&`;
         }
       }
-  
-      query = query.slice(0, -1);
-      
-      if(this.route == 'not-approved'){
-        this.eventService.setMyEventsForApproval(query);
-      }else if(this.route == 'upcoming-approved'){
-        this.eventService.setMyUpcomingEvents(query);
-      }else if(this.route == 'past-approved'){
-        this.eventService.setMyPastEvents(query);
-      }else if(this.route == 'upcoming-events'){
-        this.eventService.setUpcomingEvents(query);
-      }else if(this.route == 'past-events'){
-        this.eventService.setPastEvents(query);
-      }/* TODO: Deleted Events */
-      
-    }
+    };
 
+    addQueryParam('search', this.searchQuery);
+    addQueryParam('category', this.selectedCategory);
+    addQueryParam('region', this.regionQuery);
+
+    return query.slice(0, -1);
+  }
 }
