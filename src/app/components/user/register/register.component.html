@@ -134,6 +134,7 @@
         [(ngModel)]="registerData.phone"
         #inputPhone="ngModel"
         required
+        inputmode="numeric"
       />
       @if(inputPhone.invalid && inputPhone.touched){
       <p class="invalid-message">
