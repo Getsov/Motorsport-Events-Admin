@@ -1,6 +1,7 @@
 import {
   Component,
   EventEmitter,
+  Input,
   OnInit,
   Output,
   ViewChild,
@@ -21,6 +22,7 @@ export class SingleSelectorComponent implements OnInit {
   selectedRegionValue: string | null = null;
   @ViewChild('region') regionControl!: NgModel;
   @Output() regionFormControl = new EventEmitter<NgModel>();
+  @Input() isMultiple: boolean = true;
   constructor() {}
 
   ngOnInit() {}

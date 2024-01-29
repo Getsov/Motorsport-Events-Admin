@@ -93,3 +93,23 @@ ion-select.ion-touched::part(icon) {
 div.select-hightlight {
   display: none !important;
 }
+
+::ng-deep
+  [aria-checked="true"].sc-ion-alert-md
+  .alert-checkbox-icon.sc-ion-alert-md {
+  background-color: rgb(255, 117, 26) !important;
+}
+
+::ng-deep .alert-wrapper .alert-checkbox-icon {
+  border-radius: 100% !important;
+  width: 20px;
+  height: 20px;
+}
+
+::ng-deep
+  [aria-checked="true"].sc-ion-alert-md
+  .alert-checkbox-inner.sc-ion-alert-md {
+  top: 2px;
+  right: 2px;
+  inset-inline-start: 4px;
+}

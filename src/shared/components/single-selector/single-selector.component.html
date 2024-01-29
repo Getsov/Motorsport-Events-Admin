@@ -1,3 +1,27 @@
+@if(isMultiple){
+<div class="auth-wrapper">
+  <div class="auth-input region-select-wrapper">
+    <ion-select
+      labelPlacement="floating"
+      label="Регион*"
+      class="region-select"
+      okText="Ок"
+      multiple="true"
+      cancelText="Откажи"
+      slot="center"
+      name="region"
+      [(ngModel)]="selectedRegionValue"
+      #region="ngModel"
+      (ionChange)="onRegionChange()"
+    >
+      @for(region of regions; track region){
+      <ion-select-option>{{ region }}</ion-select-option>
+
+      }
+    </ion-select>
+  </div>
+</div>
+}@else {
 <div class="auth-wrapper">
   <div class="auth-input region-select-wrapper">
     <ion-select
@@ -19,3 +43,4 @@
     </ion-select>
   </div>
 </div>
+}
