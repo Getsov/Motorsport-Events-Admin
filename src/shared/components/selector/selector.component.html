@@ -1,0 +1,48 @@
+@if(list.length === 0){
+<h1>Insert list to render in selector</h1>
+} @if(isMultiple){
+<div class="auth-wrapper">
+  <div class="auth-input region-select-wrapper">
+    <ion-select
+      labelPlacement="floating"
+      label="{{ labelText }}"
+      class="region-select"
+      okText="Ок"
+      multiple="true"
+      cancelText="Откажи"
+      slot="center"
+      name="region"
+      [(ngModel)]="selectedRegionValue"
+      #region="ngModel"
+      (ionChange)="onRegionChange()"
+    >
+      @for(item of list; track item){
+      <ion-select-option>{{ item }}</ion-select-option>
+
+      }
+    </ion-select>
+  </div>
+</div>
+}@else {
+<div class="auth-wrapper">
+  <div class="auth-input region-select-wrapper">
+    <ion-select
+      labelPlacement="floating"
+      label="{{ labelText }}"
+      class="region-select"
+      okText="Ок"
+      cancelText="Откажи"
+      slot="center"
+      name="region"
+      [(ngModel)]="selectedRegionValue"
+      #region="ngModel"
+      required
+      (ionChange)="onRegionChange()"
+    >
+      @for(item of list; track item){
+      <ion-select-option>{{ item }}</ion-select-option>
+      }
+    </ion-select>
+  </div>
+</div>
+}

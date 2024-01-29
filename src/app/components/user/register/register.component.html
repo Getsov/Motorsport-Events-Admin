@@ -143,7 +143,18 @@
       }
     </div>
 
-    <app-single-selector (selectedRegion)="onRegionSelect($event)" />
+    <app-selector
+      (regionFormControl)="onRegionSelect($event)"
+      [list]="regions"
+      [labelText]="'Регион*'"
+      [isMultiple]="false"
+    />
+    <!-- @if(regionFormControl?.invalid && regionFormControl?.touched){
+    <p class="invalid-message">
+      @if(regionFormControl?.errors?.['required']) { Полето е задължително за
+      попълване! }
+    </p>
+    } -->
 
     <div class="buttons">
       <button class="secondary" type="button" (click)="clearData()">

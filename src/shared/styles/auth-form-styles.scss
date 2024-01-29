@@ -2,7 +2,6 @@
 .create-event-container {
   display: flex;
   flex-direction: column;
-  margin-bottom: 1.5em;
 
   .auth-input,
   .region-select-wrapper,
@@ -95,9 +94,9 @@
       padding-left: 1em;
     }
 
-    ion-select.region-select::part(icon),
-    ion-select.event-type-select::part(icon),
-    ion-select.date-hour-select::part(icon) {
+    ion-select::part(icon),
+    ion-select::part(icon),
+    ion-select::part(icon) {
       content: url("../../assets/icons/input-icons/arrow-up-down.svg");
       position: absolute;
       right: 1.6em;

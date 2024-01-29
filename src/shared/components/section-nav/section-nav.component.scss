@@ -10,6 +10,7 @@
   gap: 4px;
   margin-bottom: 40px;
   border-radius: 4px;
+  background-color: rgba(214, 212, 211, 1);
   a {
     color: rgba(13, 13, 13, 1);
     font-size: 16px;
@@ -23,6 +24,14 @@
     border-radius: 4px;
     text-align: center;
     position: relative;
+  }
+
+  a:hover {
+    background-color: rgba(255, 162, 100, 1);
+  }
+
+  a:active {
+    background-color: rgba(255, 116, 24, 1);
   }
 
   a .red-dot {
@@ -43,6 +52,14 @@
 
   .activebutton .red-dot {
     display: none;
+  }
+
+  .activebutton:hover {
+    background-color: rgba(181, 82, 17, 1);
+  }
+
+  .activebutton:active {
+    background-color: rgba(255, 212, 183, 1);
   }
 }
 
