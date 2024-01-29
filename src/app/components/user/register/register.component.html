@@ -143,7 +143,12 @@
       }
     </div>
 
-    <app-single-selector (regionFormControl)="onRegionSelect($event)" />
+    <app-selector
+      (regionFormControl)="onRegionSelect($event)"
+      [list]="regions"
+      [labelText]="'Регион*'"
+      [isMultiple]="false"
+    />
     <!-- @if(regionFormControl?.invalid && regionFormControl?.touched){
     <p class="invalid-message">
       @if(regionFormControl?.errors?.['required']) { Полето е задължително за

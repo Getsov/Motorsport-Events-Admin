@@ -6,35 +6,30 @@ import {
   Output,
   ViewChild,
 } from '@angular/core';
-import BulgarianRegions from '../../data/regions';
+
 import { CommonModule, NgFor } from '@angular/common';
 import { FormsModule, NgModel } from '@angular/forms';
 import { IonSelect, IonSelectOption } from '@ionic/angular/standalone';
 
 @Component({
-  selector: 'app-single-selector',
-  templateUrl: './single-selector.component.html',
+  selector: 'app-selector',
+  templateUrl: './selector.component.html',
   standalone: true,
   imports: [NgFor, FormsModule, IonSelect, IonSelectOption, CommonModule],
-  styleUrls: ['./single-selector.component.scss'],
+  styleUrls: ['./selector.component.scss'],
 })
-export class SingleSelectorComponent implements OnInit {
+export class SelectorComponent {
   selectedRegionValue: string | null = null;
   @ViewChild('region') regionControl!: NgModel;
   @Output() regionFormControl = new EventEmitter<NgModel>();
-  @Input() isMultiple: boolean = true;
-  constructor() {}
-
-  ngOnInit() {}
+  @Input() isMultiple: boolean = false;
+  @Input() list: [] = [];
+  @Input() labelText: string = '';
 
   ngAfterViewInit() {
     // Emitting the reference after view initialization
     this.regionFormControl.emit(this.regionControl);
   }
-
-  regions: any = Object.keys(BulgarianRegions).filter((value) =>
-    isNaN(Number(value))
-  );
 
   onRegionChange() {
     // Emitting changes when the region changes
