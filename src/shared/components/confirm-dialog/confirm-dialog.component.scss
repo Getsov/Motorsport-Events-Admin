@@ -23,7 +23,7 @@
     p,
     button {
       font-size: 18px;
-      font-weight: 400;
+      font-weight: 600;
       line-height: 27px;
     }
 
@@ -43,6 +43,15 @@
         color: rgba(255, 116, 24, 1);
         background-color: rgba(13, 13, 13, 1);
         cursor: pointer;
+      }
+
+      button:hover {
+        background-color: rgba(255, 162, 100, 1);
+        color: rgba(13, 13, 13, 1);
+      }
+
+      button:active {
+        background-color: rgba(255, 116, 24, 1);
       }
 
       button:first-child {
