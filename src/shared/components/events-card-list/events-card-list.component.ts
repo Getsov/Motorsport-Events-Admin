@@ -25,17 +25,29 @@ export class EventsCardListComponent {
       getState: () => this.eventService.eventsForApproval(),
     },
     'not-approved': {
-      setState: () => this.eventService.setEventsForApprove(),
-      getState: () => this.eventService.eventsForApproval(),
+      setState: () => this.eventService.setMyEventsForApproval(),
+      getState: () => this.eventService.myEventsForApproval(),
     },
     'upcoming-approved':{
+      setState: () => this.eventService.setMyUpcomingEvents(),
+      getState: () => this.eventService.myUpcomingEvents(),
+    },
+    'past-approved':{
+      setState: () => this.eventService.setMyPastEvents(),
+      getState: () => this.eventService.myPastEvents(),
+    },
+    'upcoming-events':{
       setState: () => this.eventService.setUpcomingEvents(),
       getState: () => this.eventService.upcomingEvents(),
     },
-    'past-approved':{
+    'past-events':{
       setState: () => this.eventService.setPastEvents(),
       getState: () => this.eventService.pastEvents(),
-    }
+    },
+    'deleted-events':{
+      setState: () => this.eventService.setUpcomingEvents(), /* TODO: Deleted Events */
+      getState: () => this.eventService.upcomingEvents(), /* TODO: Deleted Events */
+    },
 
   };
 

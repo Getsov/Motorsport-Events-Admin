@@ -20,10 +20,10 @@ export class EventService {
   // API CALLS------
 
   getEventsForApproval(query = ''): Observable<Event[]> {
-    return this.http.get<Event[]>(
-      `${baseUrl}/events/eventsForApproval`,
-      this.options
-    );
+    if(query) {
+    return this.http.get<Event[]>(`${baseUrl}/events/eventsForApproval?${query}`,this.options);
+    }
+    return this.http.get<Event[]>(`${baseUrl}/events/eventsForApproval`,this.options);
   }
 
   getEventDetails(eventId: string): Observable<Event> {
@@ -49,13 +49,43 @@ export class EventService {
     );
   }
 
+  getMyEventsForApproval(query = ''): Observable<Event[]> {
+    if(query) {
+      return this.http.get<Event[]>(`${baseUrl}/user/myEventsForApproval?${query}`,this.options);
+    }
+    return this.http.get<Event[]>(`${baseUrl}/user/myEventsForApproval`,this.options);
+  }
+
+  getMyUpcomingEvents(query = ''): Observable<Event[]> {
+    if(query) {
+    return this.http.get<Event[]>(`${baseUrl}/user/myUpcomingEvents?${query}`,this.options);
+    }
+    return this.http.get<Event[]>(`${baseUrl}/user/myUpcomingEvents`,this.options);
+  }
+
+  getMyPastEvents(query = ''): Observable<Event[]> {
+    if(query) {
+    return this.http.get<Event[]>(`${baseUrl}/user/myPastEvents?${query}`, this.options);
+    }
+    return this.http.get<Event[]>(`${baseUrl}/user/myPastEvents`, this.options);
+  }
+
   getUpcomingEvents(query = ''): Observable<Event[]> {
-    return this.http.get<Event[]>(`${baseUrl}/events/upcomingEvents`,this.options);
+    if(query) {
+    return this.http.get<Event[]>(`${baseUrl}/events/UpcomingEvents?${query}`, this.options);
+    }
+    return this.http.get<Event[]>(`${baseUrl}/events/UpcomingEvents`, this.options);
   }
 
   getPastEvents(query = ''): Observable<Event[]> {
+    if(query) {
+    return this.http.get<Event[]>(`${baseUrl}/events/pastEvents?${query}`, this.options);
+    }
     return this.http.get<Event[]>(`${baseUrl}/events/pastEvents`, this.options);
   }
+
+  /* TODO: Deleted Events */
+
   // API CALLS END--------
 
   // SIGNALS-----
@@ -67,7 +97,7 @@ export class EventService {
   hasEventsForApproval: boolean = this.eventsForApproval().length > 1;
 
   setEventsForApprove(query = ''): Subscription {
-    return this.getEventsForApproval(query = '').subscribe({
+    return this.getEventsForApproval(query).subscribe({
       next: (response) => {
         this.eventsForApproval.update((state) => response);
       },
@@ -87,14 +117,14 @@ export class EventService {
 
   // Upcoming events signal
 
-  upcomingEvents = signal<Event[]>([]);
+  myUpcomingEvents = signal<Event[]>([]);
 
-  hasUpcomingEvents: boolean = this.upcomingEvents().length > 1;
+  hasMyUpcomingEvents: boolean = this.myUpcomingEvents().length > 1;
 
-  setUpcomingEvents(query = ''): Subscription {
-    return this.getUpcomingEvents(query = '').subscribe({
+  setMyUpcomingEvents(query = ''): Subscription {
+    return this.getMyUpcomingEvents(query).subscribe({
       next: (response) => {
-        this.upcomingEvents.update((state) => response);
+        this.myUpcomingEvents.update((state) => response);
       },
       error: (error) => {
         console.log(error);
@@ -106,12 +136,69 @@ export class EventService {
 
   // Past events signal
 
+  myPastEvents = signal<Event[]>([]);
+
+  hasMyPastEvents: boolean = this.myPastEvents().length > 1;
+
+  setMyPastEvents(query = ''): Subscription {
+    return this.getMyPastEvents(query).subscribe({
+      next: (response) => {
+        this.myPastEvents.update((state) => response);
+      },
+      error: (error) => {
+        console.log(error);
+      },
+    });
+  }
+
+  // Past events signal end
+
+  // My Events For Approval signal
+
+  myEventsForApproval = signal<Event[]>([]);
+
+  hasMyEventsForApproval: boolean = this.myEventsForApproval().length > 1;
+
+  setMyEventsForApproval(query = ''): Subscription {
+    return this.getMyEventsForApproval(query).subscribe({
+      next: (response) => {
+        this.myEventsForApproval.update((state) => response);
+      },
+      error: (error) => {
+        console.log(error);
+      },
+    });
+  }
+
+  // My Events For Approval signal end
+
+  // All Upcoming Events signal
+
+  upcomingEvents = signal<Event[]>([]);
+
+  hasUpcomingEvents: boolean = this.upcomingEvents().length > 1;
+
+  setUpcomingEvents(query = ''): Subscription {
+    return this.getUpcomingEvents(query).subscribe({
+      next: (response) => {
+        this.upcomingEvents.update((state) => response);
+      },
+      error: (error) => {
+        console.log(error);
+      },
+    });
+  }
+
+  // All Upcoming Events signal end
+
+  // All Past Events signal
+
   pastEvents = signal<Event[]>([]);
 
   hasPastEvents: boolean = this.pastEvents().length > 1;
 
   setPastEvents(query = ''): Subscription {
-    return this.getPastEvents(query = '').subscribe({
+    return this.getPastEvents(query).subscribe({
       next: (response) => {
         this.pastEvents.update((state) => response);
       },
@@ -121,7 +208,7 @@ export class EventService {
     });
   }
 
-  // Past events signal end
+  // All Past Events signal end
 
   // SIGNALS END--------
 }
