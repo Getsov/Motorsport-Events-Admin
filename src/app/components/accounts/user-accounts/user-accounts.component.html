@@ -1,1 +1,8 @@
-<p>user-accounts works!</p>
+<app-section-sort class="sort-section" [showSelect]="false" />
+@if(isLoading){
+<app-loader />
+}@else { @if (allRegularUsers.length < 1) {
+<p>Няма потребителски акаунти!</p>
+}@else {
+<app-accounts-table [usersList]="allRegularUsers" />
+} }

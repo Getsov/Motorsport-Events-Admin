@@ -72,9 +72,9 @@ export class EventService {
 
   getUpcomingEvents(query = ''): Observable<Event[]> {
     if(query) {
-    return this.http.get<Event[]>(`${baseUrl}/events/UpcomingEvents?${query}`, this.options);
+    return this.http.get<Event[]>(`${baseUrl}/events/upcomingEvents?${query}`, this.options);
     }
-    return this.http.get<Event[]>(`${baseUrl}/events/UpcomingEvents`, this.options);
+    return this.http.get<Event[]>(`${baseUrl}/events/upcomingEvents`, this.options);
   }
 
   getPastEvents(query = ''): Observable<Event[]> {

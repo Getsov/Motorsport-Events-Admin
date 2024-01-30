@@ -1,1 +1,8 @@
-<p>admin-accounts works!</p>
+<app-section-sort class="sort-section" [showSelect]="false" />
+@if(isLoading){
+<app-loader />
+}@else { @if (allAdmins.length < 1) {
+<p>Няма акаунти на администратори!</p>
+}@else {
+<app-accounts-table [usersList]="allAdmins" />
+} }

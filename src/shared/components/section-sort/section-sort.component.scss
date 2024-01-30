@@ -16,7 +16,6 @@
       --color: #fff;
       --placeholder-color: #fff;
       --icon-color: #fff;
-      --clear-button-color: #fff;
       --placeholder-opacity: 1;
       width: 100%;
       padding: 0;
@@ -26,13 +25,12 @@
 
     ion-searchbar.custom.searchbar-has-focus {
       border-color: #ff7418;
-      /* --color: #ff7418; */
       --icon-color: #ff7418;
       --placeholder-color: transparent;
       --clear-button-color: #ff7418;
     }
 
-    ion-searchbar.custom.searchbar-has-value {
+    ion-searchbar.custom.searchbar-has-value.ion-dirty {
       border-color: #00cc00;
       --icon-color: #00cc00;
       --clear-button-color: #00cc00;
@@ -86,6 +84,14 @@
       font-size: 14px;
     }
 
+    ion-select.has-value::part(label) {
+      color: #00cc00;
+    }
+
+    ion-select.select-expanded::part(label) {
+      color: #ff7418;
+    }
+
     .select-wrapper,
     #select-label {
       width: 100%;
@@ -96,7 +102,7 @@
   .searchbar-search-icon {
     left: 4px;
   }
-  .searchbar-clear-button {
+  ion-select.ion-untouched.searchbar-clear-button.sc-ion-searchbar-md{
     display: block;
   }
   .searchbar-input {

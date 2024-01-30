@@ -40,13 +40,12 @@
       >Одобри</a
     >
     <a
-      ;
       class="delete"
       (click)="
+        action = 'delete';
         showConfirmationDialog = true;
         confirmationMessage = 'Сигурни ли сте, че искате да изтриете събитието?'
       "
-      action="delete"
       >Изтрий</a
     >
   </div>

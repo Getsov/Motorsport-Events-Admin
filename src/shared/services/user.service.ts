@@ -42,6 +42,13 @@ export class UserService {
     );
   }
 
+  getSpecificTypeOfUsers(query: string = '', userType: string): Observable<User[]> {
+    if(query) {
+      return this.http.get<User[]>(`${baseUrl}/user/${userType}?${query}`,this.options);
+    }
+    return this.http.get<User[]>(`${baseUrl}/user/${userType}`,this.options);
+  }
+
   // API CALS END-----
 
   // SIGNALS --------
@@ -75,5 +82,60 @@ export class UserService {
       },
     });
   }
+
+  // All Admins Signal
+
+  allAdmins = signal<User[]>([]);
+  hasAllAdmins: boolean = this.allAdmins().length < 1;
+
+  setAllAdmins(query:string = ''): Subscription {
+    return this.getSpecificTypeOfUsers(query, "allAdmins").subscribe({
+      next: (response) => {
+        this.allAdmins.update((state) => response);
+      },
+      error: (error) => {
+        console.log(error);
+      },
+    });
+  }
+
+  // All Admins signal end
+
+  // All Organizers signal
+
+  allOrganizers = signal<User[]>([]);
+  hasAllOrganizers: boolean = this.allOrganizers().length < 1;
+
+  setAllOrganizers(query:string = ''): Subscription {
+    return this.getSpecificTypeOfUsers(query, "allOrganizers").subscribe({
+      next: (response) => {
+        this.allOrganizers.update((state) => response);
+      },
+      error: (error) => {
+        console.log(error);
+      },
+    });
+  }
+
+  // All Organizers signal end
+
+  // All Regular Users signal
+
+  allRegularUsers = signal<User[]>([]);
+  hasRegularUsers: boolean = this.allRegularUsers().length < 1;
+
+  setRegularUsers(query:string = ''): Subscription {
+    return this.getSpecificTypeOfUsers(query, "allRegularUsers").subscribe({
+      next: (response) => {
+        this.allRegularUsers.update((state) => response);
+      },
+      error: (error) => {
+        console.log(error);
+      },
+    });
+  }
+
+  // All Regular Users signal end
+
   // SIGNALS END-----
 }
