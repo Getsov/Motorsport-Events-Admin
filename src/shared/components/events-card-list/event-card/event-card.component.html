@@ -31,19 +31,22 @@
     <a routerLink="/event/{{ event._id }}/details" class="view">Прегледай</a>
     <a routerLink="/event/{{ event._id }}/edit" class="edit">Редактирай</a>
     <a
-      class="approve"
       (click)="
+        action = 'approve';
         showConfirmationDialog = true;
         confirmationMessage = 'Сигурни ли сте, че искате да одобрите събитието?'
       "
+      class="approve"
       >Одобри</a
     >
     <a
+      ;
       class="delete"
       (click)="
         showConfirmationDialog = true;
         confirmationMessage = 'Сигурни ли сте, че искате да изтриете събитието?'
       "
+      action="delete"
       >Изтрий</a
     >
   </div>

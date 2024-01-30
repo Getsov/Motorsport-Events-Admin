@@ -49,15 +49,16 @@ export class EventCardComponent implements OnInit, OnDestroy {
 
   showConfirmationDialog: boolean = false;
   confirmationMessage: string = '';
+  action: string = '';
 
   startDate: any = '';
   endDate: any = '';
 
   onConfirmation(confirmed: boolean) {
     if (confirmed) {
-      if (this.confirmationMessage.includes('approve')) {
+      if (this.action === 'approve') {
         this.approveEvent();
-      } else if (this.confirmationMessage.includes('delete')) {
+      } else if (this.action === 'delete') {
         this.deleteEvent();
       }
     }
