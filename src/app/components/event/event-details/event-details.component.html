@@ -2,7 +2,10 @@
   <h1>{{ event.shortTitle }}</h1>
   <p class="long-title">{{ event.longTitle }}</p>
   <div class="image-container">
-    <img src="{{ event.imageUrl }}" alt="{{ event.shortTitle }}" />
+    <img
+      [src]="'data:image;base64,' + event.imageUrl"
+      alt="{{ event.shortTitle }}"
+    />
   </div>
   <div class="categories">
     @for(category of event.categories; track category){
