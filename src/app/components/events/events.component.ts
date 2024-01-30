@@ -15,7 +15,7 @@ export class EventsComponent{
   // TODO make the hasData property dynamic
   options = [
     { label: 'Предстоящи събития', route: 'upcoming-events', hasData: true },
-    { label: 'Отминали Събития', route: 'past-events', hasData: true },
-    { label: 'Изтрити Събития', route: 'deleted-events', hasData: true }
+    { label: 'Отминали събития', route: 'past-events', hasData: true },
+    { label: 'Изтрити събития', route: 'deleted-events', hasData: true }
   ];
 }
