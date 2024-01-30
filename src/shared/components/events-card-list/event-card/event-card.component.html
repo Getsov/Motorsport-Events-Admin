@@ -7,7 +7,7 @@
   <div class="content">
     <img
       class="event-img"
-      src="{{ event.imageUrl }}"
+      [src]="'data:image;base64,' + event.imageUrl"
       alt="{{ event.shortTitle }}"
     />
     <h3>{{ event.shortTitle }}</h3>
