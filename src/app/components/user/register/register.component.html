@@ -134,6 +134,7 @@
         [(ngModel)]="registerData.phone"
         #inputPhone="ngModel"
         required
+        inputmode="numeric"
       />
       @if(inputPhone.invalid && inputPhone.touched){
       <p class="invalid-message">
@@ -160,7 +161,11 @@
       <button class="secondary" type="button" (click)="clearData()">
         Откажи
       </button>
-      <button class="submit">Вход</button>
+      <button class="submit">Регистрация</button>
     </div>
   </form>
+
+  <p class="login-link">
+    Вече имате акаунт? <a routerLink="/user/login">Вход</a>
+  </p>
 </section>
