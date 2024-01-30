@@ -42,25 +42,11 @@ export class UserService {
     );
   }
 
-  getAllAdmins(query: string = ''): Observable<User[]> {
+  getAllTypeOfUsers(query: string = '', userType: string): Observable<User[]> {
     if(query) {
-      return this.http.get<User[]>(`${baseUrl}/user/allAdmins?${query}`,this.options);
+      return this.http.get<User[]>(`${baseUrl}/user/${userType}?${query}`,this.options);
     }
-    return this.http.get<User[]>(`${baseUrl}/user/allAdmins`,this.options);
-  }
-
-  getAllOrganizers(query: string = ''): Observable<User[]> {
-    if(query) {
-      return this.http.get<User[]>(`${baseUrl}/user/allOrganizers?${query}`,this.options);
-    }
-    return this.http.get<User[]>(`${baseUrl}/user/allOrganizers`,this.options);
-  }
-
-  getAllRegularUsers(query: string = ''): Observable<User[]> {
-    if(query) {
-      return this.http.get<User[]>(`${baseUrl}/user/allRegularUsers?${query}`,this.options);
-    }
-    return this.http.get<User[]>(`${baseUrl}/user/allRegularUsers`,this.options);
+    return this.http.get<User[]>(`${baseUrl}/user/${userType}`,this.options);
   }
 
   // API CALS END-----
@@ -103,7 +89,7 @@ export class UserService {
   hasAllAdmins: boolean = this.allAdmins().length < 1;
 
   setAllAdmins(query:string = ''): Subscription {
-    return this.getAllAdmins(query).subscribe({
+    return this.getAllTypeOfUsers(query, "allAdmins").subscribe({
       next: (response) => {
         this.allAdmins.update((state) => response);
       },
@@ -121,7 +107,7 @@ export class UserService {
   hasAllOrganizers: boolean = this.allOrganizers().length < 1;
 
   setAllOrganizers(query:string = ''): Subscription {
-    return this.getAllOrganizers(query).subscribe({
+    return this.getAllTypeOfUsers(query, "allOrganizers").subscribe({
       next: (response) => {
         this.allOrganizers.update((state) => response);
       },
@@ -139,7 +125,7 @@ export class UserService {
   hasRegularUsers: boolean = this.allRegularUsers().length < 1;
 
   setRegularUsers(query:string = ''): Subscription {
-    return this.getAllRegularUsers(query).subscribe({
+    return this.getAllTypeOfUsers(query, "allRegularUsers").subscribe({
       next: (response) => {
         this.allRegularUsers.update((state) => response);
       },
