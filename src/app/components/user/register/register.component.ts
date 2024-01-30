@@ -60,7 +60,7 @@ export class RegisterComponent implements OnDestroy {
       next: (response) => {
         // success toaster
 
-        this.registerData = { ...this.emptyRegisterData };
+        this.clearData();
       },
       error: (error) => {
         console.log(error.error);
