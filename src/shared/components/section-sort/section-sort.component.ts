@@ -1,17 +1,20 @@
-import { Component } from '@angular/core';
+import { Component,  } from '@angular/core';
 import { NavigationEnd, Router } from '@angular/router';
-import { NgFor } from '@angular/common';
-import { FormsModule } from '@angular/forms';
+import { CommonModule, NgFor } from '@angular/common';
+import { FormsModule,} from '@angular/forms';
+import { IonSearchbar, IonSelect, IonSelectOption } from '@ionic/angular/standalone';
+
 import Categories from '../../data/categories';
 import BulgarianRegions from '../../data/regions';
 import { EventService } from '../../services/event.service';
 
+
 @Component({
-  selector: 'app-section-sort',
-  standalone: true,
-  imports: [NgFor, FormsModule],
-  templateUrl: './section-sort.component.html',
-  styleUrl: './section-sort.component.scss',
+    selector: 'app-section-sort',
+    standalone: true,
+    templateUrl: './section-sort.component.html',
+    styleUrl: './section-sort.component.scss',
+    imports: [NgFor, FormsModule, IonSelect, IonSelectOption, CommonModule, IonSearchbar],
 })
 export class SectionSortComponent {
   searchQuery: [] = [];
