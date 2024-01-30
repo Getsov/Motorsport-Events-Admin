@@ -6,6 +6,7 @@ import { SelectorComponent } from '../../../../shared/components/selector/select
 import { AuthService } from '../../../../shared/services/auth.service';
 import { Subscription } from 'rxjs';
 import BulgarianRegions from '../../../../shared/data/regions';
+import { RouterLink } from '@angular/router';
 
 @Component({
   selector: 'app-register',
@@ -15,6 +16,7 @@ import BulgarianRegions from '../../../../shared/data/regions';
     CommonModule,
     FormsModule,
     SelectorComponent,
+    RouterLink,
   ],
   templateUrl: './register.component.html',
   styleUrl: './register.component.scss',

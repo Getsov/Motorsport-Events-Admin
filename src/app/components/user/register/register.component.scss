@@ -14,4 +14,16 @@
     -webkit-appearance: none;
     margin: 0;
   }
+  a {
+    color: rgba(255, 255, 255, 1);
+    text-decoration: none;
+  }
+
+  .login-link {
+    margin: 24px 0;
+    color: rgba(194, 191, 190, 1);
+    font-size: 14px;
+    font-weight: 600;
+    line-height: 21px;
+  }
 }
