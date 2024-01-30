@@ -49,26 +49,16 @@ export class EventCardComponent implements OnInit, OnDestroy {
 
   showConfirmationDialog: boolean = false;
   confirmationMessage: string = '';
+  action: string = '';
 
   startDate: any = '';
   endDate: any = '';
 
   onConfirmation(confirmed: boolean) {
-    console.log(confirmed);
-    console.log(this.confirmationMessage);
-
     if (confirmed) {
-      if (
-        this.confirmationMessage.includes(
-          'Сигурни ли сте, че искате да одобрите събитието?'
-        )
-      ) {
+      if (this.action === 'approve') {
         this.approveEvent();
-      } else if (
-        this.confirmationMessage.includes(
-          'Сигурни ли сте, че искате да изтриете събитието?'
-        )
-      ) {
+      } else if (this.action === 'delete') {
         this.deleteEvent();
       }
     }

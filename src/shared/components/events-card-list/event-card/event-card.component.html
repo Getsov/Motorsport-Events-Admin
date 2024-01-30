@@ -33,12 +33,15 @@
     <a
       class="approve"
       (click)="
+        action = 'approve';
         showConfirmationDialog = true;
         confirmationMessage = 'Сигурни ли сте, че искате да одобрите събитието?'
       "
       >Одобри</a
     >
     <a
+      action="delete"
+      ;
       class="delete"
       (click)="
         showConfirmationDialog = true;
