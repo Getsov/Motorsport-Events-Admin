@@ -6,7 +6,7 @@ import { SelectorComponent } from '../../../../shared/components/selector/select
 import { AuthService } from '../../../../shared/services/auth.service';
 import { Subscription } from 'rxjs';
 import BulgarianRegions from '../../../../shared/data/regions';
-import { RouterLink } from '@angular/router';
+import { Router, RouterLink } from '@angular/router';
 
 @Component({
   selector: 'app-register',
@@ -40,7 +40,7 @@ export class RegisterComponent implements OnDestroy {
     isNaN(Number(value))
   );
 
-  constructor(private authService: AuthService) {}
+  constructor(private authService: AuthService, private router: Router) {}
 
   onRegionSelect(regionFormControl: NgModel) {
     this.registerData.region = regionFormControl.value;
@@ -69,7 +69,11 @@ export class RegisterComponent implements OnDestroy {
   }
 
   clearData() {
-    return (this.registerData = { ...this.emptyRegisterData });
+    this.registerData = { ...this.emptyRegisterData };
+    if (this.regionFormControl) {
+      this.regionFormControl.reset();
+    }
+    this.router.navigate(['/user/login']);
   }
 
   ngOnDestroy(): void {
