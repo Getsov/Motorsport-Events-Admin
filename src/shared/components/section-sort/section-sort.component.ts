@@ -1,4 +1,4 @@
-import { Component,  } from '@angular/core';
+import { Component, Input,  } from '@angular/core';
 import { NavigationEnd, Router } from '@angular/router';
 import { CommonModule, NgFor } from '@angular/common';
 import { FormsModule,} from '@angular/forms';
@@ -7,6 +7,7 @@ import { IonSearchbar, IonSelect, IonSelectOption } from '@ionic/angular/standal
 import Categories from '../../data/categories';
 import BulgarianRegions from '../../data/regions';
 import { EventService } from '../../services/event.service';
+import { UserService } from '../../services/user.service';
 
 
 @Component({
@@ -17,7 +18,8 @@ import { EventService } from '../../services/event.service';
     imports: [NgFor, FormsModule, IonSelect, IonSelectOption, CommonModule, IonSearchbar],
 })
 export class SectionSortComponent {
-  searchQuery: [] = [];
+  @Input() showSelect: boolean = true;
+  searchQuery: [] | string = '';
   regionQuery: [] = [];
   selectedCategory: [] = [];
 
@@ -31,7 +33,7 @@ export class SectionSortComponent {
     isNaN(Number(value))
   );
 
-  constructor(private eventService: EventService, private router: Router) {
+  constructor(private eventService: EventService, private router: Router, private userService: UserService) {
     this.router.events.subscribe((event) => {
       if (event instanceof NavigationEnd) {
         this.route = this.router.url.split('/')[2];
@@ -49,6 +51,9 @@ export class SectionSortComponent {
       'past-approved': this.eventService.setMyPastEvents.bind(this.eventService),
       'upcoming-events': this.eventService.setUpcomingEvents.bind(this.eventService),
       'past-events': this.eventService.setPastEvents.bind(this.eventService),
+      'admin-accounts': this.userService.setAllAdmins.bind(this.userService),
+      'organizer-accounts': this.userService.setAllOrganizers.bind(this.userService),
+      'user-accounts': this.userService.setRegularUsers.bind(this.userService),
       // TODO: Add Deleted Events
     };
 
