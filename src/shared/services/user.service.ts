@@ -42,6 +42,27 @@ export class UserService {
     );
   }
 
+  getAllAdmins(query: string = ''): Observable<User[]> {
+    if(query) {
+      return this.http.get<User[]>(`${baseUrl}/user/allAdmins?${query}`,this.options);
+    }
+    return this.http.get<User[]>(`${baseUrl}/user/allAdmins`,this.options);
+  }
+
+  getAllOrganizers(query: string = ''): Observable<User[]> {
+    if(query) {
+      return this.http.get<User[]>(`${baseUrl}/user/allOrganizers?${query}`,this.options);
+    }
+    return this.http.get<User[]>(`${baseUrl}/user/allOrganizers`,this.options);
+  }
+
+  getAllRegularUsers(query: string = ''): Observable<User[]> {
+    if(query) {
+      return this.http.get<User[]>(`${baseUrl}/user/allRegularUsers?${query}`,this.options);
+    }
+    return this.http.get<User[]>(`${baseUrl}/user/allRegularUsers`,this.options);
+  }
+
   // API CALS END-----
 
   // SIGNALS --------
@@ -75,5 +96,60 @@ export class UserService {
       },
     });
   }
+
+  // All Admins Signal
+
+  allAdmins = signal<User[]>([]);
+  hasAllAdmins: boolean = this.allAdmins().length < 1;
+
+  setAllAdmins(query:string = ''): Subscription {
+    return this.getAllAdmins(query).subscribe({
+      next: (response) => {
+        this.allAdmins.update((state) => response);
+      },
+      error: (error) => {
+        console.log(error);
+      },
+    });
+  }
+
+  // All Admins signal end
+
+  // All Organizers signal
+
+  allOrganizers = signal<User[]>([]);
+  hasAllOrganizers: boolean = this.allOrganizers().length < 1;
+
+  setAllOrganizers(query:string = ''): Subscription {
+    return this.getAllOrganizers(query).subscribe({
+      next: (response) => {
+        this.allOrganizers.update((state) => response);
+      },
+      error: (error) => {
+        console.log(error);
+      },
+    });
+  }
+
+  // All Organizers signal end
+
+  // All Regular Users signal
+
+  allRegularUsers = signal<User[]>([]);
+  hasRegularUsers: boolean = this.allRegularUsers().length < 1;
+
+  setRegularUsers(query:string = ''): Subscription {
+    return this.getAllRegularUsers(query).subscribe({
+      next: (response) => {
+        this.allRegularUsers.update((state) => response);
+      },
+      error: (error) => {
+        console.log(error);
+      },
+    });
+  }
+
+  // All Regular Users signal end
+
   // SIGNALS END-----
 }
