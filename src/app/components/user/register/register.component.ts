@@ -68,15 +68,17 @@ export class RegisterComponent implements OnDestroy {
         this.toasterType = 'success';
 
         setTimeout(() => {
-          this.router.navigateByUrl('/');
-
           this.resetToasters();
-        }, 1000);
-
-        this.clearData();
+          this.clearData();
+        }, 500);
       },
       error: (error) => {
-        console.log(error.error);
+        this.toasterMessage = error.error.error;
+        this.toasterType = 'error';
+
+        setTimeout(() => {
+          this.resetToasters();
+        }, 5000);
       },
     });
   }
