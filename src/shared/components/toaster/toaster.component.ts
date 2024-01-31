@@ -1,25 +1,31 @@
 import { CommonModule } from '@angular/common';
 import { Component, Input } from '@angular/core';
-import { IonIcon, IonToast } from '@ionic/angular/standalone';
-import { addIcons } from 'ionicons';
-import { checkmarkCircle } from 'ionicons/icons';
+import { IonToast } from '@ionic/angular/standalone';
 
 @Component({
   selector: 'app-toaster',
   templateUrl: './toaster.component.html',
   styleUrls: ['./toaster.component.scss'],
   standalone: true,
-  imports: [IonToast, CommonModule, IonIcon],
+  imports: [IonToast, CommonModule],
 })
 export class ToasterComponent {
   @Input() toasterType: string = '';
   @Input() toasterMessage: string = '';
 
-  constructor() {
-    addIcons({ checkmarkCircle }); // you are missing addIcons Import
-  }
+  constructor() {}
 
   setOpen() {
     this.toasterMessage = '';
+  }
+
+  getIconPath(): string {
+    if (this.toasterType === 'success') {
+      return '../../../assets/icons/toast-icons/success.svg';
+    } else if (this.toasterType === 'error') {
+      return '../../../assets/icons/toast-icons/error.svg';
+    } else {
+      return '';
+    }
   }
 }

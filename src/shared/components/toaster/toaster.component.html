@@ -3,7 +3,7 @@
   [message]="toasterMessage"
   duration="5000"
   (didDismiss)="setOpen()"
-  [icon]="toasterType === 'success' ? 'checkmarkCircle' : 'checkmarkCircle'"
+  [icon]="getIconPath()"
   [ngClass]="
     toasterType === 'success'
       ? 'success-toaster tabs-bottom'
