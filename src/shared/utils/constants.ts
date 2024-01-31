@@ -4,7 +4,9 @@ export const errorMessages = {
 };
 
 export const sucessMessages = {
-  successLogin: 'Успешно влязохте във Вашия акаунт!',
-  successOrganizerRegistration:
-    'Успешно подадохте заявка за регистрация на организаторски акаунт! Очаквайте да получите потвърждение на имейла си.',
+  login: 'Успешно влязохте във Вашия акаунт!',
+  organizerRegistration:
+    'Заявката за регистрация е успешна. Очаквайте потвърждение по имейл.',
+  approveEvent: 'Събитието е одобрено успешно',
+  deleteEvent: 'Успешно изтрихте събитие',
 };

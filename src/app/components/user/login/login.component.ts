@@ -45,7 +45,7 @@ export class LoginComponent {
           userRole: response.role,
         };
 
-        this.toasterMessage = sucessMessages.successLogin;
+        this.toasterMessage = sucessMessages.login;
         this.toasterType = 'success';
 
         if (userDetails.userRole === 'regular') {

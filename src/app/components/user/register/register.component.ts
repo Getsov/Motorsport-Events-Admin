@@ -8,10 +8,7 @@ import { Subscription } from 'rxjs';
 import BulgarianRegions from '../../../../shared/data/regions';
 import { Router, RouterLink } from '@angular/router';
 import { ToasterComponent } from '../../../../shared/components/toaster/toaster.component';
-import {
-  errorMessages,
-  sucessMessages,
-} from '../../../../shared/utils/constants';
+import { sucessMessages } from '../../../../shared/utils/constants';
 
 @Component({
   selector: 'app-register',
@@ -67,7 +64,7 @@ export class RegisterComponent implements OnDestroy {
 
     this.subscription = this.authService.register(this.registerData).subscribe({
       next: (response) => {
-        this.toasterMessage = sucessMessages.successOrganizerRegistration;
+        this.toasterMessage = sucessMessages.organizerRegistration;
         this.toasterType = 'success';
 
         setTimeout(() => {
