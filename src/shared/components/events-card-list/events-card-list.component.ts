@@ -5,11 +5,13 @@ import { EventCardComponent } from './event-card/event-card.component';
 import { ActivatedRoute } from '@angular/router';
 import { Subscription } from 'rxjs';
 import { EventService } from '../../services/event.service';
+import { ToasterComponent } from '../toaster/toaster.component';
+import { errorMessages } from '../../utils/constants';
 
 @Component({
   selector: 'app-events-card-list',
   standalone: true,
-  imports: [CommonModule, EventCardComponent],
+  imports: [CommonModule, EventCardComponent, ToasterComponent],
   templateUrl: './events-card-list.component.html',
   styleUrl: './events-card-list.component.scss',
 })
@@ -18,12 +20,14 @@ export class EventsCardListComponent implements OnDestroy {
   currentUrl: any;
   isLoading: boolean = true;
   subscription: Subscription | undefined;
+  toasterMessage: string = '';
+  toasterType: string = '';
 
   urlOptions = {
-    'awaiting-events': {
-      setState: () => this.eventService.setEventsForApprove(),
-      getState: () => this.eventService.eventsForApproval(),
-    },
+    // 'awaiting-events': {
+    //   setState: () => this.eventService.setEventsForApprove(),
+    //   getState: () => this.eventService.eventsForApproval(),
+    // },
     'not-approved': {
       setState: () => this.eventService.setMyEventsForApproval(),
       getState: () => this.eventService.myEventsForApproval(),
@@ -67,7 +71,12 @@ export class EventsCardListComponent implements OnDestroy {
         this.eventsList = currentKey.getState();
       });
     } else {
-      throw new Error('This url did not have implemented functionality');
+      this.toasterMessage = errorMessages.notImplementedUrlFunc;
+      this.toasterType = 'error';
+
+      setTimeout(() => {
+        this.resetToasters();
+      }, 5000);
     }
   }
 
@@ -75,6 +84,11 @@ export class EventsCardListComponent implements OnDestroy {
     this.route.url.subscribe((urlSegments) => {
       this.currentUrl = urlSegments.join('/');
     });
+  }
+
+  private resetToasters() {
+    this.toasterMessage = '';
+    this.toasterType = '';
   }
 
   ngOnDestroy(): void {
