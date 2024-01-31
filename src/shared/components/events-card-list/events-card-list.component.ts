@@ -24,10 +24,10 @@ export class EventsCardListComponent implements OnDestroy {
   toasterType: string = '';
 
   urlOptions = {
-    // 'awaiting-events': {
-    //   setState: () => this.eventService.setEventsForApprove(),
-    //   getState: () => this.eventService.eventsForApproval(),
-    // },
+    'awaiting-events': {
+      setState: () => this.eventService.setEventsForApprove(),
+      getState: () => this.eventService.eventsForApproval(),
+    },
     'not-approved': {
       setState: () => this.eventService.setMyEventsForApproval(),
       getState: () => this.eventService.myEventsForApproval(),
