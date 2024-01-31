@@ -8,6 +8,10 @@ import { Subscription } from 'rxjs';
 import BulgarianRegions from '../../../../shared/data/regions';
 import { Router, RouterLink } from '@angular/router';
 import { ToasterComponent } from '../../../../shared/components/toaster/toaster.component';
+import {
+  errorMessages,
+  sucessMessages,
+} from '../../../../shared/utils/constants';
 
 @Component({
   selector: 'app-register',
@@ -63,8 +67,7 @@ export class RegisterComponent implements OnDestroy {
 
     this.subscription = this.authService.register(this.registerData).subscribe({
       next: (response) => {
-        this.toasterMessage =
-          'Успешно подадохте заявка за регистрация на организаторски акаунт! Очаквайте да получите потвърждение на имейла си.';
+        this.toasterMessage = sucessMessages.successOrganizerRegistration;
         this.toasterType = 'success';
 
         setTimeout(() => {

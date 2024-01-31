@@ -5,4 +5,6 @@ export const errorMessages = {
 
 export const sucessMessages = {
   successLogin: 'Успешно влязохте във Вашия акаунт!',
+  successOrganizerRegistration:
+    'Успешно подадохте заявка за регистрация на организаторски акаунт! Очаквайте да получите потвърждение на имейла си.',
 };
