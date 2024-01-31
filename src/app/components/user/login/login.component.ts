@@ -5,7 +5,10 @@ import { CommonModule } from '@angular/common';
 import { LabelWithStatesComponent } from '../../../../shared/components/label-with-states/label-with-states.component';
 import { AuthService } from '../../../../shared/services/auth.service';
 import { ToasterComponent } from '../../../../shared/components/toaster/toaster.component';
-import * as toastMessages from '../../../../shared/utils/toast-messages';
+import {
+  errorMessages,
+  sucessMessages,
+} from '../../../../shared/utils/constants';
 
 @Component({
   selector: 'app-login',
@@ -42,11 +45,11 @@ export class LoginComponent {
           userRole: response.role,
         };
 
-        this.toasterMessage = toastMessages.successLogin;
+        this.toasterMessage = sucessMessages.successLogin;
         this.toasterType = 'success';
 
         if (userDetails.userRole === 'regular') {
-          this.toasterMessage = toastMessages.regularUserError;
+          this.toasterMessage = errorMessages.regularUserError;
           this.toasterType = 'error';
           setTimeout(() => {
             this.resetToasters();
