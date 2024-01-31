@@ -45,8 +45,8 @@ export class EventsCardListComponent {
       getState: () => this.eventService.pastEvents(),
     },
     'deleted-events':{
-      setState: () => this.eventService.setUpcomingEvents(), /* TODO: Deleted Events */
-      getState: () => this.eventService.upcomingEvents(), /* TODO: Deleted Events */
+      setState: () => this.eventService.setDeletedEvents(),
+      getState: () => this.eventService.deletedEvents(),
     },
 
   };
