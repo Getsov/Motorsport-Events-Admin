@@ -66,4 +66,8 @@
     </div>
   </form>
   <p class="forgotten" (click)="navigateToForgotten()">Забравена парола</p>
+  <app-toaster
+    [toasterMessage]="toasterMessage"
+    [toasterType]="toasterType"
+  ></app-toaster>
 </section>

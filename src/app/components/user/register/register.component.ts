@@ -7,6 +7,7 @@ import { AuthService } from '../../../../shared/services/auth.service';
 import { Subscription } from 'rxjs';
 import BulgarianRegions from '../../../../shared/data/regions';
 import { Router, RouterLink } from '@angular/router';
+import { ToasterComponent } from '../../../../shared/components/toaster/toaster.component';
 
 @Component({
   selector: 'app-register',
@@ -17,6 +18,7 @@ import { Router, RouterLink } from '@angular/router';
     FormsModule,
     SelectorComponent,
     RouterLink,
+    ToasterComponent,
   ],
   templateUrl: './register.component.html',
   styleUrl: './register.component.scss',
@@ -40,6 +42,9 @@ export class RegisterComponent implements OnDestroy {
     isNaN(Number(value))
   );
 
+  toasterMessage: string = '';
+  toasterType: string = '';
+
   constructor(private authService: AuthService, private router: Router) {}
 
   onRegionSelect(regionFormControl: NgModel) {
@@ -58,7 +63,15 @@ export class RegisterComponent implements OnDestroy {
 
     this.subscription = this.authService.register(this.registerData).subscribe({
       next: (response) => {
-        // success toaster
+        this.toasterMessage =
+          'Успешно подадохте заявка за регистрация на организаторски акаунт! Очаквайте да получите потвърждение на имейла си.';
+        this.toasterType = 'success';
+
+        setTimeout(() => {
+          this.router.navigateByUrl('/');
+
+          this.resetToasters();
+        }, 1000);
 
         this.clearData();
       },
@@ -74,6 +87,11 @@ export class RegisterComponent implements OnDestroy {
       this.regionFormControl.reset();
     }
     this.router.navigate(['/user/login']);
+  }
+
+  resetToasters() {
+    this.toasterMessage = '';
+    this.toasterType = '';
   }
 
   ngOnDestroy(): void {
