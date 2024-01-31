@@ -40,12 +40,18 @@ export class LoginComponent {
           _id: response._id,
           userRole: response.role,
         };
-        if (userDetails.userRole === 'regular') {
-          return;
-        }
 
         this.toasterMessage = 'Успешно влязохте във Вашия акаунт!';
         this.toasterType = 'success';
+
+        if (userDetails.userRole === 'regular') {
+          this.toasterMessage = 'Само организатори имат право на вход!';
+          this.toasterType = 'error';
+          setTimeout(() => {
+            this.resetToasters();
+          }, 5000);
+          return;
+        }
 
         setTimeout(() => {
           this.router.navigateByUrl('/');
@@ -59,7 +65,12 @@ export class LoginComponent {
         this.authService.userDetails = userDetails;
       },
       error: (error) => {
-        error.message;
+        this.toasterMessage = error.error.error;
+        this.toasterType = 'error';
+
+        setTimeout(() => {
+          this.resetToasters();
+        }, 5000);
       },
     });
   }
