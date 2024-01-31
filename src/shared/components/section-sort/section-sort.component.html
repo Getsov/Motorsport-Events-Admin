@@ -1,15 +1,15 @@
 <div class="section">
   <div class="search-container">
     <ion-searchbar
-    [(ngModel)]="searchQuery"
-    (input)="searchEvents()"
-    placeholder="Търси събитие"
-    class="custom"
-    name="search"
-    #search="ngModel"
-  ></ion-searchbar>
+      [(ngModel)]="searchQuery"
+      (input)="searchEvents()"
+      placeholder="Търси събитие"
+      class="custom"
+      name="search"
+      #search="ngModel"
+    ></ion-searchbar>
   </div>
-  <div class="select-section" mode="ios">
+  <div *ngIf="showSelect" class="select-section" mode="ios">
     <ion-select
       [(ngModel)]="selectedCategory"
       labelPlacement="floating"
@@ -27,7 +27,7 @@
         >{{ item }}</ion-select-option
       >
     </ion-select>
-  
+
     <ion-select
       [(ngModel)]="regionQuery"
       labelPlacement="floating"
@@ -45,15 +45,5 @@
         >{{ item }}</ion-select-option
       >
     </ion-select>
-<!--    <app-selector
-    [list]="categories"
-    [labelText]="'Категория*'"
-    [isMultiple]="true"
-    />
-    <app-selector
-    [list]="regions"
-    [labelText]="'Регион*'"
-    [isMultiple]="true"
-    />
-  </div> -->
+  </div>
 </div>

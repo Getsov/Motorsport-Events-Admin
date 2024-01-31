@@ -1,1 +1,8 @@
-<p>organizer-accounts works!</p>
+<app-section-sort class="sort-section" [showSelect]="false" />
+@if(isLoading){
+<app-loader />
+}@else { @if (allOrganizers.length < 1) {
+<p>Няма акаунти на организатори!</p>
+}@else {
+<app-accounts-table [usersList]="allOrganizers" />
+} }
