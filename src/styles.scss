@@ -245,40 +245,72 @@ body {
     justify-content: center;
     text-align: center;
 
-    button:active {
-      background-color: rgba(255, 212, 183, 1);
-      color: rgba(13, 13, 13, 1);
-    }
-
     a,
     button {
-      border-radius: 4px;
       display: block;
       width: 40%;
       height: 56px;
       width: 284px;
       cursor: pointer;
-      border: none;
-    }
-    .secondary {
-      color: rgba(255, 116, 24, 1);
-      background-color: rgba(13, 13, 13, 1);
-      border: 2px solid rgba(255, 116, 24, 1);
-      font-size: 16px;
-      padding: 0 24px;
-    }
-
-    .secondary:active {
-      background-color: rgba(255, 116, 24, 1);
-      color: rgba(13, 13, 13, 1);
-    }
-
-    .submit {
-      color: rgba(13, 13, 13, 1);
-      background-color: rgba(255, 116, 24, 1);
-      font-size: 18px;
     }
   }
+}
+
+.primary-button,
+.secondary-button,
+.tertiary-button,
+.activebutton.tertiary-button {
+  font-size: 16px;
+  padding: 0 24px;
+  background-color: inherit;
+  border-radius: 4px;
+  font-weight: 600;
+}
+
+.primary-button,
+.activebutton.tertiary-button {
+  background-color: rgba(255, 116, 24, 1);
+  color: rgba(13, 13, 13, 1);
+}
+
+.primary-button:hover,
+.activebutton.tertiary-button:hover {
+  background-color: rgba(181, 82, 17, 1);
+}
+
+.primary-button:active,
+.activebutton.tertiary-button:active {
+  background-color: rgba(255, 212, 183, 1);
+}
+
+.secondary-button {
+  border: 2px solid rgba(255, 116, 24, 1);
+  color: rgba(255, 116, 24, 1);
+}
+
+.secondary-button:hover {
+  background-color: rgba(255, 116, 24, 1);
+  color: rgba(13, 13, 13, 1);
+}
+
+.secondary-button:active {
+  color: rgba(13, 13, 13, 1);
+  background-color: rgba(255, 162, 100, 1);
+  border-color: rgba(255, 162, 100, 1);
+}
+
+.tertiary-button {
+  color: rgba(255, 116, 24, 1);
+}
+
+.tertiary-button:hover {
+  color: rgba(13, 13, 13, 1);
+  background-color: rgba(255, 116, 24, 1);
+}
+
+.tertiary-button:active {
+  color: rgba(13, 13, 13, 1);
+  background-color: rgba(255, 162, 100, 1);
 }
 
 @media (max-width: 623px) {
