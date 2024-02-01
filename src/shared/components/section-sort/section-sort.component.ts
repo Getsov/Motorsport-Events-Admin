@@ -54,7 +54,7 @@ export class SectionSortComponent {
       'admin-accounts': this.userService.setAllAdmins.bind(this.userService),
       'organizer-accounts': this.userService.setAllOrganizers.bind(this.userService),
       'user-accounts': this.userService.setRegularUsers.bind(this.userService),
-      // TODO: Add Deleted Events
+      'deleted-events': this.eventService.setDeletedEvents.bind(this.eventService),
     };
 
     const routeHandler = routeHandlers[this.route];

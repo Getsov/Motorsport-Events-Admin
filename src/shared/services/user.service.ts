@@ -49,6 +49,10 @@ export class UserService {
     return this.http.get<User[]>(`${baseUrl}/user/${userType}`,this.options);
   }
 
+  resetUserPassword(email: string){
+    return this.http.post(`${baseUrl}/user/resetPassword`,{"to": email});
+  }
+
   // API CALS END-----
 
   // SIGNALS --------

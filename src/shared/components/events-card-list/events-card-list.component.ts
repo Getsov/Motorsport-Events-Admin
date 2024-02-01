@@ -48,11 +48,9 @@ export class EventsCardListComponent implements OnDestroy {
       setState: () => this.eventService.setPastEvents(),
       getState: () => this.eventService.pastEvents(),
     },
-    'deleted-events': {
-      setState: () =>
-        this.eventService.setUpcomingEvents() /* TODO: Deleted Events */,
-      getState: () =>
-        this.eventService.upcomingEvents() /* TODO: Deleted Events */,
+    'deleted-events':{
+      setState: () => this.eventService.setDeletedEvents(),
+      getState: () => this.eventService.deletedEvents(),
     },
   };
 
