@@ -20,10 +20,16 @@ export class EventService {
   // API CALLS------
 
   getEventsForApproval(query = ''): Observable<Event[]> {
-    if(query) {
-    return this.http.get<Event[]>(`${baseUrl}/events/eventsForApproval?${query}`,this.options);
+    if (query) {
+      return this.http.get<Event[]>(
+        `${baseUrl}/events/eventsForApproval?${query}`,
+        this.options
+      );
     }
-    return this.http.get<Event[]>(`${baseUrl}/events/eventsForApproval`,this.options);
+    return this.http.get<Event[]>(
+      `${baseUrl}/events/eventsForApproval`,
+      this.options
+    );
   }
 
   getEventDetails(eventId: string): Observable<Event> {
@@ -50,22 +56,37 @@ export class EventService {
   }
 
   getMyEventsForApproval(query = ''): Observable<Event[]> {
-    if(query) {
-      return this.http.get<Event[]>(`${baseUrl}/user/myEventsForApproval?${query}`,this.options);
+    if (query) {
+      return this.http.get<Event[]>(
+        `${baseUrl}/user/myEventsForApproval?${query}`,
+        this.options
+      );
     }
-    return this.http.get<Event[]>(`${baseUrl}/user/myEventsForApproval`,this.options);
+    return this.http.get<Event[]>(
+      `${baseUrl}/user/myEventsForApproval`,
+      this.options
+    );
   }
 
   getMyUpcomingEvents(query = ''): Observable<Event[]> {
-    if(query) {
-    return this.http.get<Event[]>(`${baseUrl}/user/myUpcomingEvents?${query}`,this.options);
+    if (query) {
+      return this.http.get<Event[]>(
+        `${baseUrl}/user/myUpcomingEvents?${query}`,
+        this.options
+      );
     }
-    return this.http.get<Event[]>(`${baseUrl}/user/myUpcomingEvents`,this.options);
+    return this.http.get<Event[]>(
+      `${baseUrl}/user/myUpcomingEvents`,
+      this.options
+    );
   }
 
   getMyPastEvents(query = ''): Observable<Event[]> {
-    if(query) {
-    return this.http.get<Event[]>(`${baseUrl}/user/myPastEvents?${query}`, this.options);
+    if (query) {
+      return this.http.get<Event[]>(
+        `${baseUrl}/user/myPastEvents?${query}`,
+        this.options
+      );
     }
     return this.http.get<Event[]>(`${baseUrl}/user/myPastEvents`, this.options);
   }
@@ -78,8 +99,11 @@ export class EventService {
   }
 
   getPastEvents(query = ''): Observable<Event[]> {
-    if(query) {
-    return this.http.get<Event[]>(`${baseUrl}/events/pastEvents?${query}`, this.options);
+    if (query) {
+      return this.http.get<Event[]>(
+        `${baseUrl}/events/pastEvents?${query}`,
+        this.options
+      );
     }
     return this.http.get<Event[]>(`${baseUrl}/events/pastEvents`, this.options);
   }

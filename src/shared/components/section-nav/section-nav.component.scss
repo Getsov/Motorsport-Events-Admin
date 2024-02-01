@@ -26,14 +26,6 @@
     position: relative;
   }
 
-  a:hover {
-    background-color: rgba(255, 162, 100, 1);
-  }
-
-  a:active {
-    background-color: rgba(255, 116, 24, 1);
-  }
-
   a .red-dot {
     content: "";
     display: block;
@@ -46,20 +38,8 @@
     border-radius: 50%;
   }
 
-  .activebutton {
-    background-color: rgba(255, 116, 24, 1);
-  }
-
   .activebutton .red-dot {
     display: none;
-  }
-
-  .activebutton:hover {
-    background-color: rgba(181, 82, 17, 1);
-  }
-
-  .activebutton:active {
-    background-color: rgba(255, 212, 183, 1);
   }
 }
 

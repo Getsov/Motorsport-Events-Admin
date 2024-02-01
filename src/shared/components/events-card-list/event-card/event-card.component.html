@@ -1,8 +1,9 @@
+@if(showConfirmationDialog){
 <app-confirm-dialog
-  *ngIf="showConfirmationDialog"
   [message]="confirmationMessage"
   (confirmed)="onConfirmation($event)"
 ></app-confirm-dialog>
+}
 <div class="event-card">
   <div class="content">
     <img
@@ -28,8 +29,12 @@
     <p class="description">{{ event.shortDescription }}</p>
   </div>
   <div class="buttons">
-    <a routerLink="/event/{{ event._id }}/details" class="view">Прегледай</a>
-    <a routerLink="/event/{{ event._id }}/edit" class="edit">Редактирай</a>
+    <a routerLink="/event/{{ event._id }}/details" class="primary-button"
+      >Прегледай</a
+    >
+    <a routerLink="/event/{{ event._id }}/edit" class="secondary-button"
+      >Редактирай</a
+    >
     <a
       (click)="
         action = 'approve';
@@ -50,4 +55,8 @@
     >
   </div>
   <app-like-icon [likedCount]="event.likes.length" />
+  <app-toaster
+    [toasterMessage]="toasterMessage"
+    [toasterType]="toasterType"
+  ></app-toaster>
 </div>

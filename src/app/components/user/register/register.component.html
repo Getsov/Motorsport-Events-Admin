@@ -158,14 +158,16 @@
     } -->
 
     <div class="buttons">
-      <button class="secondary" type="button" (click)="clearData()">
-        Откажи
-      </button>
-      <button class="submit">Регистрация</button>
+      <button class="secondary-button" (click)="clearData()">Откажи</button>
+      <button class="primary-button">Регистрация</button>
     </div>
   </form>
 
   <p class="login-link">
     Вече имате акаунт? <a routerLink="/user/login">Вход</a>
   </p>
+  <app-toaster
+    [toasterMessage]="toasterMessage"
+    [toasterType]="toasterType"
+  ></app-toaster>
 </section>

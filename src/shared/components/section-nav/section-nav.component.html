@@ -4,6 +4,7 @@
       [routerLink]="option.route"
       routerLinkActive="activebutton"
       ariaCurrentWhenActive="page"
+      ngClass="tertiary-button"
     >
       {{ option.label }}
       <span *ngIf="option.hasData" class="red-dot"></span>
