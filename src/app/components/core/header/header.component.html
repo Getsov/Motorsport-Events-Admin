@@ -78,7 +78,6 @@
             class="tertiary-button"
             (click)="toggleMenu()"
             href="/logout"
-            routerLinkActive="activebutton"
             ariaCurrentWhenActive="page"
             (click)="this.authService.logout()"
             >Изход</a
@@ -87,8 +86,11 @@
         }@else {
         <!-- TODO: add route -->
         <li>
-          class="tertiary-button"
-          <a routerLink="" (click)="toggleMenu()" ariaCurrentWhenActive="page"
+          <a
+            routerLink=""
+            (click)="toggleMenu()"
+            ariaCurrentWhenActive="page"
+            class="tertiary-button"
             >Начало</a
           >
         </li>
