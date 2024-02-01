@@ -1,23 +1,27 @@
 import { CommonModule } from '@angular/common';
-import { Component, Input, effect } from '@angular/core';
+import { Component, Input, OnDestroy, effect } from '@angular/core';
 import { Event } from '../../interfaces/Event';
 import { EventCardComponent } from './event-card/event-card.component';
 import { ActivatedRoute } from '@angular/router';
 import { Subscription } from 'rxjs';
 import { EventService } from '../../services/event.service';
+import { ToasterComponent } from '../toaster/toaster.component';
+import { errorMessages } from '../../utils/constants';
 
 @Component({
   selector: 'app-events-card-list',
   standalone: true,
-  imports: [CommonModule, EventCardComponent],
+  imports: [CommonModule, EventCardComponent, ToasterComponent],
   templateUrl: './events-card-list.component.html',
   styleUrl: './events-card-list.component.scss',
 })
-export class EventsCardListComponent {
+export class EventsCardListComponent implements OnDestroy {
   @Input() eventsList: Event[] = [];
   currentUrl: any;
   isLoading: boolean = true;
   subscription: Subscription | undefined;
+  toasterMessage: string = '';
+  toasterType: string = '';
 
   urlOptions = {
     'awaiting-events': {
@@ -28,27 +32,28 @@ export class EventsCardListComponent {
       setState: () => this.eventService.setMyEventsForApproval(),
       getState: () => this.eventService.myEventsForApproval(),
     },
-    'upcoming-approved':{
+    'upcoming-approved': {
       setState: () => this.eventService.setMyUpcomingEvents(),
       getState: () => this.eventService.myUpcomingEvents(),
     },
-    'past-approved':{
+    'past-approved': {
       setState: () => this.eventService.setMyPastEvents(),
       getState: () => this.eventService.myPastEvents(),
     },
-    'upcoming-events':{
+    'upcoming-events': {
       setState: () => this.eventService.setUpcomingEvents(),
       getState: () => this.eventService.upcomingEvents(),
     },
-    'past-events':{
+    'past-events': {
       setState: () => this.eventService.setPastEvents(),
       getState: () => this.eventService.pastEvents(),
     },
-    'deleted-events':{
-      setState: () => this.eventService.setUpcomingEvents(), /* TODO: Deleted Events */
-      getState: () => this.eventService.upcomingEvents(), /* TODO: Deleted Events */
+    'deleted-events': {
+      setState: () =>
+        this.eventService.setUpcomingEvents() /* TODO: Deleted Events */,
+      getState: () =>
+        this.eventService.upcomingEvents() /* TODO: Deleted Events */,
     },
-
   };
 
   constructor(
@@ -61,12 +66,17 @@ export class EventsCardListComponent {
       this.urlOptions[this.currentUrl as keyof typeof this.urlOptions];
 
     if (currentKey && 'setState' in currentKey && 'getState' in currentKey) {
-      currentKey.setState();
+      this.subscription = currentKey.setState();
       effect(() => {
         this.eventsList = currentKey.getState();
       });
     } else {
-      throw new Error('This url did not have implemented functionality');
+      this.toasterMessage = errorMessages.notImplementedUrlFunc;
+      this.toasterType = 'error';
+
+      setTimeout(() => {
+        this.resetToasters();
+      }, 5000);
     }
   }
 
@@ -74,5 +84,16 @@ export class EventsCardListComponent {
     this.route.url.subscribe((urlSegments) => {
       this.currentUrl = urlSegments.join('/');
     });
+  }
+
+  private resetToasters() {
+    this.toasterMessage = '';
+    this.toasterType = '';
+  }
+
+  ngOnDestroy(): void {
+    if (this.subscription) {
+      this.subscription.unsubscribe();
+    }
   }
 }
