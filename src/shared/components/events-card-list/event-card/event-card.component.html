@@ -1,8 +1,9 @@
+@if(showConfirmationDialog){
 <app-confirm-dialog
-  *ngIf="showConfirmationDialog"
   [message]="confirmationMessage"
   (confirmed)="onConfirmation($event)"
 ></app-confirm-dialog>
+}
 <div class="event-card">
   <div class="content">
     <img
