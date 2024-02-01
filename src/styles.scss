@@ -238,12 +238,20 @@ body {
 }
 
 .primary-button,
+.secondary-button,
+.tertiary-button,
+.activebutton.tertiary-button {
+  font-size: 16px;
+  padding: 0 24px;
+  background-color: inherit;
+  border-radius: 4px;
+  font-weight: 600;
+}
+
+.primary-button,
 .activebutton.tertiary-button {
   background-color: rgba(255, 116, 24, 1);
   color: rgba(13, 13, 13, 1);
-  border-radius: 4px;
-  font-size: 16px;
-  padding: 0 24px;
 }
 
 .primary-button:hover,
@@ -257,12 +265,8 @@ body {
 }
 
 .secondary-button {
-  border-radius: 4px;
   border: 2px solid rgba(255, 116, 24, 1);
   color: rgba(255, 116, 24, 1);
-  font-size: 16px;
-  padding: 0 24px;
-  background-color: inherit;
 }
 
 .secondary-button:hover {
@@ -277,10 +281,6 @@ body {
 }
 
 .tertiary-button {
-  font-size: 16px;
-  padding: 0 24px;
-  border-radius: 4px;
-  background-color: inherit;
   color: rgba(255, 116, 24, 1);
 }
 
