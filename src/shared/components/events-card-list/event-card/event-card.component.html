@@ -29,8 +29,12 @@
     <p class="description">{{ event.shortDescription }}</p>
   </div>
   <div class="buttons">
-    <a routerLink="/event/{{ event._id }}/details" class="view">Прегледай</a>
-    <a routerLink="/event/{{ event._id }}/edit" class="edit">Редактирай</a>
+    <a routerLink="/event/{{ event._id }}/details" class="primary-button"
+      >Прегледай</a
+    >
+    <a routerLink="/event/{{ event._id }}/edit" class="secondary-button"
+      >Редактирай</a
+    >
     <a
       (click)="
         action = 'approve';

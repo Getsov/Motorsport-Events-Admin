@@ -11,6 +11,7 @@
         @if(currentUser){ @if(currentUser.role === 'admin'){
         <li>
           <a
+            class="tertiary-button"
             (click)="toggleMenu()"
             routerLink="/awaiting-approval"
             routerLinkActive="activebutton"
@@ -20,6 +21,7 @@
         </li>
         <li>
           <a
+            class="tertiary-button"
             (click)="toggleMenu()"
             routerLink="/events"
             routerLinkActive="activebutton"
@@ -29,6 +31,7 @@
         </li>
         <li>
           <a
+            class="tertiary-button"
             (click)="toggleMenu()"
             routerLink="/accounts"
             routerLinkActive="activebutton"
@@ -40,6 +43,7 @@
         } @if(currentUser.role === 'organizer'){
         <li>
           <a
+            class="tertiary-button"
             (click)="toggleMenu()"
             routerLink="/organizer-events"
             routerLinkActive="activebutton"
@@ -51,6 +55,7 @@
 
         <li>
           <a
+            class="tertiary-button"
             (click)="toggleMenu()"
             routerLink="/event/create"
             routerLinkActive="activebutton"
@@ -60,6 +65,7 @@
         </li>
         <li>
           <a
+            class="tertiary-button"
             (click)="toggleMenu()"
             routerLink="user/{{ currentUser._id }}/profile"
             routerLinkActive="activebutton"
@@ -69,6 +75,7 @@
         </li>
         <li>
           <a
+            class="tertiary-button"
             (click)="toggleMenu()"
             href="/logout"
             routerLinkActive="activebutton"
@@ -80,12 +87,14 @@
         }@else {
         <!-- TODO: add route -->
         <li>
+          class="tertiary-button"
           <a routerLink="" (click)="toggleMenu()" ariaCurrentWhenActive="page"
             >Начало</a
           >
         </li>
         <li>
           <a
+            class="tertiary-button"
             (click)="toggleMenu()"
             routerLink="user/login"
             routerLinkActive="activebutton"
@@ -95,6 +104,7 @@
         </li>
         <li>
           <a
+            class="tertiary-button"
             (click)="toggleMenu()"
             routerLink="user/register"
             routerLinkActive="activebutton"
