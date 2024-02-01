@@ -102,7 +102,7 @@
   .searchbar-search-icon {
     left: 4px;
   }
-  ion-select.ion-untouched.searchbar-clear-button.sc-ion-searchbar-md{
+  ion-select.ion-untouched.searchbar-clear-button.sc-ion-searchbar-md {
     display: block;
   }
   .searchbar-input {
@@ -200,5 +200,22 @@
       border-bottom: 0px !important;
       border-right: 0px !important;
     }
+  }
+}
+
+@media (max-width: 430px) {
+  .section {
+    width: 91%;
+    .select-section {
+      width: 100%;
+      flex-direction: column;
+      gap: 0;
+      .select-item {
+        width: 100%;
+      }
+    }
+  }
+  ::ng-deep .alert-wrapper {
+    width: 91% !important;
   }
 }
