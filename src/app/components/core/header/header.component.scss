@@ -1,4 +1,8 @@
 header {
+  position: sticky;
+  top: 0;
+  z-index: 100;
+  background-color: rgba(13, 13, 13, 1);
   .header-container {
     margin: 40px;
     display: flex;
@@ -140,6 +144,10 @@ header {
           transition: width 0.4s ease-in-out;
         }
 
+        li:first-child {
+          margin-top: 64px;
+        }
+
         li {
           padding: 16px;
           margin-left: 32px;
@@ -212,6 +220,10 @@ header {
         }
         ul {
           padding-top: 16px;
+        }
+
+        li:first-child {
+          margin-top: 50px;
         }
 
         li {
