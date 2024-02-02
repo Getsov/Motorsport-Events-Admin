@@ -1,5 +1,9 @@
+@if (!isLandingPage) {
 <app-header />
+}
 <main>
+  @if (!isLandingPage) {
   <app-hero />
+  }
   <router-outlet />
 </main>
