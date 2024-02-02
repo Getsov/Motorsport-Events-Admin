@@ -16,7 +16,7 @@ import { errorMessages } from '../../utils/constants';
   styleUrl: './events-card-list.component.scss',
 })
 export class EventsCardListComponent implements OnDestroy {
-  @Input() eventsList: Event[] = [];
+  @Input() eventsList: any[] = [];
   currentUrl: any;
   isLoading: boolean = true;
   subscription: Subscription | undefined;
@@ -48,7 +48,7 @@ export class EventsCardListComponent implements OnDestroy {
       setState: () => this.eventService.setPastEvents(),
       getState: () => this.eventService.pastEvents(),
     },
-    'deleted-events':{
+    'deleted-events': {
       setState: () => this.eventService.setDeletedEvents(),
       getState: () => this.eventService.deletedEvents(),
     },
