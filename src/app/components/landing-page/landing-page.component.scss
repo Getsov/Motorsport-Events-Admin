@@ -1,4 +1,4 @@
-.container {
+.landing-page {
   header {
     display: flex;
     align-items: center;
@@ -173,14 +173,15 @@ swiper-container {
   --swiper-pagination-bullet-size: 16px;
   --swiper-pagination-bullet-horizontal-gap: 8px;
   --swiper-pagination-bottom: 26px;
-  padding: 0 16px;
   min-height: 216px;
-  width: 100%;
 }
 
 swiper-slide {
-  margin: 1em 1.5em 0 0.3em !important;
   width: 328px !important;
+}
+
+swiper-slide:first-child {
+  margin-left: 16px;
 }
 
 .swiper-wrapper {
@@ -188,7 +189,7 @@ swiper-slide {
 }
 
 @media (max-width: 1244px) {
-  .container {
+  .landing-page {
     main {
       .hero {
         flex-direction: column;
@@ -224,7 +225,7 @@ swiper-slide {
 }
 
 @media (max-width: 800px) {
-  .container {
+  .landing-page {
     main {
       .hero {
         .hero-image {
@@ -267,7 +268,7 @@ swiper-slide {
 }
 
 @media (max-width: 655px) {
-  .container {
+  .landing-page {
     header {
       .header-title {
         font-size: 32px;
@@ -299,7 +300,7 @@ swiper-slide {
 }
 
 @media (max-width: 455px) {
-  .container {
+  .landing-page {
     header {
       margin: 1em 18px;
       a svg {
@@ -366,13 +367,6 @@ swiper-slide {
           gap: 0.5em;
         }
       }
-    }
-  }
-
-  swiper-container {
-    padding: 0;
-    swiper-slide {
-      width: 258px !important;
     }
   }
 }

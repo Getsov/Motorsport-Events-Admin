@@ -1,4 +1,4 @@
-<div class="container">
+<div class="landing-page">
   <header>
     <a routerLink="/">
       <svg
@@ -170,9 +170,8 @@
       >
       <swiper-container
         class="upcoming-events"
-        [slidesPerView]="1.7"
+        [slidesPerView]="4.4"
         [spaceBetween]="16"
-        (swiperslidechange)="swiperSlideChanged($event)"
       >
         @for (event of upcomingEvents; track $index) {
         <swiper-slide>
