@@ -23,6 +23,7 @@ import { UserGuard } from '../shared/guards/user.guard';
 import { OrganizerEventsComponent } from './components/organizer-events/organizer-events.component';
 import { AdminGuard } from '../shared/guards/admin.guard';
 import { EventsCardListComponent } from '../shared/components/events-card-list/events-card-list.component';
+import { LandingPageComponent } from './components/landing-page/landing-page.component';
 
 export const routes: Routes = [
   {
@@ -44,7 +45,7 @@ export const routes: Routes = [
       { path: '', redirectTo: 'upcoming-events', pathMatch: 'full' },
       { path: 'upcoming-events', component: EventsCardListComponent },
       { path: 'past-events', component: EventsCardListComponent },
-      { path: 'deleted-events', component: EventsCardListComponent }
+      { path: 'deleted-events', component: EventsCardListComponent },
     ],
   },
   {
@@ -119,7 +120,7 @@ export const routes: Routes = [
   },
 
   // Redirect to 'awaiting-approval' for the root path
-  { path: '', redirectTo: 'awaiting-approval', pathMatch: 'full' },
+  { path: '', pathMatch: 'full', component: LandingPageComponent },
   // Redirect to 'awaiting-approval' for any other unmatched paths
   { path: '**', redirectTo: 'awaiting-approval', pathMatch: 'full' },
 ];

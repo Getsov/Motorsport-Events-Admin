@@ -2,6 +2,11 @@
   @for (event of eventsList; track event._id) {
   <app-event-card [event]="event" />
   }@empty {
-  <p class="empty">Няма събития, чакащи одобрение!</p>
+  <p class="empty">Няма налични събития!</p>
   }
+
+  <app-toaster
+    [toasterMessage]="toasterMessage"
+    [toasterType]="toasterType"
+  ></app-toaster>
 </section>

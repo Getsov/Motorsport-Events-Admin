@@ -6,6 +6,8 @@ import { LikeIconComponent } from '../../like-icon/like-icon.component';
 import { EventService } from '../../../services/event.service';
 import { Subscription } from 'rxjs';
 import { ConfirmDialogComponent } from '../../confirm-dialog/confirm-dialog.component';
+import { ToasterComponent } from '../../toaster/toaster.component';
+import { sucessMessages } from '../../../utils/constants';
 
 @Component({
   selector: 'app-event-card',
@@ -16,6 +18,7 @@ import { ConfirmDialogComponent } from '../../confirm-dialog/confirm-dialog.comp
     LikeIconComponent,
     DatePipe,
     ConfirmDialogComponent,
+    ToasterComponent,
   ],
   templateUrl: './event-card.component.html',
   styleUrl: './event-card.component.scss',
@@ -49,15 +52,33 @@ export class EventCardComponent implements OnInit, OnDestroy {
 
   showConfirmationDialog: boolean = false;
   confirmationMessage: string = '';
+  action: string = '';
 
   startDate: any = '';
   endDate: any = '';
+  toasterMessage: string = '';
+  toasterType: string = '';
+
+  constructor(private eventService: EventService, private datePipe: DatePipe) {}
+
+  ngOnInit(): void {
+    const lastIndex = this.event.dates.length - 1;
+
+    this.startDate = this.datePipe.transform(
+      this.event.dates[0].date,
+      'dd.MM.yyyy'
+    );
+    this.endDate = this.datePipe.transform(
+      this.event.dates[lastIndex].date,
+      'dd.MM.yyyy'
+    );
+  }
 
   onConfirmation(confirmed: boolean) {
     if (confirmed) {
-      if (this.confirmationMessage.includes('approve')) {
+      if (this.action === 'approve') {
         this.approveEvent();
-      } else if (this.confirmationMessage.includes('delete')) {
+      } else if (this.action === 'delete') {
         this.deleteEvent();
       }
     }
@@ -73,10 +94,19 @@ export class EventCardComponent implements OnInit, OnDestroy {
         .approveDisapproveEvent(this.event._id, updatedStatus)
         .subscribe({
           next: (response) => {
-            this.eventService.removeEventFromApprovalList(this.event._id);
+            this.toasterMessage = sucessMessages.approveEvent;
+            this.toasterType = 'success';
+            setTimeout(() => {
+              this.eventService.removeEventFromApprovalList(this.event._id);
+              this.resetToasters();
+            }, 100);
           },
           error: (error) => {
-            console.log(error.message);
+            this.toasterMessage = error.error.error;
+            this.toasterType = 'error';
+            setTimeout(() => {
+              this.resetToasters();
+            }, 5000);
           },
         })
     );
@@ -88,28 +118,27 @@ export class EventCardComponent implements OnInit, OnDestroy {
     this.subscriptions.push(
       this.eventService.deleteEvent(this.event._id, updatedStatus).subscribe({
         next: (response) => {
-          this.eventService.removeEventFromApprovalList(this.event._id);
+          setTimeout(() => {
+            this.eventService.removeEventFromApprovalList(this.event._id);
+            this.resetToasters();
+          }, 100);
+          this.toasterMessage = sucessMessages.deleteEvent;
+          this.toasterType = 'success';
         },
         error: (error) => {
-          console.log(error.message);
+          this.toasterMessage = error.error.error;
+          this.toasterType = 'error';
+          setTimeout(() => {
+            this.resetToasters();
+          }, 5000);
         },
       })
     );
   }
 
-  constructor(private eventService: EventService, private datePipe: DatePipe) {}
-
-  ngOnInit(): void {
-    const lastIndex = this.event.dates.length - 1;
-
-    this.startDate = this.datePipe.transform(
-      this.event.dates[0].date,
-      'dd.MM.yyyy'
-    );
-    this.endDate = this.datePipe.transform(
-      this.event.dates[lastIndex].date,
-      'dd.MM.yyyy'
-    );
+  resetToasters() {
+    this.toasterMessage = '';
+    this.toasterType = '';
   }
 
   ngOnDestroy(): void {
