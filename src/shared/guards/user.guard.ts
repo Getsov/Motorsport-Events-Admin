@@ -24,7 +24,7 @@ export class UserGuard implements CanActivate {
     | Observable<boolean | UrlTree>
     | Promise<boolean | UrlTree> {
     if (!!this.authService.userDetails.accessToken) {
-      this.router.navigateByUrl('/');
+      this.router.navigateByUrl('/awaiting-approval');
       return false;
     } else {
       return true;

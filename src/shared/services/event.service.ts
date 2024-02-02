@@ -261,4 +261,9 @@ export class EventService {
   // All Deleted Events signal end
 
   // SIGNALS END--------
+
+  getPaginationEvents(page: number, limit: number): Observable<any> {
+    const url = `${baseUrl}/events?page=${page}&limit=${limit}`;
+    return this.http.get<Event[]>(url);
+  }
 }
