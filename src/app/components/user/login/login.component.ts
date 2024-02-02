@@ -58,7 +58,7 @@ export class LoginComponent {
         }
 
         setTimeout(() => {
-          this.router.navigateByUrl('/');
+          this.router.navigateByUrl('/awaiting-approval');
           this.resetToasters();
           this.email = '';
           this.password = '';
