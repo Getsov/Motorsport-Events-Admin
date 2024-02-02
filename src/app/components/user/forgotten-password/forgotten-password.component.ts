@@ -3,14 +3,14 @@ import { FormsModule, NgForm } from '@angular/forms';
 import { LabelWithStatesComponent } from '../../../../shared/components/label-with-states/label-with-states.component';
 import { UserService } from '../../../../shared/services/user.service';
 import { Router } from '@angular/router';
-import { LoaderComponent } from "../../../../shared/components/loader/loader.component";
+import { LoaderComponent } from '../../../../shared/components/loader/loader.component';
 
 @Component({
-    selector: 'app-forgotten-password',
-    standalone: true,
-    templateUrl: './forgotten-password.component.html',
-    styleUrl: './forgotten-password.component.scss',
-    imports: [FormsModule, LabelWithStatesComponent, LoaderComponent]
+  selector: 'app-forgotten-password',
+  standalone: true,
+  templateUrl: './forgotten-password.component.html',
+  styleUrl: './forgotten-password.component.scss',
+  imports: [FormsModule, LabelWithStatesComponent, LoaderComponent],
 })
 export class ForgottenPasswordComponent {
   email: string = '';
@@ -39,7 +39,6 @@ export class ForgottenPasswordComponent {
   }
 
   onCancel() {
-    this.router.navigate(['/']);
+    this.router.navigate(['/login']);
   }
-  
 }
