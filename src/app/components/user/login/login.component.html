@@ -59,11 +59,15 @@
     </div>
 
     <div class="buttons">
-      <a (click)="navigateToRegister()" class="secondary"
+      <a (click)="navigateToRegister()" class="secondary-button"
         >Регистрирай се като организатор</a
       >
-      <button class="submit">Вход</button>
+      <button class="submit primary-button">Вход</button>
     </div>
   </form>
   <p class="forgotten" (click)="navigateToForgotten()">Забравена парола</p>
+  <app-toaster
+    [toasterMessage]="toasterMessage"
+    [toasterType]="toasterType"
+  ></app-toaster>
 </section>

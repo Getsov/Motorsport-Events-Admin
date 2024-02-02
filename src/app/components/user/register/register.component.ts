@@ -6,6 +6,9 @@ import { SelectorComponent } from '../../../../shared/components/selector/select
 import { AuthService } from '../../../../shared/services/auth.service';
 import { Subscription } from 'rxjs';
 import BulgarianRegions from '../../../../shared/data/regions';
+import { Router, RouterLink } from '@angular/router';
+import { ToasterComponent } from '../../../../shared/components/toaster/toaster.component';
+import { sucessMessages } from '../../../../shared/utils/constants';
 
 @Component({
   selector: 'app-register',
@@ -15,6 +18,8 @@ import BulgarianRegions from '../../../../shared/data/regions';
     CommonModule,
     FormsModule,
     SelectorComponent,
+    RouterLink,
+    ToasterComponent,
   ],
   templateUrl: './register.component.html',
   styleUrl: './register.component.scss',
@@ -38,7 +43,10 @@ export class RegisterComponent implements OnDestroy {
     isNaN(Number(value))
   );
 
-  constructor(private authService: AuthService) {}
+  toasterMessage: string = '';
+  toasterType: string = '';
+
+  constructor(private authService: AuthService, private router: Router) {}
 
   onRegionSelect(regionFormControl: NgModel) {
     this.registerData.region = regionFormControl.value;
@@ -56,18 +64,36 @@ export class RegisterComponent implements OnDestroy {
 
     this.subscription = this.authService.register(this.registerData).subscribe({
       next: (response) => {
-        // success toaster
+        this.toasterMessage = sucessMessages.organizerRegistration;
+        this.toasterType = 'success';
 
-        this.registerData = { ...this.emptyRegisterData };
+        setTimeout(() => {
+          this.resetToasters();
+          this.clearData();
+        }, 500);
       },
       error: (error) => {
-        console.log(error.error);
+        this.toasterMessage = error.error.error;
+        this.toasterType = 'error';
+
+        setTimeout(() => {
+          this.resetToasters();
+        }, 5000);
       },
     });
   }
 
   clearData() {
-    return (this.registerData = { ...this.emptyRegisterData });
+    this.registerData = { ...this.emptyRegisterData };
+    if (this.regionFormControl) {
+      this.regionFormControl.reset();
+    }
+    this.router.navigate(['/user/login']);
+  }
+
+  resetToasters() {
+    this.toasterMessage = '';
+    this.toasterType = '';
   }
 
   ngOnDestroy(): void {

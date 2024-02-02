@@ -92,16 +92,10 @@ export class EventService {
   }
 
   getUpcomingEvents(query = ''): Observable<Event[]> {
-    if (query) {
-      return this.http.get<Event[]>(
-        `${baseUrl}/events/UpcomingEvents?${query}`,
-        this.options
-      );
+    if(query) {
+    return this.http.get<Event[]>(`${baseUrl}/events/upcomingEvents?${query}`, this.options);
     }
-    return this.http.get<Event[]>(
-      `${baseUrl}/events/UpcomingEvents`,
-      this.options
-    );
+    return this.http.get<Event[]>(`${baseUrl}/events/upcomingEvents`, this.options);
   }
 
   getPastEvents(query = ''): Observable<Event[]> {
@@ -114,6 +108,13 @@ export class EventService {
     return this.http.get<Event[]>(`${baseUrl}/events/pastEvents`, this.options);
   }
 
+  getDeletedEvents(query = ''): Observable<Event[]> {
+    if(query) {
+    return this.http.get<Event[]>(`${baseUrl}/events/deletedEvents?${query}`, this.options);
+    }
+    return this.http.get<Event[]>(`${baseUrl}/events/deletedEvents`, this.options);
+  }
+  
   /* TODO: Deleted Events */
 
   // API CALLS END--------
@@ -239,6 +240,25 @@ export class EventService {
   }
 
   // All Past Events signal end
+
+  // All Deleted Events Signal
+
+  deletedEvents = signal<Event[]>([]);
+
+  hasDeletedEvents: boolean = this.deletedEvents().length > 1;
+
+  setDeletedEvents(query = ''): Subscription {
+    return this.getDeletedEvents(query).subscribe({
+      next: (response) => {
+        this.deletedEvents.update((state) => response);
+      },
+      error: (error) => {
+        console.log(error);
+      },
+    });
+  }
+
+  // All Deleted Events signal end
 
   // SIGNALS END--------
 

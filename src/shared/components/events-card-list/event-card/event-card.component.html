@@ -1,13 +1,14 @@
+@if(showConfirmationDialog){
 <app-confirm-dialog
-  *ngIf="showConfirmationDialog"
   [message]="confirmationMessage"
   (confirmed)="onConfirmation($event)"
 ></app-confirm-dialog>
+}
 <div class="event-card">
   <div class="content">
     <img
       class="event-img"
-      src="{{ event.imageUrl }}"
+      [src]="'data:image;base64,' + event.imageUrl"
       alt="{{ event.shortTitle }}"
     />
     <h3>{{ event.shortTitle }}</h3>
@@ -28,19 +29,25 @@
     <p class="description">{{ event.shortDescription }}</p>
   </div>
   <div class="buttons">
-    <a routerLink="/event/{{ event._id }}/details" class="view">Прегледай</a>
-    <a routerLink="/event/{{ event._id }}/edit" class="edit">Редактирай</a>
+    <a routerLink="/event/{{ event._id }}/details" class="primary-button"
+      >Прегледай</a
+    >
+    <a routerLink="/event/{{ event._id }}/edit" class="secondary-button"
+      >Редактирай</a
+    >
     <a
-      class="approve"
       (click)="
+        action = 'approve';
         showConfirmationDialog = true;
         confirmationMessage = 'Сигурни ли сте, че искате да одобрите събитието?'
       "
+      class="approve"
       >Одобри</a
     >
     <a
       class="delete"
       (click)="
+        action = 'delete';
         showConfirmationDialog = true;
         confirmationMessage = 'Сигурни ли сте, че искате да изтриете събитието?'
       "
@@ -48,4 +55,8 @@
     >
   </div>
   <app-like-icon [likedCount]="event.likes.length" />
+  <app-toaster
+    [toasterMessage]="toasterMessage"
+    [toasterType]="toasterType"
+  ></app-toaster>
 </div>

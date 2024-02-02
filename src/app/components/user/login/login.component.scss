@@ -12,3 +12,11 @@
     cursor: pointer;
   }
 }
+
+@media (max-width: 615px) {
+  .buttons {
+    .secondary-button {
+      order: 1;
+    }
+  }
+}
