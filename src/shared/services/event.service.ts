@@ -55,47 +55,50 @@ export class EventService {
     );
   }
 
-  getMyEventsForApproval(query = ''): Observable<Event[]> {
+  getMyEventsForApproval(query = ''): Observable<any> {
     if (query) {
-      return this.http.get<Event[]>(
+      return this.http.get<any>(
         `${baseUrl}/user/myEventsForApproval?${query}`,
         this.options
       );
     }
-    return this.http.get<Event[]>(
+    return this.http.get<any>(
       `${baseUrl}/user/myEventsForApproval`,
       this.options
     );
   }
 
-  getMyUpcomingEvents(query = ''): Observable<Event[]> {
+  getMyUpcomingEvents(query = ''): Observable<any> {
     if (query) {
-      return this.http.get<Event[]>(
+      return this.http.get<any>(
         `${baseUrl}/user/myUpcomingEvents?${query}`,
         this.options
       );
     }
-    return this.http.get<Event[]>(
-      `${baseUrl}/user/myUpcomingEvents`,
-      this.options
-    );
+    return this.http.get<any>(`${baseUrl}/user/myUpcomingEvents`, this.options);
   }
 
-  getMyPastEvents(query = ''): Observable<Event[]> {
+  getMyPastEvents(query = ''): Observable<any> {
     if (query) {
-      return this.http.get<Event[]>(
+      return this.http.get<any>(
         `${baseUrl}/user/myPastEvents?${query}`,
         this.options
       );
     }
-    return this.http.get<Event[]>(`${baseUrl}/user/myPastEvents`, this.options);
+    return this.http.get<any>(`${baseUrl}/user/myPastEvents`, this.options);
   }
 
   getUpcomingEvents(query = ''): Observable<Event[]> {
-    if(query) {
-    return this.http.get<Event[]>(`${baseUrl}/events/upcomingEvents?${query}`, this.options);
+    if (query) {
+      return this.http.get<Event[]>(
+        `${baseUrl}/events/upcomingEvents?${query}`,
+        this.options
+      );
     }
-    return this.http.get<Event[]>(`${baseUrl}/events/upcomingEvents`, this.options);
+    return this.http.get<Event[]>(
+      `${baseUrl}/events/upcomingEvents`,
+      this.options
+    );
   }
 
   getPastEvents(query = ''): Observable<Event[]> {
@@ -109,13 +112,17 @@ export class EventService {
   }
 
   getDeletedEvents(query = ''): Observable<Event[]> {
-    if(query) {
-    return this.http.get<Event[]>(`${baseUrl}/events/deletedEvents?${query}`, this.options);
+    if (query) {
+      return this.http.get<Event[]>(
+        `${baseUrl}/events/deletedEvents?${query}`,
+        this.options
+      );
     }
-    return this.http.get<Event[]>(`${baseUrl}/events/deletedEvents`, this.options);
+    return this.http.get<Event[]>(
+      `${baseUrl}/events/deletedEvents`,
+      this.options
+    );
   }
-  
-  /* TODO: Deleted Events */
 
   // API CALLS END--------
 
@@ -148,14 +155,14 @@ export class EventService {
 
   // Upcoming events signal
 
-  myUpcomingEvents = signal<Event[]>([]);
+  myUpcomingEvents = signal<any[]>([]);
 
   hasMyUpcomingEvents: boolean = this.myUpcomingEvents().length > 1;
 
   setMyUpcomingEvents(query = ''): Subscription {
     return this.getMyUpcomingEvents(query).subscribe({
       next: (response) => {
-        this.myUpcomingEvents.update((state) => response);
+        this.myUpcomingEvents.update((state) => response.results);
       },
       error: (error) => {
         console.log(error);
@@ -167,14 +174,14 @@ export class EventService {
 
   // Past events signal
 
-  myPastEvents = signal<Event[]>([]);
+  myPastEvents = signal<any[]>([]);
 
   hasMyPastEvents: boolean = this.myPastEvents().length > 1;
 
   setMyPastEvents(query = ''): Subscription {
     return this.getMyPastEvents(query).subscribe({
       next: (response) => {
-        this.myPastEvents.update((state) => response);
+        this.myPastEvents.update((state) => response.results);
       },
       error: (error) => {
         console.log(error);
@@ -186,14 +193,14 @@ export class EventService {
 
   // My Events For Approval signal
 
-  myEventsForApproval = signal<Event[]>([]);
+  myEventsForApproval = signal<any[]>([]);
 
   hasMyEventsForApproval: boolean = this.myEventsForApproval().length > 1;
 
   setMyEventsForApproval(query = ''): Subscription {
     return this.getMyEventsForApproval(query).subscribe({
       next: (response) => {
-        this.myEventsForApproval.update((state) => response);
+        this.myEventsForApproval.update((state) => response.results);
       },
       error: (error) => {
         console.log(error);

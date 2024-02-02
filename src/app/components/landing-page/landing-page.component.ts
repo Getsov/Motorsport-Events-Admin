@@ -22,7 +22,7 @@ export class LandingPageComponent implements OnInit, OnDestroy {
 
   upcomingEvents: Event[] = [];
   pageToLoad: number = 1;
-  loadEventsCount: number = 5;
+  loadEventsCount: number = 10;
 
   isAllEventsLoaded: boolean = false;
 
@@ -46,12 +46,8 @@ export class LandingPageComponent implements OnInit, OnDestroy {
         .getPaginationEvents(this.pageToLoad, this.loadEventsCount)
         .subscribe({
           next: (response) => {
-            if (!response.nextPage) {
-              this.upcomingEvents.push(...response.results);
-              this.pageToLoad++;
-            } else {
-              this.isAllEventsLoaded = true;
-            }
+            this.upcomingEvents = response.results;
+            this.pageToLoad++;
           },
           error: (error) => {
             console.log(error);
