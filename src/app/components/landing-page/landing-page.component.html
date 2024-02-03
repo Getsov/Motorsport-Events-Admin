@@ -171,7 +171,8 @@
       <swiper-container
         class="upcoming-events"
         [slidesPerView]="4.4"
-        [spaceBetween]="16"
+        [spaceBetween]="10"
+        [loop]="true"
       >
         @for (event of upcomingEvents; track $index) {
         <swiper-slide>
