@@ -88,12 +88,9 @@ export class EventService {
     return this.http.get<any>(`${baseUrl}/user/myPastEvents`, this.options);
   }
 
-  getUpcomingEvents(query = ''): Observable<Event[]> {
-    if (query) {
-      return this.http.get<Event[]>(
-        `${baseUrl}/events/upcomingEvents?${query}`,
-        this.options
-      );
+  getUpcomingEvents(query = ''): Observable<any> {
+    if(query) {
+    return this.http.get<Event[]>(`${baseUrl}/events/upcomingEvents?${query}`, this.options);
     }
     return this.http.get<Event[]>(
       `${baseUrl}/events/upcomingEvents`,
@@ -101,7 +98,7 @@ export class EventService {
     );
   }
 
-  getPastEvents(query = ''): Observable<Event[]> {
+  getPastEvents(query = ''): Observable<any> {
     if (query) {
       return this.http.get<Event[]>(
         `${baseUrl}/events/pastEvents?${query}`,
@@ -111,12 +108,9 @@ export class EventService {
     return this.http.get<Event[]>(`${baseUrl}/events/pastEvents`, this.options);
   }
 
-  getDeletedEvents(query = ''): Observable<Event[]> {
-    if (query) {
-      return this.http.get<Event[]>(
-        `${baseUrl}/events/deletedEvents?${query}`,
-        this.options
-      );
+  getDeletedEvents(query = ''): Observable<any> {
+    if(query) {
+    return this.http.get<Event[]>(`${baseUrl}/events/deletedEvents?${query}`, this.options);
     }
     return this.http.get<Event[]>(
       `${baseUrl}/events/deletedEvents`,
@@ -219,7 +213,7 @@ export class EventService {
   setUpcomingEvents(query = ''): Subscription {
     return this.getUpcomingEvents(query).subscribe({
       next: (response) => {
-        this.upcomingEvents.update((state) => response);
+        this.upcomingEvents.update((state) => response.results);
       },
       error: (error) => {
         console.log(error);
@@ -238,7 +232,7 @@ export class EventService {
   setPastEvents(query = ''): Subscription {
     return this.getPastEvents(query).subscribe({
       next: (response) => {
-        this.pastEvents.update((state) => response);
+        this.pastEvents.update((state) => response.results);
       },
       error: (error) => {
         console.log(error);
@@ -257,7 +251,7 @@ export class EventService {
   setDeletedEvents(query = ''): Subscription {
     return this.getDeletedEvents(query).subscribe({
       next: (response) => {
-        this.deletedEvents.update((state) => response);
+        this.deletedEvents.update((state) => response.results);
       },
       error: (error) => {
         console.log(error);

@@ -8,10 +8,13 @@ import { Subscription } from 'rxjs';
 import { ConfirmDialogComponent } from '../../confirm-dialog/confirm-dialog.component';
 import { ToasterComponent } from '../../toaster/toaster.component';
 import { sucessMessages } from '../../../utils/constants';
+import { EventLineComponent } from '../../event-line/event-line.component';
 
 @Component({
   selector: 'app-event-card',
   standalone: true,
+  templateUrl: './event-card.component.html',
+  styleUrl: './event-card.component.scss',
   imports: [
     CommonModule,
     RouterLink,
@@ -19,11 +22,11 @@ import { sucessMessages } from '../../../utils/constants';
     DatePipe,
     ConfirmDialogComponent,
     ToasterComponent,
+    EventLineComponent,
   ],
-  templateUrl: './event-card.component.html',
-  styleUrl: './event-card.component.scss',
 })
 export class EventCardComponent implements OnInit, OnDestroy {
+  @Input() currentUrl!: string;
   @Input() event: Event = {
     shortTitle: '',
     shortDescription: '',
@@ -50,6 +53,9 @@ export class EventCardComponent implements OnInit, OnDestroy {
   };
   private subscriptions: Subscription[] = [];
 
+  lineText: string = '';
+  lineColor: string = '';
+
   showConfirmationDialog: boolean = false;
   confirmationMessage: string = '';
   action: string = '';
@@ -62,6 +68,16 @@ export class EventCardComponent implements OnInit, OnDestroy {
   constructor(private eventService: EventService, private datePipe: DatePipe) {}
 
   ngOnInit(): void {
+    if (
+      this.currentUrl == 'past-approved' ||
+      this.currentUrl == 'past-events'
+    ) {
+      this.lineColor = 'red';
+      this.lineText = 'Отминало';
+    } else {
+      if (true) {
+      }
+    }
     const lastIndex = this.event.dates.length - 1;
 
     this.startDate = this.datePipe.transform(
