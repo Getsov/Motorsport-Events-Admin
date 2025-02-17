@@ -2,18 +2,24 @@
 
 <div align="center">
 
-![Motorsport Events Admin](https://raw.githubusercontent.com/Getsov/Motorsport-Events-Admin/dev/src/assets/logo.png)
+![Motorsport Events Admin](src/assets/images/app-logo.png)
 
 [![Angular](https://img.shields.io/badge/Angular-DD0031?style=for-the-badge&logo=angular&logoColor=white)](https://angular.io/)
 [![TypeScript](https://img.shields.io/badge/TypeScript-007ACC?style=for-the-badge&logo=typescript&logoColor=white)](https://www.typescriptlang.org/)
 [![Ionic](https://img.shields.io/badge/Ionic-3880FF?style=for-the-badge&logo=ionic&logoColor=white)](https://ionicframework.com/)
-[![Netlify Status](https://api.netlify.com/api/v1/badges/your-netlify-id/deploy-status)](https://app.netlify.com/sites/your-site-name/deploys)
+[![SCSS](https://img.shields.io/badge/SCSS-CC6699?style=for-the-badge&logo=sass&logoColor=white)](https://sass-lang.com/)
+
+<img src="src/assets/images/hero-car.png" alt="Hero Car" width="600"/>
 
 </div>
 
 ## 📝 Description
 
 Motorsport Events Admin is a powerful web application designed to manage and organize motorsport events. Built with Angular and Ionic, it provides a beautiful and intuitive interface for event organizers to create, manage, and promote their motorsport events.
+
+<div align="center">
+<img src="src/assets/images/hero-wheels.png" alt="Hero Wheels" width="300"/>
+</div>
 
 ## ✨ Features
 
