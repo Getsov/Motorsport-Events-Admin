@@ -24,7 +24,13 @@
         Всички събития за моторни спортове в България на едно място
       </h1>
       <div class="hero-image">
-        <img src="../../../assets/images/hero-car.png" alt="" />
+        <img
+          ngSrc="../../../assets/images/hero-car.png"
+          alt="Hero car image"
+          width="800"
+          height="600"
+          priority
+        />
         <svg
           xmlns="http://www.w3.org/2000/svg"
           width="122"
@@ -170,9 +176,21 @@
       >
       <swiper-container
         class="upcoming-events"
-        [slidesPerView]="4.4"
-        [spaceBetween]="10"
-        [loop]="true"
+        [init]="false"
+        (swiperinit)="onSwiperInit($event)"
+        [slidesPerView]="swiperConfig.slidesPerView"
+        [breakpoints]="swiperConfig.breakpoints"
+        [spaceBetween]="swiperConfig.spaceBetween"
+        [grabCursor]="swiperConfig.grabCursor"
+        [centeredSlides]="swiperConfig.centeredSlides"
+        [initialSlide]="swiperConfig.initialSlide"
+        [slideToClickedSlide]="swiperConfig.slideToClickedSlide"
+        [loop]="swiperConfig.loop"
+        observer="true"
+        observer-parents="true"
+        resistance="true"
+        resistance-ratio="0.85"
+        pagination="true"
       >
         @for (event of upcomingEvents; track $index) {
         <swiper-slide>
@@ -202,7 +220,7 @@
       <div class="info-container">
         <h2 class="user-title">Потребител</h2>
         <span>
-          <p>Като потребител на приложението “Race Fanatic” ще можете да:</p>
+          <p>Като потребител на приложението "Race Fanatic" ще можете да:</p>
           <ul>
             <li>
               <p>
@@ -268,7 +286,7 @@
       </svg>
     </div>
     <div class="footer-menu">
-      <p>Всички права са запазени “Рейс Фанатик” ЕООД</p>
+      <p>Всички права са запазени "Рейс Фанатик" ЕООД</p>
       <p href="#">Политика за поверителност</p>
       <p href="#">Общи условия</p>
       <p href="#">Контакти</p>

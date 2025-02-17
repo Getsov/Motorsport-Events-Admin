@@ -1,3 +1,7 @@
+@import "swiper/css";
+@import "swiper/css/navigation";
+@import "swiper/css/pagination";
+
 @font-face {
   font-family: "Exo 2";
   src: url("assets/fonts/Exo2-Regular.ttf") format("truetype");
@@ -322,4 +326,54 @@ body {
   .form .buttons {
     gap: 16px;
   }
+}
+
+// Swiper custom styles
+swiper-container {
+  width: 100%;
+  height: 100%;
+  --swiper-pagination-color: #ff7418;
+  --swiper-pagination-bullet-inactive-color: #c2bfbe;
+  --swiper-pagination-bullet-inactive-opacity: 1;
+  --swiper-pagination-bullet-size: 8px;
+  --swiper-pagination-bullet-horizontal-gap: 6px;
+  padding-bottom: 40px;
+  position: relative;
+  box-sizing: border-box;
+}
+
+swiper-container::part(container) {
+  padding: 0 16px;
+}
+
+swiper-container::part(pagination) {
+  bottom: 16px;
+  position: absolute;
+}
+
+swiper-container::part(bullet) {
+  background-color: var(--swiper-pagination-bullet-inactive-color);
+  opacity: var(--swiper-pagination-bullet-inactive-opacity);
+  width: var(--swiper-pagination-bullet-size);
+  height: var(--swiper-pagination-bullet-size);
+  display: inline-block;
+  border-radius: 50%;
+  margin: 0 var(--swiper-pagination-bullet-horizontal-gap);
+  cursor: pointer;
+}
+
+swiper-container::part(bullet-active) {
+  background-color: var(--swiper-pagination-color);
+}
+
+// .upcoming-events {
+//   margin-bottom: 24px;
+// }
+
+swiper-slide {
+  height: auto;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding-bottom: 32px;
 }
