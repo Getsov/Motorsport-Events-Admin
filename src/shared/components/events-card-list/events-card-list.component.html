@@ -1,6 +1,6 @@
 <section class="events-list">
   @for (event of eventsList; track event._id) {
-  <app-event-card [event]="event" />
+  <app-event-card [event]="event" [currentUrl]="currentUrl" />
   }@empty {
   <p class="empty">Няма налични събития!</p>
   }

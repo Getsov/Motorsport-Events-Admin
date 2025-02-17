@@ -6,6 +6,11 @@
 }
 <div class="event-card">
   <div class="content">
+    <app-event-line
+      class="event-line"
+      [inputString]="lineText"
+      [inputColor]="lineColor"
+    />
     <img
       class="event-img"
       [src]="'data:image;base64,' + event.imageUrl"
