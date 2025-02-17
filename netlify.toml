@@ -1,5 +1,5 @@
 [build]
-  command = "ng build"
+  command = "npm run build"
   publish = "dist/motorsport-events-admin"
 
 [context.production]
@@ -9,7 +9,4 @@
   environment = { NODE_VERSION = "18" }
 
 [context.branch-deploy]
-  environment = { NODE_VERSION = "18" }
-
-[[plugins]]
-  package = "@netlify/plugin-angular-universal" 
+  environment = { NODE_VERSION = "18" } 
